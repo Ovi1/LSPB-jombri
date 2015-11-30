@@ -26,7 +26,6 @@
  	$document->addStyleSheet("components/com_jblance/css/style-rtl.css");
 ?>
 <?php include_once(JPATH_COMPONENT.'/views/jbmenu.php'); ?>
-<div class="sp10">&nbsp;</div>
 <?php
 /**
  * HTML View class for the Jblance component

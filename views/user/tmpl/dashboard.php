@@ -67,13 +67,14 @@ if(!JBLANCE_FREE_MODE){
 <div style="clear:both;"></div>
 
 <div class="row-fluid">
-	<div class="span3 well well-small white" style="min-width: 260px; max-width: 340px; padding: 0px;">
+	<div class="col-md-3 well white">
 		<ul class="nav nav-list">
 			<li class="nav-header">
 				<?php echo JText::_('COM_JBLANCE_PROFILE'); ?>
 			</li>
 			<li>
-				<a href="<?php echo $link_edit_profile; ?>"><i class="icon-pencil"></i> <?php echo JText::_('COM_JBLANCE_EDIT_PROFILE'); ?> </a>
+				<a href="<?php echo $link_edit_profile; ?>">
+         <i class="material-icons">mode_edit</i> <?php echo JText::_('COM_JBLANCE_EDIT_PROFILE'); ?> </a>
 			</li>
 			<li>
 				<?php 
@@ -154,7 +155,7 @@ if(!JBLANCE_FREE_MODE){
 		</ul>
 	</div>
 	
-	<div class="span8">
+	<div class="col-md-9 well white">
 		<!-- pending tasks section -->
 		<h3><?php echo JText::_('COM_JBLANCE_TASKS_PENDING'); ?></h3>
 		<?php 
