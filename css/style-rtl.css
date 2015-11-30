@@ -1,0 +1,27 @@
+@media screen and (max-width: 600px) {
+	#no-more-tables thead tr { left:0px; right: -9999px; }
+	#no-more-tables td { padding-left: 0%; padding-right: 50%; text-align: right; }
+	#no-more-tables td:before { left: 0px; right: 6px; padding-right: 10px; text-align: right; }
+}
+
+.jb-hidefield { position: absolute; left:0px; right: -9999px; }
+.rating_bar { background: url('../images/star_x_grey.png') 100% 100% repeat-x; }
+.rating_bar div { background: url('../images/star_x_orange.png') 100% 100% repeat-x; }
+.table td.text-left { text-align: right; }
+.panel h3.pane-toggler-down a { background: #f5f5f5 url(../images/slider_minus_rtl.png) left top no-repeat; border-bottom: solid 1px #ddd; }
+.panel h3.pane-toggler a { background: #f5f5f5 url(../images/slider_plus_rtl.png) left top no-repeat; }
+div.introduction { margin: 0; padding: 5px 20px 10px 20px; } 
+
+.promotions li:first-child:before { position: absolute; bottom: -7px; right: 0; content: ""; width: 0; height: 0; border-top: 6px solid; border-right: 6px solid transparent; border-left: none; }
+.promotions li:last-child:after { position: absolute; bottom: 0; right: initial; left: 0; content: ""; width: 0; height: 0; border-style: solid; border-width: 7px 0px 7px 3px; border-color: transparent transparent transparent #fff; }
+.promotions.big li:last-child:after { border-width: 12px 0px 9px 6px; }
+
+/* menu */
+#jbnav li { float: right; }
+#jbMenu .jbMenuBar { float: right; margin-right: 5px; margin-left: -20px; }
+#jbMenu .jbMenuIcon { float: right; right: 22px; }
+#jbMenu .jbMenuIconLogout { top: 6px; position: relative; margin-left: 5px; float: left; }
+#jbnav ul { right: 0; }
+
+/* tabs */
+dl.tabs { float: right; margin: 10px 0 -1px 0; z-index: 50; padding-right: 0px; } 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Project - List of Projects">
+		<message>
+			<![CDATA[Shows list of projects published in the system.]]>
+		</message>
+	</layout>
+	
+	<!-- Add fields to the parameters object for the layout. -->
+	<fields name="params">
+		<!-- Basic options. -->
+		<fieldset name="basic" label="COM_JBLANCE_FIELDSET_MORE_OPTIONS_LABEL" addfieldpath="/administrator/components/com_jblance/models/fields">
+			<field name="param_status" type="list" default="all" label="COM_JBLANCE_PROJECT_STATUS" description="COM_JBLANCE_PARAM_DESC_PROJECT_STATUS">
+				<option value="open">COM_JBLANCE_OPEN</option>
+				<option value="frozen">COM_JBLANCE_FROZEN</option>
+				<option value="closed">COM_JBLANCE_CLOSED</option>
+				<option value="all">COM_JBLANCE_ALL_STATUS</option>
+ 			</field>
+			<field name="param_upgrade" type="list" default="all" label="COM_JBLANCE_PROJECT_UPGRADES" description="COM_JBLANCE_PARAM_DESC_PROJECT_UPGRADES">
+				<option value="featured">COM_JBLANCE_FEATURED_PROJECT</option>
+				<option value="urgent">COM_JBLANCE_URGENT_PROJECT</option>
+				<option value="private">COM_JBLANCE_PRIVATE_PROJECT</option>
+				<option value="sealed">COM_JBLANCE_SEALED_PROJECT</option>
+				<option value="all">COM_JBLANCE_ALL_STATUS</option>
+ 			</field>
+ 			<field name="id_categ" type="jbcategory" default="" label="COM_JBLANCE_PROJECT_CATEGORY" description="COM_JBLANCE_DESC_PROJECT_CATEGORY" />
+		</fieldset>
+	</fields>
+</metadata>

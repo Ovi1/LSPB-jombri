@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Service - Services Bought">
+		<message>
+			<![CDATA[List of Services the buyer has bought.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Service Orders</name>
+		<description>List of Services the buyer has bought.</description>
+	</state>
+</metadata>

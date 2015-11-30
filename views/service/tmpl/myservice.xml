@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Service - My Services">
+		<message>
+			<![CDATA[List of Services provided by the user.]]>
+		</message>
+	</layout>
+	<state>
+		<name>My Services</name>
+		<description>List of Services provided by the user.</description>
+	</state>
+</metadata>

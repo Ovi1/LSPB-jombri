@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="settings">
+		<field type="text" name="paypalEmail" id="paypalEmail" label="COM_JBLANCE_PAYPAL_EMAIL_ID" description="COM_JBLANCE_PAYPAL_EMAIL_ID_EXAMPLE" size="60" default="paypal@mysite.com" maxLength="255" class="required" />
+		<field type="text" name="ppCurrency" id="ppCurrency" label="COM_JBLANCE_PAYPAL_CURRENCY" description="COM_JBLANCE_PAYPAL_CURRENCY_EXAMPLE" size="3" default="USD" maxLength="255" class="required" />
+		<field type="radio" name="ppTestmode" id="ppTestmode" label="COM_JBLANCE_PAYPAL_TEST_MODE" default="0" description="COM_JBLANCE_PAYPAL_TEST_MODE_EXAMPLE">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+	<fieldset name="withdraw">
+		<field type="text" name="paypalEmail" id="paypalEmail" label="COM_JBLANCE_PAYPAL_ACCOUNT_EMAIL" description="" size="60" default="" maxLength="255" class="required validate-email" labelclass="control-label" />
+	</fieldset>
+</form>

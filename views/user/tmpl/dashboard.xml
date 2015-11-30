@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="User - Dashboard">
+		<message>
+			<![CDATA[One stop for users to browse his or her section of the site.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Dashboard</name>
+		<description>One stop for users to browse his or her section of the site.</description>
+	</state>
+</metadata>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Service - List of Services">
+		<message>
+			<![CDATA[Shows list of all services provided by all users.]]>
+		</message>
+	</layout>
+</metadata>

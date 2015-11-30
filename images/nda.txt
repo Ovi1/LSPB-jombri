@@ -1,0 +1,30 @@
+Non-Disclosure Agreement
+
+This non-disclosure agreement ("Agreement"), dated as of the submission time in the electronic form below is made between the user of the [SITEURL] site who is the provider of the professional services ("Freelancer") and the user of such professional services ("Buyer"). 
+
+For the purposes of enabling the Freelancer to provide the professional services to the Buyer, the Buyer has agreed to provide the Freelancer with written and oral information ("Confidential Information") concerning the project which the Freelancer is to complete ("Project") subject to the terms of this Agreement.
+
+The parties agree as follows:
+
+1. The Confidential Information shall be kept in strict confidence by the Freelancer and shall not be used, without the Buyer's prior written consent, for any purpose other than in connection with the completion of the Project. The Confidential Information shall not be disclosed to any persons other than those Representatives (as defined below) who have a need to know. "Representatives" shall mean the affiliates, directors, officers, employees, professional advisers and agents of the Freelancer. The Freelancer shall inform its Representatives of the confidential nature of the Confidential Information and shall direct its Representatives to hold the Confidential Information in strict confidence.
+
+2. The restrictions in paragraph 1 shall not apply to any information which: (a) is or becomes generally available to the public through no violation of this Agreement; (b) was available to the Freelancer on a non-confidential basis prior to its disclosure to the Freelancer by the Buyer; (c) becomes available to the Freelancer on a non-confidential basis from a source other than the Buyer provided that such source is not bound by an Agreement with the Buyer; or (iv) is required to be disclosed to any court, regulatory authority, other governmental authority or pursuant to any requirement of law.
+
+3. At the request of the Buyer, the Freelancer shall return all Confidential Information received from the Buyer and shall not retain any copies of, or other reproductions or extracts of, the Confidential Information, except as it may retain in accordance with prudent business practices (any retained material shall remain subject to the provisions of this Agreement without any time limit).
+
+4. The Freelancer acknowledges and agrees that the Buyer is not making any representation or warranty, express or implied, as to the accuracy, correctness or completeness of the Confidential Information. The Freelancer agrees that neither the Buyer nor any of its affiliates, directors, officers, employees, professional advisors or agents shall have liability to the Freelancer resulting from the use of the Confidential Information by the Freelancer or the Representatives.
+
+5. Notwithstanding any other remedies which may be available to the Buyer, the Freelancer indemnifies and must keep the Buyer indemnified against any loss or expense suffered or incurred by the Buyer directly or indirectly in connection with or arising out of or as a result of the breach by the Freelancer or its Representatives of any of the terms of this Agreement.
+
+6. This Agreement is governed by and shall be construed in accordance with the laws of the State of New South Wales, Australia and the parties irrevocably submit to the non-exclusive jurisdiction of the courts of the State of New South Wales, Australia. The duration of this Agreement is 12 (twelve) months from the date of this Agreement.
+
+7. This Agreement shall not be amended or modified, and none of the provisions shall be waived, except in writing signed on behalf of the parties or, in the case of a waiver, on behalf of the party making the waiver.
+
+This Agreement relates to the confidentiality agreed upon for the project:
+"[PROJECTNAME]" listed [STARTDATE]
+
+Agreed to by the Freelancer
+[BIDDERNAME], [BIDDATE]
+
+Agreed to by the Buyer
+[PUBLISHERNAME], [BIDDATE]

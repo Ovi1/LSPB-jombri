@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Project - My Projects">
+		<message>
+			<![CDATA[List of projects posted by the user.]]>
+		</message>
+	</layout>
+	<state>
+		<name>My Projects</name>
+		<description>List of projects posted by the user.</description>
+	</state>
+</metadata>

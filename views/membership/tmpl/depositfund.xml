@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Finance - Deposit Funds" hidden="false">
+		<message>
+			<![CDATA[Fund deposit page.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Deposit Funds</name>
+		<description>Fund deposit page.</description>
+	</state>
+</metadata>

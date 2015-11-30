@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="settings">
+		<field type="text" name="twocoVendorID" id="twocoVendorID" label="COM_JBLANCE_2CHECKOUT_VENDOR_ID" description="COM_JBLANCE_2CHECKOUT_VENDOR_ID_EXAMPLE" size="30" default="" maxLength="255" class="required" />
+		<field type="text" name="twocoSecretword" id="twocoSecretword" label="COM_JBLANCE_2CHECKOUT_SECRET_WORD" description="COM_JBLANCE_2CHECKOUT_SECRET_WORD_EXAMPLE" size="30" default="" maxLength="255" class="required" />
+		<field type="radio" name="twocoTestmode" id="twocoTestmode" label="COM_JBLANCE_2CHECKOUT_TEST_MODE" default="0" description="COM_JBLANCE_2CHECKOUT_TEST_MODE_EXAMPLE">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+</form>

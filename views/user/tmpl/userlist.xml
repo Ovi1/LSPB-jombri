@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="User - List of Users">
+		<message>
+			<![CDATA[Shows a list of users.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Userlist</name>
+		<description>Userlist page.</description>
+	</state>
+	
+	<!-- Add fields to the parameters object for the layout. -->
+	<fields name="params">
+		<!-- Basic options. -->
+		<fieldset name="basic" label="COM_JBLANCE_FIELDSET_MORE_OPTIONS_LABEL" addfieldpath="/administrator/components/com_jblance/models/fields">
+			<field name="ug_id" type="jbusergroup" default="" size="5" label="COM_JBLANCE_LABEL_USER_GROUP" description="COM_JBLANCE_DESC_USER_GROUP" />
+			<field name="show_search" type="radio" class="btn-group btn-group-yesno" default="0" label="COM_JBLANCE_LABEL_SHOW_SEARCH" description="COM_JBLANCE_DESC_SHOW_SEARCH">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>

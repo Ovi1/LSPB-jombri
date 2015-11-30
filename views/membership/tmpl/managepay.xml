@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Finance - Manage Payments" hidden="false">
+		<message>
+			<![CDATA[Manage deposits, withdrawals and Escrow payments.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Manage Payments</name>
+		<description>Manage deposits, withdrawals and Escrow payments.</description>
+	</state>
+</metadata>

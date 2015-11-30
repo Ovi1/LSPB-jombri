@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Project - Search Projects">
+		<message>
+			<![CDATA[Search for projects.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Search Projects</name>
+		<description>Search for projects.</description>
+	</state>
+</metadata>

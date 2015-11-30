@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Project - Post New Project">
+		<message>
+			<![CDATA[Create new project.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Post New Project</name>
+		<description>Create new project.</description>
+	</state>
+</metadata>

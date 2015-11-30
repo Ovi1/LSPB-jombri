@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Service - Services Sold">
+		<message>
+			<![CDATA[List of Services sold by the Seller or Freelancer.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Services Sold</name>
+		<description>List of Services sold by the Seller or Freelancer.</description>
+	</state>
+</metadata>

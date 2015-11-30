@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="JoomBri Freelance Home">
+		<message>
+			<![CDATA[Home page of JoomBri Freelance which shows the User Groups, Features, benefits of the site.]]>
+		</message>
+	</layout>
+	<state>
+		<name>JoomBri Freelance Home</name>
+		<description>Home page of JoomBri Freelance which shows the User Groups, Features, benefits of the site.</description>
+	</state>
+</metadata>

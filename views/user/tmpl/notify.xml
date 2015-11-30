@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="User - Email Preferences">
+		<message>
+			<![CDATA[Edit Email notification preferences.]]>
+		</message>
+	</layout>
+</metadata>

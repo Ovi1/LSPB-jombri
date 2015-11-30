@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Finance - Subscription History" hidden="false">
+		<message>
+			<![CDATA[Shows the list of membership plans Users have subscribed to.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Subscription History</name>
+		<description>Shows the list of membership plans Users have subscribed to.</description>
+	</state>
+</metadata>

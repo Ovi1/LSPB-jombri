@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="User - View Profile">
+		<message>
+			<![CDATA[User profile view page.]]>
+		</message>
+	</layout>
+	<state>
+		<name>View Profile</name>
+		<description>User profile view page.</description>
+	</state>
+</metadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="settings">
+		<field type="text" name="payfastzaMerchantId" id="payfastzaMerchantId" label="PayFast Merchant ID" description="Enter PayFast merchant ID to which the payments will be sent" size="20" default="" maxLength="20" class="required" />
+		<field type="text" name="payfastzaMerchantKey" id="payfastzaMerchantKey" label="PayFast Merchant Key" description="Enter PayFast merchant key" size="20" default="" maxLength="20" class="required" />
+		<field type="text" name="payfastzaAuthToken" id="payfastzaAuthToken" label="PayFast Authentication Token" description="Enter PayFast Authentication Token" size="45" default="" maxLength="45" class="required" />
+		<field type="radio" name="payfastTestmode" id="payfastTestmode" label="Test Mode" default="0" description="Set it to Yes to test the gateway in Sandbox mode">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+	<!--  <fieldset name="withdraw">
+		<field type="text" name="paypalEmail" id="paypalEmail" label="COM_JBLANCE_PAYPAL_ACCOUNT_EMAIL" description="" size="60" default="" maxLength="255" class="required validate-email" labelclass="control-label" />
+	</fieldset> -->
+</form>

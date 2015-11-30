@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Project - My Bids">
+		<message>
+			<![CDATA[Shows the list of projects the user has bid on.]]>
+		</message>
+	</layout>
+	<state>
+		<name>My Bids</name>
+		<description>Shows the list of projects the user has bid on.</description>
+	</state>
+</metadata>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Service - Post New Service">
+		<message>
+			<![CDATA[Add a new service.]]>
+		</message>
+	</layout>
+</metadata>

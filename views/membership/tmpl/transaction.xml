@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Finance - Transaction History">
+		<message>
+			<![CDATA[This page shows the list of transactions carried out by Users.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Transaction History</name>
+		<description>This page shows the list of transactions carried out by Users.</description>
+	</state>
+</metadata>

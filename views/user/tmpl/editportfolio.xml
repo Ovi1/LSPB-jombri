@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="User - Edit Portfolio">
+		<message>
+			<![CDATA[Portfolio edit page.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Edit Portfolio</name>
+		<description>Portfolio edit page.</description>
+	</state>
+</metadata>

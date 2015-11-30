@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Finance - Subscription Plans" hidden="false">
+		<message>
+			<![CDATA[This page shows the list of Subscription plans from which users can choose to buy.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Subscription Plans</name>
+		<description>This page shows the list of Subscription plans from which users can choose to buy.</description>
+	</state>
+</metadata>

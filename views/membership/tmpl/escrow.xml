@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Finance - Escrow Payment" hidden="false">
+		<message>
+			<![CDATA[Escrow Payment page.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Escrow Payment</name>
+		<description>Escrow Payment page.</description>
+	</state>
+</metadata>

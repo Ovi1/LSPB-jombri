@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Finance - Withdraw Funds" hidden="false">
+		<message>
+			<![CDATA[Withdraw Funds page.]]>
+		</message>
+	</layout>
+	<state>
+		<name>Withdraw Funds</name>
+		<description>Withdraw Funds page.</description>
+	</state>
+</metadata>
