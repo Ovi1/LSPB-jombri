@@ -158,7 +158,7 @@ if($usersConfig->get('allowUserRegistration') == '0'){ ?>
 	<div class="row-fluid usergroup-table">	
 		<?php 
 		}?>
-		<div class="span6 well well-small white userrole">
+		<div class="col-md-6 well well-small white userrole">
 		<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userGroup" id="userGroup">
 			<div class="userrole-name text-center">
 			<?php if($userGroup->approval == 1) : ?>
