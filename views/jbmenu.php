@@ -79,14 +79,13 @@ function showElement(layer){
 }); */
 //-->
 </script>
-<div class="row-fluid">
-<div class="span12">
+
 <div id="jbMenu">
 	<div class="jbMenuLft">
 		<!--<a href="<?php echo JRoute::_('index.php?option=com_jblance&view=guest&layout=showfront');?>" class="<?php echo $active == 0 ? 'active' : 'active'; ?>"><?php echo JText::_('Home');?></a>
 		-->
 		<div class="jbMenuBar">
-			<ul id="jbnav" style="margin:0px; padding:0px;">
+			<ul id="jbnav">
 			<?php
 			foreach($processedMenus as $menu){
 			//$class	= empty( $menu->childs ) ? ' class="no-child"' : '';
@@ -123,9 +122,9 @@ function showElement(layer){
 			</ul>
 		</div>
 		<div class="jbMenuIcon">
-			<div id="jbMenuNotify">
+		<div id="jbMenuNotify">
 				<a href="javascript:void(0);" onclick="javascript:showElement('notify-menu')">
-					<img src="components/com_jblance/images/notify.png" alt="img" title="">
+          <i class="material-icons">add_alert</i>
 				</a>
 				<?php 
 				$countUnreadFeeds = countUnreadFeeds();
@@ -166,20 +165,20 @@ function showElement(layer){
 			</div>
 			<div id="jbMenuInbox">
 				<a href="<?php echo $link_messages; ?>" title="New Messages">
-					<img src="components/com_jblance/images/notify_mail.png" alt="img" title="">
+					<!--<img src="components/com_jblance/images/notify_mail.png" alt="img" title="">-->
+          <i class="material-icons">message</i>
 				</a>
 				<?php if($newMsgs) : ?>
 				<span class="notify-count"><?php echo $newMsgs; ?></span>
 				<?php endif; ?>
 			</div>
+     <div class="jbMenuIconLogout">
+			<a href="<?php echo $link_logout; ?>" title="<?php echo JText::_('JLOGOUT'); ?>">
+       <i class="material-icons">exit_to_app</i>
+      </a>
 		</div>
-		<div class="jbMenuIconLogout" style="">
-			<a href="<?php echo $link_logout; ?>" title="<?php echo JText::_('JLOGOUT'); ?>"><i class="icon-off icon-white"></i></a>
 		</div>
 	</div>
-	
-</div>
-</div>
 </div>
 <div class="clearfix"></div>
 <?php 
