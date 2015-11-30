@@ -124,7 +124,7 @@ function showElement(layer){
 		<div class="jbMenuIcon">
 		<div id="jbMenuNotify">
 				<a href="javascript:void(0);" onclick="javascript:showElement('notify-menu')">
-          <i class="material-icons">add_alert</i>
+          <i class="material-icons">notifications</i>
 				</a>
 				<?php 
 				$countUnreadFeeds = countUnreadFeeds();

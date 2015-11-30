@@ -63,8 +63,6 @@ if(!JBLANCE_FREE_MODE){
 	}
 } ?>
 <div class="jbl_h3title"><?php echo JText::_($this->userInfo->name).' '.JText::_('COM_JBLANCE_DASHBOARD'); ?></div>
-	
-<div style="clear:both;"></div>
 
 <div class="row-fluid">
 	<div class="col-md-3 well white">
@@ -81,15 +79,15 @@ if(!JBLANCE_FREE_MODE){
 				$avatars = JblanceHelper::getAvatarIntegration();
 				$link_edit_picture = $avatars->getEditURL();
 				?>
-				<a href="<?php echo $link_edit_picture; ?>"><i class="icon-picture"></i> <?php echo JText::_('COM_JBLANCE_EDIT_PICTURE'); ?> </a>
+				<a href="<?php echo $link_edit_picture; ?>"><i class="material-icons">insert_photo</i> <?php echo JText::_('COM_JBLANCE_EDIT_PICTURE'); ?> </a>
 			</li>
 			<?php if($this->dbElements['allowAddPortfolio']) : ?>
 			<li>
-				<a href="<?php echo $link_portfolio; ?>"><i class="icon-book"></i> <?php echo JText::_('COM_JBLANCE_PORTFOLIO'); ?> </a>
+				<a href="<?php echo $link_portfolio; ?>"><i class="material-icons">work</i> <?php echo JText::_('COM_JBLANCE_PORTFOLIO'); ?> </a>
 			</li>
 			<?php endif; ?>
 			<li>
-				<a href="<?php echo $link_messages; ?>"><i class="icon-envelope"></i> <?php echo JText::_('COM_JBLANCE_PRIVATE_MESSAGES'); ?> </a>
+				<a href="<?php echo $link_messages; ?>"><i class="material-icons">message</i> <?php echo JText::_('COM_JBLANCE_PRIVATE_MESSAGES'); ?> </a>
 			</li>
 			<li class="divider"></li>
 			<li class="nav-header">
@@ -97,27 +95,27 @@ if(!JBLANCE_FREE_MODE){
 			</li>
 			<?php if($this->dbElements['allowPostProjects']) : ?>
 			<li>
-				<a href="<?php echo $link_post_project; ?>"><i class="icon-plus"></i> <?php echo JText::_('COM_JBLANCE_POST_NEW_PROJECT'); ?> </a>
+				<a href="<?php echo $link_post_project; ?>"><i class="material-icons">add</i> <?php echo JText::_('COM_JBLANCE_POST_NEW_PROJECT'); ?> </a>
 			</li>
 			<li>
-				<a href="<?php echo $link_my_project; ?>"><i class="icon-th-list"></i> <?php echo JText::_('COM_JBLANCE_MY_PROJECTS'); ?> </a>
+				<a href="<?php echo $link_my_project; ?>"><i class="material-icons">list</i> <?php echo JText::_('COM_JBLANCE_MY_PROJECTS'); ?> </a>
 			</li>
 			<li>
-				<a href="<?php echo $link_service_bght; ?>"><i class="icon-certificate"></i> <?php echo JText::_('COM_JBLANCE_SERVICES_BOUGHT'); ?> </a>
+				<a href="<?php echo $link_service_bght; ?>"><i class="material-icons">room_service</i> <?php echo JText::_('COM_JBLANCE_SERVICES_BOUGHT'); ?> </a>
 			</li>
 			<?php endif; ?>
 			<?php if($this->dbElements['allowBidProjects']) : ?>
 			<li>
-				<a href="<?php echo $link_list_project; ?>"><i class="icon-th-list"></i> <?php echo JText::_('COM_JBLANCE_LATEST_PROJECTS'); ?> </a>
+				<a href="<?php echo $link_list_project; ?>"><i class="material-icons">list</i></i> <?php echo JText::_('COM_JBLANCE_LATEST_PROJECTS'); ?> </a>
 			</li>
 			<li>
-				<a href="<?php echo $link_search_proj; ?>"><i class="icon-search"></i> <?php echo JText::_('COM_JBLANCE_SEARCH_PROJECTS'); ?> </a>
+				<a href="<?php echo $link_search_proj; ?>"><i class="material-icons">search</i> <?php echo JText::_('COM_JBLANCE_SEARCH_PROJECTS'); ?> </a>
 			</li>
 			<li>
-				<a href="<?php echo $link_my_bid; ?>"><i class="icon-tags"></i> <?php echo JText::_('COM_JBLANCE_MY_BIDS'); ?> </a>
+				<a href="<?php echo $link_my_bid; ?>"><i class="material-icons">label</i> <?php echo JText::_('COM_JBLANCE_MY_BIDS'); ?> </a>
 			</li>
 			<li>
-				<a href="<?php echo $link_my_services; ?>"><i class="icon-align-justify"></i> <?php echo JText::_('COM_JBLANCE_MY_SERVICES'); ?> </a>
+				<a href="<?php echo $link_my_services; ?>"><i class="material-icons">room_service</i> <?php echo JText::_('COM_JBLANCE_MY_SERVICES'); ?> </a>
 			</li>
 			<?php endif; ?>
 			<?php 
@@ -128,28 +126,28 @@ if(!JBLANCE_FREE_MODE){
 				<?php echo JText::_('COM_JBLANCE_BILLING_AND_FINANCE'); ?>
 			</li>
 			<li>
-				<a href="<?php echo $link_deposit; ?>"><i class="icon-circle-arrow-right"></i> <?php echo JText::_('COM_JBLANCE_DEPOSIT_FUNDS'); ?> </a>
+				<a href="<?php echo $link_deposit; ?>"><i class="material-icons">add_circle</i> <?php echo JText::_('COM_JBLANCE_DEPOSIT_FUNDS'); ?> </a>
 			</li>
 			<!-- check if withdraw fund is enabled -->
 			<?php if($enableWithdrawFund) : ?>
 			<li>
-				<a href="<?php echo $link_withdraw; ?>"><i class="icon-circle-arrow-left"></i> <?php echo JText::_('COM_JBLANCE_WITHDRAW_FUNDS'); ?> </a>
+				<a href="<?php echo $link_withdraw; ?>"><i class="material-icons">remove_circle</i> <?php echo JText::_('COM_JBLANCE_WITHDRAW_FUNDS'); ?> </a>
 			</li>
 			<?php endif; ?>
 			<!-- check if escrow payment is enabled -->
 			<?php if($enableEscrowPayment) : ?>
 			<li>
-				<a href="<?php echo $link_escrow; ?>"><i class="icon-refresh"></i> <?php echo JText::_('COM_JBLANCE_ESCROW_PAYMENT'); ?> </a>
+				<a href="<?php echo $link_escrow; ?>"><i class="material-icons">refresh</i> <?php echo JText::_('COM_JBLANCE_ESCROW_PAYMENT'); ?> </a>
 			</li>
 			<?php endif; ?>
 			<li>
-				<a href="<?php echo $link_transaction; ?>"><i class="icon-tasks"></i> <?php echo JText::_('COM_JBLANCE_TRANSACTION_HISTORY'); ?> </a>
+				<a href="<?php echo $link_transaction; ?>"><i class="material-icons">history</i> <?php echo JText::_('COM_JBLANCE_TRANSACTION_HISTORY'); ?> </a>
 			</li>
 			<li>
-				<a href="<?php echo $link_managepay; ?>"><i class="icon-list-alt"></i> <?php echo JText::_('COM_JBLANCE_MANAGE_PAYMENTS'); ?> </a>
+				<a href="<?php echo $link_managepay; ?>"><i class="material-icons">edit</i> <?php echo JText::_('COM_JBLANCE_MANAGE_PAYMENTS'); ?> </a>
 			</li>
 			<li>
-				<a href="<?php echo $link_subscr_hist; ?>"><i class="icon-asterisk"></i> <?php echo JText::_('COM_JBLANCE_MY_SUBSCRS'); ?> </a>
+				<a href="<?php echo $link_subscr_hist; ?>"><i class="material-icons">favorite_border</i> <?php echo JText::_('COM_JBLANCE_MY_SUBSCRS'); ?> </a>
 			</li>
 			<?php endif; ?>
 		</ul>
