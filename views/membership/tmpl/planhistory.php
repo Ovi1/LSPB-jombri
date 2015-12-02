@@ -29,7 +29,9 @@
  $link_plan_add  = JRoute::_('index.php?option=com_jblance&view=membership&layout=planadd');
  $action = JRoute::_('index.php?option=com_jblance&view=membership&layout=planhistory');
 ?>
-<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_SUBSCR_HISTORY'); ?></div>
+<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_SUBSCR_HISTORY'); ?>
+  <p class="pull-right"><a href="<?php echo $link_plan_add; ?>" <?php echo $onclick; ?> class="btn btn-primary"><i class="material-icons">shopping_cart</i> <?php echo JText::_('COM_JBLANCE_GET_NEW_SUBSCR'); ?></a></p>  
+</div>
 <?php
 	$onclick = ''; 
 	if(isset($this->rows[0])) 
@@ -40,7 +42,7 @@
 	}
 ?>
 <form action="<?php echo $action; ?>" method="post" name="userFormJob" enctype="multipart/form-data">
-	<p><a href="<?php echo $link_plan_add; ?>" <?php echo $onclick; ?> class="btn btn-primary"><i class="icon-shopping-cart icon-white"></i> <?php echo JText::_('COM_JBLANCE_GET_NEW_SUBSCR'); ?></a></p>
+
 	<?php 
 	if($this->finish) echo "<p>$this->finish</p>";
 	 ?>
@@ -97,10 +99,10 @@
 					<td class="text-center">
 						<div class="btn-group">
 							<?php if(!$row->approved): ?>
-							<a class="btn btn-small" title="<?php echo JText::_('COM_JBLANCE_CHECKOUT'); ?>" href="<?php echo $link_checkout; ?>"><i class="icon-shopping-cart"></i></a>
-							<a class="btn btn-small" title="<?php echo JText::_('COM_JBLANCE_CANCEL_SUBSCR'); ?>" href="javascript:modalConfirm('<?php echo JText::_('COM_JBLANCE_CANCEL_SUBSCR', true); ?>', '<?php echo JText::_('COM_JBLANCE_CONFIRM_CANCEL_SUBSCR', true); ?>', '<?php echo $link_cancelsubscr; ?>');"><i class="icon-ban-circle"></i></a>
+							<a class="btn btn-small" title="<?php echo JText::_('COM_JBLANCE_CHECKOUT'); ?>" href="<?php echo $link_checkout; ?>"><i class="material-icons">shopping_cart</i> </a>
+							<a class="btn btn-small" title="<?php echo JText::_('COM_JBLANCE_CANCEL_SUBSCR'); ?>" href="javascript:modalConfirm('<?php echo JText::_('COM_JBLANCE_CANCEL_SUBSCR', true); ?>', '<?php echo JText::_('COM_JBLANCE_CONFIRM_CANCEL_SUBSCR', true); ?>', '<?php echo $link_cancelsubscr; ?>');"><i class="material-icons">remove_circle</i></a>
 							<?php endif; ?>
-							<a class="btn btn-small jb-modal" title="<?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?>" href="<?php echo $link_invoice; ?>" rel="{handler: 'iframe', size: {x: 650, y: 500}}"><i class="icon-print"></i></a>
+							<a class="btn btn-small jb-modal" title="<?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?>" href="<?php echo $link_invoice; ?>" rel="{handler: 'iframe', size: {x: 800, y: 600}}"><i class="material-icons">print</i></a>
 						</div>
 					</td>
                 </tr>

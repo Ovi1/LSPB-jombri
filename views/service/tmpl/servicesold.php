@@ -37,7 +37,7 @@
 	?>
 	<div class="row-fluid">
 		<div class="span2">
-			<img class="img-polaroid" src="<?php echo $attachments[0]['thumb']; ?>" width="80" />
+			<img class="img-polaroid" src="<?php echo $attachments[0]['thumb']; ?>" width="80px" />
 		</div>
 		<div class="span6">
 			<h3>

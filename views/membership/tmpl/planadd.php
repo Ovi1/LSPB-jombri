@@ -16,9 +16,9 @@
  JHtml::_('bootstrap.tooltip');
  
  $doc = JFactory::getDocument();
- $doc->addScript("components/com_jblance/js/simplemodal.js");
  $doc->addStyleSheet("components/com_jblance/css/simplemodal.css");
  $doc->addStyleSheet("components/com_jblance/css/pricing.css");
+ $doc->addScript("components/com_jblance/js/simplemodal.js");
  
  $app  	= JFactory::getApplication();
  $model = $this->getModel();
@@ -40,7 +40,7 @@
  $step = $app->input->get('step', 0, 'int');
  $planInRow = 3;	// number of plans in a row. Default is 3. Use values between 1 to 4 and do not go beyond
  $span = round(12/($planInRow+1));
- $span  = 'span'.$span;
+ $span  = 'col-md-'.$span;
 ?>
 <script type="text/javascript">
 <!--
@@ -94,17 +94,19 @@ if($step)
 	echo JblanceHelper::getProgressBar($step); 
 ?>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormJob" enctype="multipart/form-data">
-	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_BUY_SUBSCR'); ?></div>
-
+	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_BUY_SUBSCR'); ?>
+  
 	<?php 
 	if($hasJBProfile){ ?>
-	<p>
+    <p class="pull-right">
 	  <a href="<?php echo $link_subscr_history; ?>" class="btn btn-primary"><i class="icon-time icon-white"></i> <?php echo JText::_('COM_JBLANCE_SUBSCR_HISTORY'); ?></a>
 	</p>
 	<?php 
 	}
 	?>
-	<p><?php 
+	<p>
+  </div>
+<?php 
 		if($hasJBProfile) 
 			echo JText::_('COM_JBLANCE_CHOOSE_SUBSCR_PAYMENT'); 
 		else 
@@ -118,7 +120,7 @@ if($step)
 			$groupName = $jbuser->getUserGroupInfo(null, $ugid)->name;
 			echo JText::sprintf('COM_JBLANCE_USERGROUP_CHOSEN_CLICK_TO_CHANGE', $groupName, $link_usergroup);
  		}; ?>
-	<div class="sp10">&nbsp;</div>
+	<div class="clearfix"></div>
 	
 	<?php 
 	if(empty($this->rows)){
@@ -144,9 +146,9 @@ if($step)
 			
 			if($i % $planInRow == 0){
 			?>
-		<div class="row-fluid">
-			<div class="span12 pricing comparison">
-				<ul class="<?php echo $span; ?>">
+		<div class="row">
+			<div class="pricing comparison">
+				<ul class="col-md-2">
 					<li class="lead grey"><h3><?php echo JText::_('COM_JBLANCE_PLAN_NAME'); ?></h3></li>
 					<li><?php echo JText::_('COM_JBLANCE_BONUS_FUND'); ?></li>
 					<?php foreach($infos as $info){ ?>

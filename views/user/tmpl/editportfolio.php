@@ -150,13 +150,13 @@ jQuery(document).ready(function($){
 	<div class="jbl_h3title">
 	<?php echo ($this->row->id == 0) ? JText::_('COM_JBLANCE_ADD_PORTFOLIO') : JText::_('COM_JBLANCE_EDIT_PORTFOLIO'); ?>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="title"><?php echo JText::_('COM_JBLANCE_TITLE'); ?>:</label>
 		<div class="controls">
 			<input type="text" class="input-xlarge required" name="title" id="title" value="<?php echo $this->row->title; ?>" />
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="id_category"><?php echo JText::_('COM_JBLANCE_SKILLS'); ?>:</label>
 		<div class="controls">
 			<?php 
@@ -172,7 +172,7 @@ jQuery(document).ready(function($){
 			echo $select->getSelectCategoryTree('id_category[]', explode(',', $this->row->id_category), '', $attribs, '', true); ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="start_date"><?php echo JText::_('COM_JBLANCE_START_DATE'); ?>:</label>
 		<div class="controls">
 			<?php 
@@ -181,7 +181,7 @@ jQuery(document).ready(function($){
 			 ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="finish_date"><?php echo JText::_('COM_JBLANCE_FINISH_DATE'); ?>:</label>
 		<div class="controls">
 			<?php 
@@ -190,31 +190,31 @@ jQuery(document).ready(function($){
 			?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="link"><?php echo JText::_('COM_JBLANCE_WEB_ADDRESS'); ?>:</label>
 		<div class="controls">
 			<input type="text" class="input-medium" name="link" id="link" value="<?php echo $this->row->link; ?>" />
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="published"><?php echo JText::_('COM_JBLANCE_PUBLISHED'); ?>:</label>
 		<div class="controls">
 			<?php echo $select->YesNoBool('published', $this->row->published == 0 ? 0 : 1); ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="video_link"><?php echo JText::_('COM_JBLANCE_YOUTUBE_LINK'); ?>:</label>
 		<div class="controls">
 			<input type="text" class="span4" name="video_link" id="video_link" value="<?php echo $this->row->video_link; ?>" />
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="description"><?php echo JText::_('COM_JBLANCE_DESCRIPTION'); ?>:</label>
 		<div class="controls">
 			<textarea name="description" id="description" class="input-xxlarge required hasTooltip" rows="5" style="max-height: 300px;"><?php echo JFilterInput::getInstance()->clean($this->row->description, 'string'); ?></textarea>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="published"><?php echo JText::_('COM_JBLANCE_PORTFOLIO_IMAGE'); ?>:</label>
 		<div class="controls">
 			<?php
@@ -238,7 +238,7 @@ jQuery(document).ready(function($){
 			<!-- <img src="components/com_jblance/images/tooltip.png" class="hasTooltip" title="<?php echo $tipmsg; ?>"/> -->
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="published"><?php echo JText::_('COM_JBLANCE_ATTACHMENT'); ?>:</label>
 		<div class="controls">
 			<?php

@@ -76,8 +76,8 @@ JblanceHelper::setJoomBriToken();
             <input type="text" name="keyword" id="keyword" value="<?php echo $keyword; ?>" class="input-xlarge" placeholder="<?php echo JText::_('COM_JBLANCE_KEYWORDS'); ?>" style="margin-right: 10px;" />
           </div>
           <div class="btn-group">
-            <button type="submit" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('COM_JBLANCE_SEARCH'); ?>"><i class="icon-search"></i></button>
-            <a href="<?php echo $action; ?>" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>"><i class="icon-remove"></i></a>
+            <button type="submit" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('COM_JBLANCE_SEARCH'); ?>"><i class="material-icons">search</i></button>
+            <a href="<?php echo $action; ?>" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>"><i class="material-icons">remove_circle</i></a>
           </div>
           <div class="ordering-select pull-right">
             <span class="boldfont"><?php echo JText::_('COM_JBLANCE_SORT_BY'); ?>:</span>
@@ -135,7 +135,7 @@ JblanceHelper::setJoomBriToken();
 
     <div class="row-fluid pull-right">
       <div class="span12">
-        <button type="submit" class="btn pull-right" title=""><i class="icon-search"></i> <?php echo JHtml::tooltipText('COM_JBLANCE_SEARCH'); ?></button>
+        <button type="submit" class="btn pull-right" title=""><i class="material-icons">search</i> <?php echo JHtml::tooltipText('COM_JBLANCE_SEARCH'); ?></button>
       </div>
     </div>
   <?php endif; ?>
@@ -183,12 +183,12 @@ JblanceHelper::setJoomBriToken();
             <span  class="pull-right">
               <span id="fav-msg-<?php echo $row->user_id; ?>">
     <?php if ($isFavourite > 0) : ?>
-                  <a onclick="favourite('<?php echo $row->user_id; ?>', -1, 'profile');" href="javascript:void(0);" class="btn btn-mini btn-danger"><span class="icon-minus-sign icon-white"></span> <?php echo JText::_('COM_JBLANCE_REMOVE_FAVOURITE') ?></a>
+                  <a onclick="favourite('<?php echo $row->user_id; ?>', -1, 'profile');" href="javascript:void(0);" class="btn btn-mini btn-danger"><i class="material-icons">remove_circle</i> <?php echo JText::_('COM_JBLANCE_REMOVE_FAVOURITE') ?></a>
               <?php else : ?>
-                  <a onclick="favourite('<?php echo $row->user_id; ?>', 1, 'profile');" href="javascript:void(0);" class="btn btn-mini"><span class="icon-plus-sign"></span> <?php echo JText::_('COM_JBLANCE_ADD_FAVOURITE') ?></a>
+                  <a onclick="favourite('<?php echo $row->user_id; ?>', 1, 'profile');" href="javascript:void(0);" class="btn btn-mini btn-primary"><i class="material-icons">add_circle_outline</i> <?php echo JText::_('COM_JBLANCE_ADD_FAVOURITE') ?></a>
     <?php endif; ?>
               </span>				
-              <a class="btn btn-mini" href="<?php echo $link_sendpm; ?>"><i class="material-icons">comment</i> <?php echo JText::_('COM_JBLANCE_SEND_MESSAGE'); ?></a>
+              <a class="btn btn-mini btn-primary" href="<?php echo $link_sendpm; ?>"><i class="material-icons">comment</i> <?php echo JText::_('COM_JBLANCE_SEND_MESSAGE'); ?></a>
           <?php } ?>
           </span>
         </h4>
