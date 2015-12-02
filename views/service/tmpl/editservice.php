@@ -340,7 +340,7 @@ jQuery(document).ready(function($){
 	
 	<?php if($reviewServices){ ?>
 	<div class="alert alert-block">
-		<h4><?php echo JText::_('COM_JBLANCE_APPROVAL_NOTICE'); ?></h4>
+		<h3><?php echo JText::_('COM_JBLANCE_APPROVAL_NOTICE'); ?></h3>
 		<?php echo JText::_('COM_JBLANCE_SERVICE_WILL_BE_REVIEWED_BY_ADMIN_BEFORE_PUBLISH'); ?>
 	</div>
 	<?php } ?>

@@ -65,7 +65,7 @@
  		$db->setQuery($query);
  		$bid_offers = $db->loadResult();
  		if($bid_offers > 0){
- 			$link = JHtml::_('link', $link_my_bid, '<img src="components/com_jblance/images/preview.png" />', array());
+ 			$link = JHtml::_('link', $link_my_bid, '<i class="material-icons">pageview</i>', array());
  			$result['bid_offers'] = JText::sprintf('COM_JBLANCE_PENDING_X_BID_OFFERS_REQUIRING_ACTION', '<b>'.$bid_offers.'</b>').' '.$link;
  		}
  		
@@ -83,7 +83,7 @@
  			$tot_bids += $project->bidcount;
  		}
  		if($tot_proj > 0){
- 			$link = JHtml::_('link', $link_my_project, '<img src="components/com_jblance/images/preview.png" />', array());
+ 			$link = JHtml::_('link', $link_my_project, '<i class="material-icons">pageview</i>', array());
  			$result['project_bids'] = JText::sprintf('COM_JBLANCE_PENDING_X_BIDS_FROM_Y_PROJECTS_REQUIRING_ACTION', '<b>'.$tot_bids.'</b>', '<b>'.$tot_proj.'</b>').' '.$link;
  		}
  		
@@ -94,7 +94,7 @@
  		$db->setQuery($query);
  		$invites = $db->loadResult();
  		if($invites > 0){
- 			$link = JHtml::_('link', $link_project_list, '<img src="components/com_jblance/images/preview.png" />', array());
+ 			$link = JHtml::_('link', $link_project_list, '<i class="material-icons">pageview</i>', array());
  			$result['invites'] = JText::sprintf('COM_JBLANCE_PENDING_X_PROJECT_INVITATION_REQUIRING_ACTION', '<b>'.$invites.'</b>').' '.$link;
  		}
  		
@@ -105,7 +105,7 @@
  		$db->setQuery($query);
  		$service_not_started = $db->loadResult();
  		if($service_not_started > 0){
- 			$link = JHtml::_('link', $link_my_service, '<img src="components/com_jblance/images/preview.png" />', array());
+ 			$link = JHtml::_('link', $link_my_service, '<i class="material-icons">pageview</i>', array());
  			$result['service_not_started'] = JText::sprintf('COM_JBLANCE_PENDING_X_SERVICES_YET_TO_START', '<b>'.$service_not_started.'</b>').' '.$link;
  		}
  		
@@ -116,7 +116,7 @@
  		$db->setQuery($query);
  		$service_in_progress = $db->loadResult();
  		if($service_in_progress > 0){
- 			$link = JHtml::_('link', $link_my_service, '<img src="components/com_jblance/images/preview.png" />', array());
+ 			$link = JHtml::_('link', $link_my_service, '<i class="material-icons">pageview</i>', array());
  			$result['service_in_progress'] = JText::sprintf('COM_JBLANCE_PENDING_X_SERVICES_IN_PROGRESS', '<b>'.$service_in_progress.'</b>').' '.$link;
  		}
  		
@@ -131,7 +131,7 @@
  			$seller_rating = $db->loadResult();
  			
  			if($seller_rating > 0){
- 				$link = JHtml::_('link', $link_my_bid, '<img src="components/com_jblance/images/preview.png" />', array());
+ 				$link = JHtml::_('link', $link_my_bid, '<i class="material-icons">pageview</i>', array());
  				$result['rating-project'] = JText::sprintf('COM_JBLANCE_PENDING_X_USERS_RATE_BID_REQUIRING_ACTION', '<b>'.$seller_rating.'</b>').' '.$link;
  			}
  			// for service
@@ -143,7 +143,7 @@
  			$seller_rating = $db->loadResult();
  			
  			if($seller_rating > 0){
- 				$link = JHtml::_('link', $link_svc_sold, '<img src="components/com_jblance/images/preview.png" />', array());
+ 				$link = JHtml::_('link', $link_svc_sold, '<i class="material-icons">pageview</i>', array());
  				$result['rating-service'] = JText::sprintf('COM_JBLANCE_PENDING_X_USERS_RATE_SERVICE_SOLD_REQUIRING_ACTION', '<b>'.$seller_rating.'</b>').' '.$link;
  			}
  		}
@@ -157,7 +157,7 @@
  			$buyer_rating = $db->loadResult();
  			
  			if($buyer_rating > 0){
- 				$link = JHtml::_('link', $link_my_project, '<img src="components/com_jblance/images/preview.png" />', array());
+ 				$link = JHtml::_('link', $link_my_project, '<i class="material-icons">pageview</i>', array());
  				$result['rating-project'] = JText::sprintf('COM_JBLANCE_PENDING_X_USERS_RATE_PROJECT_REQUIRING_ACTION', '<b>'.$buyer_rating.'</b>').' '.$link;
  			}
  			// for service
@@ -168,7 +168,7 @@
  			$buyer_rating = $db->loadResult();
  			
  			if($buyer_rating > 0){
- 				$link = JHtml::_('link', $link_svc_bought, '<img src="components/com_jblance/images/preview.png" />', array());
+ 				$link = JHtml::_('link', $link_svc_bought, '<i class="material-icons">pageview</i>', array());
  				$result['rating-service'] = JText::sprintf('COM_JBLANCE_PENDING_X_USERS_RATE_SERVICE_BOUGHT_REQUIRING_ACTION', '<b>'.$buyer_rating.'</b>').' '.$link;
  			}
  		}
@@ -181,7 +181,7 @@
 	 		$db->setQuery($query);
 	 		$payment = $db->loadResult();
 	 		if($payment > 0){
-	 			$link = JHtml::_('link', $link_my_project, '<img src="components/com_jblance/images/preview.png" />', array());
+	 			$link = JHtml::_('link', $link_my_project, '<i class="material-icons">pageview</i>', array());
 	 			$result['payment'] = JText::sprintf('COM_JBLANCE_PENDING_X_PAYMENTS_REQUIRING_ACTION', '<b>'.$payment.'</b>').' '.$link;
 	 		}
 	 		
@@ -191,7 +191,7 @@
 	 		$db->setQuery($query);
 	 		$in_escrow = $db->loadResult();
 	 		if($in_escrow > 0){
-	 			$link = JHtml::_('link', $link_managepay, '<img src="components/com_jblance/images/preview.png" />', array());
+	 			$link = JHtml::_('link', $link_managepay, '<i class="material-icons">pageview</i>', array());
 	 			$result['in_escrow'] = JText::sprintf('COM_JBLANCE_PENDING_X_INCOMING_ESCROW_PAYMENTS_REQUIRING_ACTION', '<b>'.$in_escrow.'</b>').' '.$link;
 	 		}
 	 		
@@ -201,7 +201,7 @@
 	 		$db->setQuery($query);
 	 		$out_escrow = $db->loadResult();
 	 		if($out_escrow > 0){
-	 			$link = JHtml::_('link', $link_managepay, '<img src="components/com_jblance/images/preview.png" />', array());
+	 			$link = JHtml::_('link', $link_managepay, '<i class="material-icons">pageview</i>', array());
 	 			$result['out_escrow'] = JText::sprintf('COM_JBLANCE_PENDING_X_OUTGOING_ESCROW_PAYMENTS_REQUIRING_ACTION', '<b>'.$out_escrow.'</b>').' '.$link;
 	 		}
  		}
