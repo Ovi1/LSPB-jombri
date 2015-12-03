@@ -31,7 +31,7 @@
  $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&'.JSession::getFormToken().'=1&return='.base64_encode($link_home));
 ?>
 
-<!-- Hide the menu for guest, non-joombri users, layout not print -->	
+<!--Hide the menu for guest layout not print-->
 <?php if($hasJBProfile && $tmpl == '') : ?>
 	<?php 
 		$jbmenu = JblanceHelper::get('helper.menu');

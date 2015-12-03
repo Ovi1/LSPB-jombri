@@ -81,11 +81,17 @@ JblanceHelper::setJoomBriToken();
 //-->
 </script>
 <?php include_once(JPATH_COMPONENT . '/views/profilemenu.php'); ?>
-<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_EDIT_PROFILE'); ?></div>
+<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_EDIT_PROFILE'); ?>
+<!--  <div class="form-actions pull-right">
+    <input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary btn-block" />
+  </div>-->
+</div>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="editProfile" id="frmEditProfile" class="form-validate form-horizontal" onsubmit="return validateForm(this);" enctype="multipart/form-data" novalidate>
 
-  <fieldset>
-    <legend><?php echo JText::_('COM_JBLANCE_USER_INFORMATION'); ?></legend>
+  <div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading"><?php echo JText::_('COM_JBLANCE_USER_INFORMATION'); ?></div>
+    <div  class="panel-body">
     <div class="input-group">
       <span class="input-group-addon"><?php echo JText::_('COM_JBLANCE_USERNAME'); ?>:</span>
       <div class="form-control">
@@ -145,10 +151,15 @@ JblanceHelper::setJoomBriToken();
         </div>
       </div>
 <?php endif; ?>
-  </fieldset>
-
-  <fieldset>
-    <legend><?php echo JText::_('COM_JBLANCE_CONTACT_INFORMATION'); ?></legend>
+    </div>
+  </div>
+  </div>
+  
+  
+<div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-heading"><?php echo JText::_('COM_JBLANCE_CONTACT_INFORMATION'); ?></div>
+    <div class="panel-body ">
     <div class="input-group">
       <label class="input-group-addon" for="address"><?php echo JText::_('COM_JBLANCE_ADDRESS'); ?> <span class="redfont">*</span>:</label>
       <div class="controls">
@@ -193,8 +204,10 @@ JblanceHelper::setJoomBriToken();
         <input class="form-control" type="text" name="mobile" id="mobile" value="<?php echo $this->userInfo->mobile; ?>" />
       </div>
     </div>
-  </fieldset>
-
+    </div>
+  </div>
+</div>
+  <div class="clearfix"></div>
   <!-- Show the following profile fields only for JoomBri Profile -->
   <?php
   $joombriProfile = false;
@@ -222,8 +235,10 @@ JblanceHelper::setJoomBriToken();
     if (count($parents)) {
       foreach ($parents as $pt) {
         ?>
-        <fieldset>
-          <legend><?php echo JText::_($pt->field_title); ?></legend>
+        <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading"><?php echo JText::_($pt->field_title); ?></div>
+          <div class="panel-body">
           <?php
           foreach ($children as $ct) {
             if ($ct->parent == $pt->id) {
@@ -243,7 +258,9 @@ JblanceHelper::setJoomBriToken();
             }
           }
           ?>
-        </fieldset>
+        </div>
+        </div>
+        </div>
         <?php
       }
     }

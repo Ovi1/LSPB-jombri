@@ -49,7 +49,7 @@ JArrayHelper::toInteger($id_categ);
           $link_view = JRoute::_('index.php?option=com_jblance&view=service&layout=viewservice&id=' . $row->id);
           $sellerInfo = JFactory::getUser($row->user_id);
           ?>
-          <li class="col-md-3 pull-left">
+          <li class="col-md-3">
             <div class="thumbnail">
               <a href="<?php echo $link_view; ?>">
                 <img class="img-responsive" style="max-height: 250px" src="<?php echo $attachments[0]['location']; ?>" /></a>
@@ -65,7 +65,7 @@ JArrayHelper::toInteger($id_categ);
                    
          
                 <?php 
-                       $attrib2 = '"class="logo-name"';
+                $attrib2 = '"class="logo-name"';
                 echo LinkHelper::GetProfileLink($row->user_id, $sellerInfo->username, $attrib2); ?>
                 </div>
               </div>
