@@ -53,25 +53,25 @@ if (!JBLANCE_FREE_MODE) {
     if ($planStatus == '1') {
       ?>
       <div class="jbbox-warning">
-      <?php echo JText::sprintf('COM_JBLANCE_USER_SUBSCRIPTION_EXPIRED', $link_buy_subscr); ?>
+        <?php echo JText::sprintf('COM_JBLANCE_USER_SUBSCRIPTION_EXPIRED', $link_buy_subscr); ?>
       </div>
     <?php } elseif ($planStatus == '2') {
       ?>
       <div class="jbbox-info">
-      <?php echo JText::sprintf('COM_JBLANCE_USER_DONT_HAVE_ACTIVE_PLAN', $link_subscr_hist); ?>
+        <?php echo JText::sprintf('COM_JBLANCE_USER_DONT_HAVE_ACTIVE_PLAN', $link_subscr_hist); ?>
       </div>
-    <?php
+      <?php
     }
   }
 }
 ?>
 <div class="jbl_h3title"><?php echo JText::_($this->userInfo->name) . ' ' . JText::_('COM_JBLANCE_DASHBOARD'); ?></div>
 
-<div class="row-fluid">
+<div class="row">
   <div class="col-md-3">
     <ul class="list-group">
       <li class="list-group-item nav-header">
-<?php echo JText::_('COM_JBLANCE_PROFILE'); ?>
+        <?php echo JText::_('COM_JBLANCE_PROFILE'); ?>
       </li>
       <li class="list-group-item">
         <a href="<?php echo $link_edit_profile; ?>">
@@ -85,18 +85,18 @@ if (!JBLANCE_FREE_MODE) {
         <a href="<?php echo $link_edit_picture; ?>"><i class="material-icons">insert_photo</i> <?php echo JText::_('COM_JBLANCE_EDIT_PICTURE'); ?> </a>
       </li>
       <?php if ($this->dbElements['allowAddPortfolio']) : ?>
-      <li class="list-group-item">
+        <li class="list-group-item">
           <a href="<?php echo $link_portfolio; ?>"><i class="material-icons">work</i> <?php echo JText::_('COM_JBLANCE_PORTFOLIO'); ?> </a>
         </li>
-<?php endif; ?>
-        <li class="list-group-item">
+      <?php endif; ?>
+      <li class="list-group-item">
         <a href="<?php echo $link_messages; ?>"><i class="material-icons">message</i> <?php echo JText::_('COM_JBLANCE_PRIVATE_MESSAGES'); ?> </a>
       </li>
       <li class="list-group-item nav-header">
-<?php echo JText::_('COM_JBLANCE_PROJECTS'); ?>
+        <?php echo JText::_('COM_JBLANCE_PROJECTS'); ?>
       </li>
-<?php if ($this->dbElements['allowPostProjects']) : ?>
-      <li class="list-group-item">
+      <?php if ($this->dbElements['allowPostProjects']) : ?>
+        <li class="list-group-item">
           <a href="<?php echo $link_post_project; ?>"><i class="material-icons">add</i> <?php echo JText::_('COM_JBLANCE_POST_NEW_PROJECT'); ?> </a>
         </li>
         <li class="list-group-item">
@@ -105,8 +105,8 @@ if (!JBLANCE_FREE_MODE) {
         <li class="list-group-item">
           <a href="<?php echo $link_service_bght; ?>"><i class="material-icons">room_service</i> <?php echo JText::_('COM_JBLANCE_SERVICES_BOUGHT'); ?> </a>
         </li>
-<?php endif; ?>
-<?php if ($this->dbElements['allowBidProjects']) : ?>
+      <?php endif; ?>
+      <?php if ($this->dbElements['allowBidProjects']) : ?>
         <li class="list-group-item">
           <a href="<?php echo $link_list_project; ?>"><i class="material-icons">list</i></i> <?php echo JText::_('COM_JBLANCE_LATEST_PROJECTS'); ?> </a>
         </li>
@@ -120,28 +120,28 @@ if (!JBLANCE_FREE_MODE) {
           <a href="<?php echo $link_my_services; ?>"><i class="material-icons">room_service</i> <?php echo JText::_('COM_JBLANCE_MY_SERVICES'); ?> </a>
         </li>
       <?php endif; ?>
-<?php
-if (!JBLANCE_FREE_MODE) :
-  ?>
+      <?php
+      if (!JBLANCE_FREE_MODE) :
+        ?>
         <li class="list-group-item nav-header">
-  <?php echo JText::_('COM_JBLANCE_BILLING_AND_FINANCE'); ?>
+          <?php echo JText::_('COM_JBLANCE_BILLING_AND_FINANCE'); ?>
         </li>
         <li class="list-group-item">
           <a href="<?php echo $link_deposit; ?>"><i class="material-icons">add_circle</i> <?php echo JText::_('COM_JBLANCE_DEPOSIT_FUNDS'); ?> </a>
         </li>
         <!-- check if withdraw fund is enabled -->
         <?php if ($enableWithdrawFund) : ?>
-        <li class="list-group-item">
+          <li class="list-group-item">
             <a href="<?php echo $link_withdraw; ?>"><i class="material-icons">remove_circle</i> <?php echo JText::_('COM_JBLANCE_WITHDRAW_FUNDS'); ?> </a>
           </li>
-  <?php endif; ?>
+        <?php endif; ?>
         <!-- check if escrow payment is enabled -->
         <?php if ($enableEscrowPayment) : ?>
-        <li class="list-group-item">
+          <li class="list-group-item">
             <a href="<?php echo $link_escrow; ?>"><i class="material-icons">refresh</i> <?php echo JText::_('COM_JBLANCE_ESCROW_PAYMENT'); ?> </a>
           </li>
-  <?php endif; ?>
-          <li class="list-group-item">
+        <?php endif; ?>
+        <li class="list-group-item">
           <a href="<?php echo $link_transaction; ?>"><i class="material-icons">history</i> <?php echo JText::_('COM_JBLANCE_TRANSACTION_HISTORY'); ?> </a>
         </li>
         <li class="list-group-item">
@@ -150,62 +150,70 @@ if (!JBLANCE_FREE_MODE) :
         <li class="list-group-item">
           <a href="<?php echo $link_subscr_hist; ?>"><i class="material-icons">favorite</i> <?php echo JText::_('COM_JBLANCE_MY_SUBSCRS'); ?> </a>
         </li>
-<?php endif; ?>
+      <?php endif; ?>
     </ul>
   </div>
 
-  <div class="col-md-9 list-group-item">
-    <!-- pending tasks section -->
-    <h3><?php echo JText::_('COM_JBLANCE_TASKS_PENDING'); ?></h3>
-    <?php
-    if (!empty($this->pendings)) {
-      foreach ($this->pendings as $pending) {
+  <div class="col-md-9">
+            <!-- pending tasks section -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h3><?php echo JText::_('COM_JBLANCE_TASKS_PENDING'); ?></h3>
+      </div>
+      <div class="panel-body">
+        <?php
+        if (!empty($this->pendings)) {
+          foreach ($this->pendings as $pending) {
+            ?>
+            <ul class="unstyled">
+              <i class="material-icons">warning</i> <?php echo $pending; ?></li>
+            </ul>
+            <?php
+          }
+        } else {
+          ?>
+          <div class="alert alert-info"><?php echo JText::_('COM_JBLANCE_NO_TASK_PENDING_YOUR_ACTION'); ?></div>
+          <?php
+        }
         ?>
-        <ul class="unstyled">
-          <i class="material-icons">warning</i> <?php echo $pending; ?></li>
-        </ul>
+      </div>
+    </div>
+    <!-- news feed section -->
+    <div class="panel panel-default">
+    <?php if ($showFeedsDashboard) : ?>
+      <div class="panel-heading">
+      <h3><?php echo JText::_('COM_JBLANCE_NEWS_FEED'); ?></h3>
+      </div>
+      <div class="panel-body">
+      <?php
+      $n = count($this->feeds);
+      if ($n == 0) {
+        ?>
+        <div class="alert alert-info">
+          <?php echo JText::_('COM_JBLANCE_NO_NEWSFEEDS_OR_POSTS'); ?>
+        </div>
         <?php
       }
-    } else {
-      ?>
-      <div class="alert alert-info"><?php echo JText::_('COM_JBLANCE_NO_TASK_PENDING_YOUR_ACTION'); ?></div>
-  <?php
-}
-?>
-    <div class="lineseparator"></div>
-
-    <!-- news feed section -->
-    <?php if ($showFeedsDashboard) : ?>
-      <h3><?php echo JText::_('COM_JBLANCE_NEWS_FEED'); ?></h3>
-        <?php
-        $n = count($this->feeds);
-        if ($n == 0) {
-          ?>
-        <div class="alert alert-info">
-        <?php echo JText::_('COM_JBLANCE_NO_NEWSFEEDS_OR_POSTS'); ?>
-        </div>
-    <?php
-  }
-  for ($i = 0, $n = count($this->feeds); $i < $n; $i++) {
-    $feed = $this->feeds[$i];
-    ?>
+      for ($i = 0, $n = count($this->feeds); $i < $n; $i++) {
+        $feed = $this->feeds[$i];
+        ?>
         <div class="media jb-borderbtm-dot" id="jbl_feed_item_<?php echo $feed->id; ?>">
 
 
-//TODO
-    <?php echo $feed->logo; ?>
+          //TODO
+          <?php echo $feed->logo; ?>
 
 
           <div class="media-body">
-    <?php echo $feed->title; ?>
+            <?php echo $feed->title; ?>
             <p>
               <i class="material-icons">access_time</i> <?php echo $feed->daysago; ?> 
               <span id="feed_hide_<?php echo $feed->id; ?>" class="help-inline">
-    <?php if ($feed->isMine) : ?>
+                <?php if ($feed->isMine) : ?>
                   <a class="btn btn-mini btn-link" onclick="processFeed('<?php echo $user->id; ?>', '<?php echo $feed->id; ?>', 'remove');" href="javascript:void(0);">
                     <i class="material-icons">remove_circle_outline</i> <?php echo JText::_('COM_JBLANCE_REMOVE'); ?>
                   </a>
-    <?php endif; ?>
+                <?php endif; ?>
                 <a class="btn btn-mini btn-link" onclick="processFeed('<?php echo $user->id; ?>', '<?php echo $feed->id; ?>', 'hide');" href="javascript:void(0);">
                   <i class="material-icons">visibility_off</i> <?php echo JText::_('COM_JBLANCE_HIDE'); ?>
                 </a>
@@ -213,9 +221,11 @@ if (!JBLANCE_FREE_MODE) :
             </p>
           </div>
         </div>
-    <?php
-  }
-  ?>
-<?php endif; ?>
+        <?php
+      }
+      ?>
+    <?php endif; ?>
+      </div>
+    </div>
   </div>
 </div>

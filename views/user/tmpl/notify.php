@@ -26,8 +26,11 @@
 ?>
 <?php include_once(JPATH_COMPONENT.'/views/profilemenu.php'); ?>
 <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_EMAIL_SETTINGS'); ?></div>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormNotify" class="form-validate form-horizontal" enctype="multipart/form-data">
-	<p><?php echo JText::_('COM_JBLANCE_RECEIVE_INDIVIDUAL_NOTIFICATIONS_WHEN'); ?>,</p>
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormNotify" class="form-validate form-horizontal" enctype="multipart/form-data ">
+  
+  <div class="panel panel-default">
+      <div class="panel-heading"><h3><i class="material-icons">notifications</i> <?php echo JText::_('COM_JBLANCE_RECEIVE_INDIVIDUAL_NOTIFICATIONS_WHEN'); ?></h3></div>
+          <div class="panel-body">
 	<div class="control-group"  style="display: none;">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_FREQUENCY_OF_UPDATES'); ?>:</label>
 		<div class="controls">
@@ -86,11 +89,13 @@
 			</label>
 		</div>
 	</div>
-	<div class="form-actions">
+<div class="clearfix"></div>
+	<div class="btn-group">
 		<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary" />
-		<input type="button" onclick="javascript:history.back()" value="<?php echo JText::_('COM_JBLANCE_CANCEL'); ?>" class="btn btn-primary"/>
+		<input type="button" onclick="javascript:history.back()" value="<?php echo JText::_('COM_JBLANCE_CANCEL'); ?>" class="btn btn-default"/>
 	</div>
-	
+  </div>
+  </div>
 	<input type="hidden" name="option" value="com_jblance" />			
 	<input type="hidden" name="task" value="user.savenotify" />		
 	<input type="hidden" name="id" value="<?php echo $this->row->id;?>" />

@@ -77,7 +77,7 @@
 			if($row->$attachmentColumnNum){ 
 				$count++;
 			?>
-		<p><i class="icon-download"></i> <?php echo LinkHelper::getPortfolioDownloadLink('portfolio', $this->row->id, 'user.download', $attachmentColumnNum); ?></p>
+		<p><i class="material-icons">file_download</i> <?php echo LinkHelper::getPortfolioDownloadLink('portfolio', $this->row->id, 'user.download', $attachmentColumnNum); ?></p>
 		<?php 
 			}
 		} 
