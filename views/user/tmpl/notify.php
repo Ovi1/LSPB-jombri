@@ -30,69 +30,69 @@
   
   <div class="panel panel-default">
       <div class="panel-heading"><h3><i class="material-icons">notifications</i> <?php echo JText::_('COM_JBLANCE_RECEIVE_INDIVIDUAL_NOTIFICATIONS_WHEN'); ?></h3></div>
-          <div class="panel-body">
-	<div class="control-group"  style="display: none;">
+   <div class="panel-body">
+	<div class="form-group"  style="display: none;">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_FREQUENCY_OF_UPDATES'); ?>:</label>
-		<div class="controls">
+		<div class="checkbox-inline">
 			<?php echo  $model->getSelectUpdateFrequency('frequency', $this->row->frequency ? $this->row->frequency : 'instantly'); ?>
 		</div>
 	</div>
-	<div class="control-group"  style="display: none;">
+	<div class="form-group"  style="display: none;">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_FREQUENCY_OF_UPDATES'); ?>:</label>
 		<div class="controls">
-			<label class="radio">
+			<label class="checkbox-inline">
 			<?php echo  $model->getSelectUpdateFrequency('frequency', $this->row->frequency ? $this->row->frequency : 'instantly'); ?>
 			</label>
 		</div>
 	</div>
 	<?php if($userGroup->allowBidProjects){ ?>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_NOTIFY_WHEN_RELEVANT_PROJECT_GETS_POSTED'); ?>:</label>
 		<div class="controls">
-			<label class="radio">
+			<label class="checkbox-inline">
 			<?php echo $select->YesNoBool('notifyNewProject', $this->row->notifyNewProject); ?>
 			</label>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_NOTIFY_BID_WON_CHOSEN_BY_BUYER'); ?>:</label>
 		<div class="controls">
-			<label class="radio">
+			<label class="checkbox-inline">
 			<?php echo $select->YesNoBool('notifyBidWon', $this->row->notifyBidWon); ?>
 			</label>
 		</div>
 	</div>
 	<?php } ?>
 	<?php if($userGroup->allowPostProjects){ ?>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_NOTIFY_BID_NEW_ACCEPTED_DENIED'); ?>:</label>
-		<div class="controls">
-			<label class="radio">
+		<div class="">
+			<label class="checkbox-inline">
 			<?php echo $select->YesNoBool('notifyBidNewAcceptDeny', $this->row->notifyBidNewAcceptDeny); ?>
 			</label>
 		</div>
 	</div>
 	<?php } ?>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_NOTIFY_NEW_FORUM_MESSAGE'); ?>:</label>
 		<div class="controls">
-			<label class="radio">
+			<label class="checkbox-inline">
 			<?php echo $select->YesNoBool('notifyNewForumMessage', $this->row->notifyNewForumMessage); ?>
 			</label>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_NOTIFY_NEW_PRIVATE_MESSAGE'); ?>:</label>
 		<div class="controls">
-			<label class="radio">
+			<label class="checkbox-inline">
 			<?php echo $select->YesNoBool('notifyNewMessage', $this->row->notifyNewMessage); ?>
 			</label>
 		</div>
 	</div>
 <div class="clearfix"></div>
-	<div class="btn-group">
-		<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary" />
-		<input type="button" onclick="javascript:history.back()" value="<?php echo JText::_('COM_JBLANCE_CANCEL'); ?>" class="btn btn-default"/>
+	<div class="btn-group pull-rightl">
+    <input type="button" onclick="javascript:history.back()" value="<?php echo JText::_('COM_JBLANCE_CANCEL'); ?>" class="btn btn-default"/>
+    	<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary" />
 	</div>
   </div>
   </div>

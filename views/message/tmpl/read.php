@@ -84,16 +84,17 @@ JblanceHelper::setJoomBriToken();
           $userDtl = JFactory::getUser($row->idFrom);
           ?>
           <div class="media border-b"  id="jbl_feed_item_<?php echo $row->id; ?>">
-            <div class="col-md-1 col-sm-2 col-xs-2">
+            <div class="col-md-1 col-sm-2 col-xs-3">
             <?php
-            $attrib = 'width=auto height=66 class=" img-circle img-responsive"';
+            $attrib = 'width=auto height=56 class=" img-circle"';
             $avatar = JblanceHelper::getLogo($row->idFrom, $attrib);
 
             echo!empty($avatar) ? LinkHelper::GetProfileLink($row->idFrom, $avatar, '', '', ' pull-left') : '&nbsp;'
             ?>
           </div>
-            <div class="col-md-11 col-sm-10 col-xs-10  msg-body">
-              <div class="text-msg">
+            <div class="col-md-11 col-sm-10 col-xs-9  msg-body">
+              <span class="text-msg">
+                <p>
                 <?php
                 if ($row->approved == 1) {
                   echo $row->message;
@@ -101,7 +102,8 @@ JblanceHelper::setJoomBriToken();
                   echo '<small>' . JText::_('COM_JBLANCE_PRIVATE_MESSAGE_WAITING_FOR_MODERATION') . '</small>';
                 }
                 ?>
-              </div>
+                </p>
+              </span>
               <div class="clearfix"></div>
                 <small class="info text-muted  pull-right">
                   <div class="pull-left author"><i class="material-icons ">account_circle</i> <?php echo LinkHelper::GetProfileLink($row->idFrom, $userDtl->$nameOrUsername); ?> </div>

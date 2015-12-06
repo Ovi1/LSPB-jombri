@@ -75,7 +75,7 @@
 				<?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
 				<?php 
 					if($row->approved == 0)
-						echo '&nbsp;<span class="label label-important">'.JText::_('COM_JBLANCE_PENDING_APPROVAL').'</span>';
+						echo '&nbsp;<span class="label label-danger">'.JText::_('COM_JBLANCE_PENDING_APPROVAL').'</span>';
 				?>
 				<ul class="promotions" style="margin-top: 5px;">
 					<?php if($row->is_featured) : ?>

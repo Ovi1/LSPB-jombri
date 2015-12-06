@@ -86,35 +86,42 @@ JblanceHelper::setJoomBriToken();
     <input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary btn-block" />
   </div>-->
 </div>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="editProfile" id="frmEditProfile" class="form-validate form-horizontal" onsubmit="return validateForm(this);" enctype="multipart/form-data" novalidate>
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="editProfile" id="frmEditProfile" class="form-validate form-vertical" onsubmit="return validateForm(this);" enctype="multipart/form-data" novalidate>
 
   <div class="col-md-4">
   <div class="panel panel-default">
     <div class="panel-heading"><?php echo JText::_('COM_JBLANCE_USER_INFORMATION'); ?></div>
     <div  class="panel-body">
+    <div class="form-group">
     <div class="input-group">
       <span class="input-group-addon"><?php echo JText::_('COM_JBLANCE_USERNAME'); ?>:</span>
       <div class="form-control">
         <?php echo $this->userInfo->username; ?>
       </div>
     </div>
+    </div>
+    <div class="form-group">
     <div class="input-group">
       <label class="input-group-addon" for="name"><?php echo JText::_('COM_JBLANCE_NAME'); ?> <span class="redfont">*</span>:</label>
 
       <input class="form-control required" type="text" name="name" id="name" value="<?php echo $this->userInfo->name; ?>" />
 
     </div>
+    </div>
     <!-- Company Name should be visible only to users who can post job -->
     <?php if ($userInfo->allowPostProjects) : ?>
+      <div class="form-group">
       <div class="input-group">
         <label class="input-group-addon" for="biz_name"><?php echo JText::_('COM_JBLANCE_BUSINESS_NAME'); ?> <span class="redfont">*</span>:</label>
         <div class="controls">
           <input class="form-control required" type="text" name="biz_name" id="biz_name" value="<?php echo $this->userInfo->biz_name; ?>" />
         </div>
       </div>
+      </div>
     <?php endif; ?>
     <!-- Skills and hourly rate should be visible only to users who can work/bid -->
     <?php if ($userInfo->allowBidProjects) : ?>
+      <div class="form-group">
       <div class="input-group">
         <label class="input-group-addon" for="rate"><?php echo JText::_('COM_JBLANCE_HOURLY_RATE'); ?> <span class="redfont">*</span>:
           <span class="add-on"><?php echo $currencysym; ?></span>
@@ -127,11 +134,13 @@ JblanceHelper::setJoomBriToken();
           </div>
         </div>
       </div>
+      </div>
+      <div class="form-group">
       <div class="input-group">
         <label class="input-group-addon" for="id_category"><?php echo JText::_('COM_JBLANCE_SKILLS'); ?> <span class="redfont">*</span>:</label>
         <div class="controls">
           <?php if ($maxSkills > 0) { ?>
-            <div class="bid_project_left pull-left">
+            <div class="bid_project_left">
               <div><span id="skill_left_span" class="font26"><?php echo count(explode(',', $this->userInfo->id_category)) ?></span>/<span><?php echo $maxSkills; ?></span></div>
               <div><?php echo JText::_('COM_JBLANCE_SKILLS'); ?></div>
             </div>
@@ -145,10 +154,11 @@ JblanceHelper::setJoomBriToken();
           //$select->getCheckCategoryTree('id_category[]', explode(',', $this->userInfo->id_category), $attribs); 
           ?>
           <?php
-          $attribs = "class='input-xxlarge required' multiple";
+          $attribs = "class='form-control required' multiple";
           echo $select->getSelectCategoryTree('id_category[]', explode(',', $this->userInfo->id_category), '', $attribs, '', true);
           ?>
         </div>
+      </div>
       </div>
 <?php endif; ?>
     </div>
@@ -160,12 +170,16 @@ JblanceHelper::setJoomBriToken();
   <div class="panel panel-default">
     <div class="panel-heading"><?php echo JText::_('COM_JBLANCE_CONTACT_INFORMATION'); ?></div>
     <div class="panel-body ">
+    <div class="form-group">
     <div class="input-group">
       <label class="input-group-addon" for="address"><?php echo JText::_('COM_JBLANCE_ADDRESS'); ?> <span class="redfont">*</span>:</label>
       <div class="controls">
         <textarea name="address" id="address" rows="3" class="form-control required"><?php echo $this->userInfo->address; ?></textarea>
       </div>
     </div>
+    </div>
+
+    <div class="form-group">
     <div class="input-group">
       <label class="input-group-addon" for="level1"><?php echo JText::_('COM_JBLANCE_LOCATION'); ?> <span class="redfont">*</span>:</label>
       <?php if ($this->userInfo->id_location > 0) { ?>
@@ -192,12 +206,17 @@ JblanceHelper::setJoomBriToken();
         <div id="ajax-container" class="dis-inl-blk"></div>	
       </div>
     </div>
+    </div>
+      
+    <div class="form-group">
     <div class="input-group">
       <label class="input-group-addon" for="postcode"><?php echo JText::_('COM_JBLANCE_ZIP_POSTCODE'); ?> <span class="redfont">*</span>:</label>
       <div class="controls">
         <input class="form-control required" type="text" name="postcode" id="postcode" value="<?php echo $this->userInfo->postcode; ?>" />
       </div>
     </div>
+    </div>
+    <div class="form-group">
     <div class="input-group">
       <label class="input-group-addon" for="mobile"><?php echo JText::_('COM_JBLANCE_CONTACT_NUMBER'); ?> :</label>
       <div class="controls">
@@ -205,9 +224,8 @@ JblanceHelper::setJoomBriToken();
       </div>
     </div>
     </div>
+    </div>
   </div>
-</div>
-  <div class="clearfix"></div>
   <!-- Show the following profile fields only for JoomBri Profile -->
   <?php
   $joombriProfile = false;
@@ -235,7 +253,7 @@ JblanceHelper::setJoomBriToken();
     if (count($parents)) {
       foreach ($parents as $pt) {
         ?>
-        <div class="col-md-4">
+        
         <div class="panel panel-default">
           <div class="panel-heading"><?php echo JText::_($pt->field_title); ?></div>
           <div class="panel-body">
@@ -243,16 +261,21 @@ JblanceHelper::setJoomBriToken();
           foreach ($children as $ct) {
             if ($ct->parent == $pt->id) {
               ?>
+              <div class="form-group">
               <div class="input-group">
                 <?php
                 $labelsuffix = '';
-                if ($ct->field_type == 'Checkbox')
-                  $labelsuffix = '[]'; //added to validate checkbox
+                if ($ct->field_type == 'Checkbox') {
+                            $labelsuffix = '[]';
+                          } //added to validate checkbox
                 ?>
-                <label class="input-group-addon" for="custom_field_<?php echo $ct->id . $labelsuffix; ?>"><?php echo JText::_($ct->field_title); ?><span class="redfont"><?php echo ($ct->required) ? '*' : ''; ?></span>:</label>
+                <label class="input-group-addon" for="custom_field_<?php echo $ct->id . $labelsuffix; ?>"><?php echo JText::_($ct->field_title); ?>
+                  <span class="redfont"><?php echo ($ct->required) ? '*' : ''; ?></span>:
+                </label>
                 <div class="controls controls-row">
               <?php $fields->getFieldHTML($ct, $user->id); ?>
                 </div>
+              </div>
               </div>
               <?php
             }
@@ -260,7 +283,7 @@ JblanceHelper::setJoomBriToken();
           ?>
         </div>
         </div>
-        </div>
+        
         <?php
       }
     }
@@ -269,6 +292,11 @@ JblanceHelper::setJoomBriToken();
     echo JText::sprintf('COM_JBLANCE_CLICK_HERE_FOR_OTHER_PROFILE', $profileUrl) . '<BR>';
   }
   ?>
+  
+  
+</div>
+  <div class="clearfix"></div>
+  
   <div class="form-actions">
     <input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary btn-block" />
   </div>

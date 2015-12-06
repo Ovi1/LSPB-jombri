@@ -286,8 +286,8 @@ jQuery(document).ready(function() {
 						?>
 						<input class="" type="radio" id="commitment_defined_option" name="commitment[undefined]" value="sure" <?php echo ($commitment->get('undefined') == 'sure') ? 'checked' : ''; ?> />
 					</label>
-						<input type="text" class="span1 validate-numeric" name="commitment[period]" id="commitment_period" maxlength="3" size="3" value="<?php echo $commitment->get('period'); ?>" />&nbsp;<?php echo JText::_('COM_JBLANCE_HOURS_PER'); ?>&nbsp;
-						<select name="commitment[interval]" id="commitment_interval" class="input-small advancedSelect">
+						<input type="text" class="form-control validate-numeric" name="commitment[period]" id="commitment_period" maxlength="3" size="3" value="<?php echo $commitment->get('period'); ?>" />&nbsp;<?php echo JText::_('COM_JBLANCE_HOURS_PER'); ?>&nbsp;
+						<select name="commitment[interval]" id="commitment_interval" class="form-control advancedSelect">
 		                	<option value="COM_JBLANCE_DAY" <?php echo ($commitment->get('interval') == 'COM_JBLANCE_DAY') ? 'selected' : ''; ?>><?php echo JText::_('COM_JBLANCE_DAY'); ?></option>
 		                	<option value="COM_JBLANCE_WEEK" <?php echo ($commitment->get('interval') == 'COM_JBLANCE_WEEK') ? 'selected' : ''; ?>><?php echo JText::_('COM_JBLANCE_WEEK'); ?></option>
 		                	<option value="COM_JBLANCE_MONTH" <?php echo ($commitment->get('interval') == 'COM_JBLANCE_MONTH') ? 'selected' : ''; ?>><?php echo JText::_('COM_JBLANCE_MONTH'); ?></option>

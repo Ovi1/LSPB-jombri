@@ -59,12 +59,13 @@ JblanceHelper::setJoomBriToken();
         $userTo = JFactory::getUser($msg->idTo);
 
         //if the current user is different, then show that name
-        if ($user->id == $msg->idFrom)
-          $userInfo = JFactory::getUser($msg->idTo);
-        else
-          $userInfo = JFactory::getUser($msg->idFrom);
+        if ($user->id == $msg->idFrom) {
+    $userInfo = JFactory::getUser($msg->idTo);
+  } else {
+    $userInfo = JFactory::getUser($msg->idFrom);
+  }
 
-        $link_read = JRoute::_('index.php?option=com_jblance&view=message&layout=read&id=' . $msg->id);
+  $link_read = JRoute::_('index.php?option=com_jblance&view=message&layout=read&id=' . $msg->id);
 
         $newMsg = JblanceHelper::countUnreadMsg($msg->id);
         ?>
@@ -74,7 +75,7 @@ JblanceHelper::setJoomBriToken();
           <td nowrap="nowrap"><?php echo JHtml::_('date', $msg->date_sent, $dformat, true); ?></td>
           <td>
             <span id="feed_hide_<?php echo $msg->id; ?>" class="help-inline">
-              <a class="btn btn-mini" onclick="processMessage('<?php echo $msg->id; ?>', 'message.processmessage');" title="<?php echo JText::_('COM_JBLANCE_REMOVE'); ?>" href="javascript:void(0);"><i class="icon-remove"></i></a>
+              <a class="btn btn-mini" onclick="processMessage('<?php echo $msg->id; ?>', 'message.processmessage');" title="<?php echo JText::_('COM_JBLANCE_REMOVE'); ?>" href="javascript:void(0);"><i class="material-icons">delete</i></a>
             </span>
           </td>
         </tr>

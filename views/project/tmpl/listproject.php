@@ -66,7 +66,7 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
         continue;
     }
     ?>
-  <div id="projectBox" class="row">
+    <div id="projectBox" class="row">
       <div class="col-md-2">
         <?php
         $attrib = 'class="img-responsive"';
@@ -107,7 +107,7 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
       </div>
       <div class="col-md-2">
         <div>
-          <i class="icon-tags"></i> <?php echo JText::_('COM_JBLANCE_BIDS'); ?> : 
+          <i class="material-icons">label</i> <?php echo JText::_('COM_JBLANCE_BIDS'); ?> : 
           <?php if ($sealProjectBids || $row->is_sealed) : ?>
             <span class="label label-info"><?php echo JText::_('COM_JBLANCE_SEALED'); ?></span>
           <?php else : ?>
@@ -115,7 +115,7 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
           <?php endif; ?>
         </div>
         <div>
-          <i class="icon-flag"></i> <?php echo JText::_('COM_JBLANCE_STATUS'); ?> : <?php echo $model->getLabelProjectStatus($row->status); ?>
+          <i class="material-icons"></i> <?php echo JText::_('COM_JBLANCE_STATUS'); ?> : <?php echo $model->getLabelProjectStatus($row->status); ?>
         </div>
       </div>
       <div class="col-md-3">
@@ -129,10 +129,10 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
         <div class="avg"><?php echo JText::_('COM_JBLANCE_AVG_BID'); ?></div>
       </div>
       <?php if ($row->is_private_invite) : ?>
-        <div class="row-fluid">
-          <div class="span12">
-            <p class="jbbox-info"><?php echo JText::_('COM_JBLANCE_THIS_IS_A_PRIVATE_INVITE_PROJECT_VISIBLE_TO_OWNER_INVITEES'); ?></p>
-          </div>
+
+        <div class="col-md-12">
+          <p class="alert alert-info"><?php echo JText::_('COM_JBLANCE_THIS_IS_A_PRIVATE_INVITE_PROJECT_VISIBLE_TO_OWNER_INVITEES'); ?></p>
+
         </div>
       <?php endif; ?>
     </div>

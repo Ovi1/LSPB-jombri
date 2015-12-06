@@ -185,7 +185,7 @@ JblanceHelper::setJoomBriToken();
     <?php if ($isFavourite > 0) : ?>
                   <a onclick="favourite('<?php echo $row->user_id; ?>', -1, 'profile');" href="javascript:void(0);" class="btn btn-mini btn-danger"><i class="material-icons">remove_circle</i> <?php echo JText::_('COM_JBLANCE_REMOVE_FAVOURITE') ?></a>
               <?php else : ?>
-                  <a onclick="favourite('<?php echo $row->user_id; ?>', 1, 'profile');" href="javascript:void(0);" class="btn btn-mini btn-primary"><i class="material-icons">add_circle_outline</i> <?php echo JText::_('COM_JBLANCE_ADD_FAVOURITE') ?></a>
+                  <a onclick="favourite('<?php echo $row->user_id; ?>', 1, 'profile');" href="javascript:void(0);" class="btn btn-mini btn-success"><i class="material-icons">add_circle_outline</i> <?php echo JText::_('COM_JBLANCE_ADD_FAVOURITE') ?></a>
     <?php endif; ?>
               </span>				
               <a class="btn btn-mini btn-primary" href="<?php echo $link_sendpm; ?>"><i class="material-icons">comment</i> <?php echo JText::_('COM_JBLANCE_SEND_MESSAGE'); ?></a>

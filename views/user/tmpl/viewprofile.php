@@ -76,7 +76,7 @@ JblanceHelper::setJoomBriToken();
     <?php endif; ?>
   </div>
 </div>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="viewProfile" class="form-horizontal">
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="viewProfile" class="form-vertical">
 
   <!-- Do not show send message & edit link to the profile owner -->
   <div class="sociallinks">
@@ -98,6 +98,24 @@ JblanceHelper::setJoomBriToken();
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3><?php echo JText::_('COM_JBLANCE_USER_INFORMATION'); ?></h3>
+      <?php if (!$isMine && $userInfo->allowBidProjects && $hasJBProfileForViewer && $viewerInfo->allowPostProjects) : ?>
+        <!-- show invite to project to non-profile-owner, if profile owner can bid and profile viewer can post project -->
+
+        <div class="pull-right">
+          <?php $link_invite = JRoute::_('index.php?option=com_jblance&view=project&layout=invitetoproject&id=' . $userid . '&tmpl=component'); ?>
+          <a href="<?php echo $link_invite; ?>" class="btn btn-success jb-modal" rel="{handler: 'iframe', size: {x: 660, y: 600}}"><i class="material-icons">person_add</i> <?php echo JText::_('COM_JBLANCE_INVITE_TO_PROJECT'); ?></a>
+          <?php $isFavourite = JblanceHelper::checkFavorite($userid, 'profile'); // check if profile owner is favoured by viewer ?>
+          <span id="fav-msg-<?php echo $userid; ?>">
+            <?php if ($isFavourite > 0) : ?>
+              <a onclick="favourite('<?php echo $userid; ?>', -1, 'profile');" href="javascript:void(0);" class="btn btn-danger"><span><i class="material-icons">star</i></span> <?php echo JText::_('COM_JBLANCE_REMOVE_FAVOURITE') ?></a>
+            <?php else : ?>
+              <a onclick="favourite('<?php echo $userid; ?>', 1, 'profile');" href="javascript:void(0);" class="btn"><span><i class="material-icons">add</i></span> <?php echo JText::_('COM_JBLANCE_ADD_FAVOURITE') ?></a>
+            <?php endif; ?>
+          </span>
+          <a class="btn" href="<?php echo $link_sendpm; ?>"><i class="material-icons">message</i> <?php echo JText::_('COM_JBLANCE_SEND_MESSAGE'); ?></a>
+        </div>
+
+      <?php endif; ?>
     </div>
     <div class="panel-body">
       <div class="row-fluid">
@@ -114,38 +132,17 @@ JblanceHelper::setJoomBriToken();
               <?php echo JText::_('COM_JBLANCE_EDIT_PICTURE'); ?>
             </a>
           <?php endif; ?>
-          <?php if (!$isMine && $userInfo->allowBidProjects && $hasJBProfileForViewer && $viewerInfo->allowPostProjects) : ?><!-- show invite to project to non-profile-owner, if profile owner can bid and profile viewer can post project -->
-            <div class="row-fluid">
-              <div class="span12">
-                <?php $link_invite = JRoute::_('index.php?option=com_jblance&view=project&layout=invitetoproject&id=' . $userid . '&tmpl=component'); ?>
-                <a href="<?php echo $link_invite; ?>" class="btn btn-success btn-block jb-modal" rel="{handler: 'iframe', size: {x: 650, y: 400}}"><i class="material-icons">person_add</i> <?php echo JText::_('COM_JBLANCE_INVITE_TO_PROJECT'); ?></a>
-              </div>
-            </div>
-            <div class="row-fluid">
-              <div class="span6">
-                <?php $isFavourite = JblanceHelper::checkFavorite($userid, 'profile'); // check if profile owner is favoured by viewer ?>
-                <span id="fav-msg-<?php echo $userid; ?>">
-                  <?php if ($isFavourite > 0) : ?>
-                    <a onclick="favourite('<?php echo $userid; ?>', -1, 'profile');" href="javascript:void(0);" class="btn btn-danger btn-block"><span><i class="material-icons">star</i></span> <?php echo JText::_('COM_JBLANCE_REMOVE_FAVOURITE') ?></a>
-                  <?php else : ?>
-                    <a onclick="favourite('<?php echo $userid; ?>', 1, 'profile');" href="javascript:void(0);" class="btn btn-block"><span><i class="material-icons">add</i></span> <?php echo JText::_('COM_JBLANCE_ADD_FAVOURITE') ?></a>
-                  <?php endif; ?>
-                </span>
-              </div>
-              <div class="span6">
-                <a class="btn btn-block" href="<?php echo $link_sendpm; ?>"><i class="material-icons">message</i> <?php echo JText::_('COM_JBLANCE_SEND_MESSAGE'); ?></a>
-              </div>
-            </div>
-          <?php endif; ?>
+
         </div>
+
         <div class="col-md-8">
           <h2><?php echo $this->userInfo->name; ?> <small><?php echo $this->userInfo->username; ?></small></h2>
 
           <!-- Company Name should be visible only to users who can post project -->
           <?php if ($userInfo->allowPostProjects && $showBizName) : ?>
-            <div class="control-group">
+            <div class="form-group">
               <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_BUSINESS_NAME'); ?>: </label>
-              <div class="controls">
+              <div class="input-group">
                 <?php echo $this->userInfo->biz_name; ?>
               </div>
             </div>
@@ -153,28 +150,28 @@ JblanceHelper::setJoomBriToken();
 
           <!-- Skills and hourly rate should be visible only to users who can work/bid -->
           <?php if ($userInfo->allowBidProjects) : ?>
-            <div class="control-group">
+            <div class="form-group">
               <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_HOURLY_RATE'); ?>: </label>
-              <div class="controls">
+              <div class="input-group">
                 <?php echo JblanceHelper::formatCurrency($this->userInfo->rate, true, true) . ' / ' . JText::_('COM_JBLANCE_HOUR'); ?>
               </div>
             </div>
-            <div class="control-group">
+            <div class="form-group">
               <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_SKILLS'); ?>: </label>
-              <div class="controls">
+              <div class="input-group">
                 <?php echo JblanceHelper::getCategoryNames($this->userInfo->id_category); ?>
               </div>
             </div>
           <?php endif; ?>
-          <div class="control-group">
+          <div class="form-group">
             <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_AVERAGE_RATING'); ?>: </label>
-            <div class="controls">
+            <div class="input-group">
               <?php $rate = JblanceHelper::getAvarageRate($this->userInfo->user_id, true); ?>
             </div>
           </div>
-          <div class="control-group">
+          <div class="form-group">
             <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_STATUS'); ?>: </label>
-            <div class="controls">
+            <div class="input-group">
               <?php
               //get user online status
               $status = $jbuser->isOnline($this->userInfo->user_id);
@@ -182,7 +179,7 @@ JblanceHelper::setJoomBriToken();
               <?php if ($status) : ?>
                 <span class="label label-success"><?php echo JText::_('COM_JBLANCE_ONLINE'); ?></span>
               <?php else : ?>
-                <span class="label"><?php echo JText::_('COM_JBLANCE_OFFLINE'); ?></span>
+                <span class="label label-danger"><?php echo JText::_('COM_JBLANCE_OFFLINE'); ?></span>
               <?php endif; ?>	
             </div>
           </div>
@@ -192,92 +189,93 @@ JblanceHelper::setJoomBriToken();
   </div>
   <?php if ($isMine) : ?>
     <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h4><?php echo JText::_('COM_JBLANCE_CONTACT_INFORMATION'); ?></h4></div>
-      <div class="panel-body">
-        <div class="control-group">
-          <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_ADDRESS'); ?>: </label>
-          <div class="controls">
-            <?php echo nl2br($this->userInfo->address); ?>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4><?php echo JText::_('COM_JBLANCE_CONTACT_INFORMATION'); ?></h4></div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_ADDRESS'); ?>: </label>
+            <div class="input-group">
+              <?php echo nl2br($this->userInfo->address); ?>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_LOCATION'); ?>: </label>
+            <div class="input-group">
+              <?php echo JblanceHelper::getLocationNames($this->userInfo->id_location); ?>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_ZIP_POSTCODE'); ?>: </label>
+            <div class="input-group">
+              <?php echo $this->userInfo->postcode; ?>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_CONTACT_NUMBER'); ?>: </label>
+            <div class="input-group">
+              <?php echo $this->userInfo->mobile; ?>
+            </div>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_LOCATION'); ?>: </label>
-          <div class="controls">
-            <?php echo JblanceHelper::getLocationNames($this->userInfo->id_location); ?>
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_ZIP_POSTCODE'); ?>: </label>
-          <div class="controls">
-            <?php echo $this->userInfo->postcode; ?>
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_CONTACT_NUMBER'); ?>: </label>
-          <div class="controls">
-            <?php echo $this->userInfo->mobile; ?>
-          </div>
-        </div>
-        </div>
-          </div>
-  </div><?php endif; ?>
+      </div>
+    </div><?php endif; ?>
   <?php
   $fields = JblanceHelper::get('helper.fields');  // create an instance of the class FieldsHelper
   $parents = array();
   $children = array();
   //isolate parent and childr
   foreach ($this->fields as $ct) {
-    if ($ct->parent == 0)
+    if ($ct->parent == 0) {
       $parents[] = $ct;
-    else
+    } else {
       $children[] = $ct;
+    }
   }
 
   if (count($parents)) {
     foreach ($parents as $pt) {
       ?>
-   <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading"><h4><?php echo JText::_($pt->field_title); ?></h4></div>
-        <div class="panel-body">
-          <?php
-          foreach ($children as $ct) {
-            if ($ct->parent == $pt->id) {
-              ?>
-              <?php
-              $labelsuffix = '';
-              if ($ct->field_type == 'Checkbox') {
-          $labelsuffix = '[]';
-        } //added to validate checkbox
-              ?>
-              <div class="control-group">
-                <label class="control-label nopadding" for="custom_field_<?php echo $ct->id . $labelsuffix; ?>"><?php echo JText::_($ct->field_title); ?>:</label>
-                <div class="controls">
-                  <?php $fields->getFieldHTMLValues($ct, $userid, 'profile'); ?>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4><?php echo JText::_($pt->field_title); ?></h4></div>
+          <div class="panel-body">
+            <?php
+            foreach ($children as $ct) {
+              if ($ct->parent == $pt->id) {
+                ?>
+                <?php
+                $labelsuffix = '';
+                if ($ct->field_type == 'Checkbox') {
+                  $labelsuffix = '[]';
+                } //added to validate checkbox
+                ?>
+                <div class="form-group">
+                  <label class="control-label nopadding" for="custom_field_<?php echo $ct->id . $labelsuffix; ?>"><?php echo JText::_($ct->field_title); ?>:</label>
+                  <div class="input-group">
+                    <?php $fields->getFieldHTMLValues($ct, $userid, 'profile'); ?>
+                  </div>
                 </div>
-              </div>
-              <?php
+                <?php
+              }
             }
-          }
-          ?>
-        </div>
+            ?>
+          </div>
+        </div> 
       </div> 
-      </div> 
-        <?php
-      }
+      <?php
     }
-    ?>
+  }
+  ?>
   <div class="clearfix"></div>
-    <?php if ($userInfo->allowAddPortfolio) : ?>
-      <div class="panel panel-default">
+  <?php if ($userInfo->allowAddPortfolio) : ?>
+    <div class="panel panel-default">
       <div class="panel-heading"><h4><?php echo JText::_('COM_JBLANCE_PORTFOLIO') ?></h4></div>
       <div class="panel-body">
         <?php
         if (count($this->portfolios)) :
           ?>
-          <div class="row-fluid">
-            <ul class="thumbnails">
+          <div class="col-md-3 col-xs-8 col-sm-4">
+            <ul class="list-unstyled">
               <?php
               for ($i = 0, $n = count($this->portfolios); $i < $n; $i++) {
                 $portfolio = $this->portfolios[$i];
@@ -289,17 +287,18 @@ JblanceHelper::setJoomBriToken();
                   $showName = $attachment[0];
                   $fileName = $attachment[1];
                   $imgLoc = JBPORTFOLIO_URL . $fileName;
-                } else
+                } else {
                   $imgLoc = 'components/com_jblance/images/no_portfolio.png';
+                }
                 ?>
-                <li class="span4">
-                  <div class="thumbnail">
+              <li>
+                <a href="<?php echo $link_view_portfolio; ?>" class="thumbnail">
                     <img img-responsive src="<?php echo $imgLoc; ?>" alt="" title="">
                     <div class="caption">
-                      <h3><?php echo $portfolio->title; ?></h3>
-                      <p><a href="<?php echo $link_view_portfolio; ?>" class="btn"><?php echo JText::_('COM_JBLANCE_PORTFOLIO_DETAILS'); ?></a></p>
+                      <h5><?php echo $portfolio->title; ?></h5>
+                      <p><?php echo JText::_('COM_JBLANCE_PORTFOLIO_DETAILS'); ?></p>
                     </div>
-                  </div>
+                </a>
                 </li>
                 <?php
               }
@@ -310,11 +309,10 @@ JblanceHelper::setJoomBriToken();
         else :
           echo JText::_('COM_JBLANCE_NO_PORTFOLIO_FOUND');
         endif;
-        
         ?>
-            </div>
-  </div><?php endif; ?>
-        
+      </div>
+    </div><?php endif; ?>
+
   <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'freelancer')); ?>
 
   <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'freelancer', JText::_('COM_JBLANCE_FREELANCER', true)); ?>
@@ -360,10 +358,11 @@ JblanceHelper::setJoomBriToken();
                   </td>
                   <td data-title="<?php echo JText::_('COM_JBLANCE_COMMENTS'); ?>">
                     <?php
-                    if ($rate > 0)
+                    if ($rate > 0) {
                       echo $fproject->comments;
-                    else
+                    } else {
                       echo '<i>' . JText::_('COM_JBLANCE_NOT_YET_RATED') . '</i>';
+                    }
                     ?>
                   </td>
                 </tr>
@@ -385,33 +384,33 @@ JblanceHelper::setJoomBriToken();
     <div class="panel-heading"><h4><?php echo JText::_('COM_JBLANCE_RATING'); ?></h4></div>
     <div class="panel-body">
       <?php if (!empty($this->frating->quality_clarity)) : ?>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_QUALITY_OF_WORK'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->frating->quality_clarity); ?>
           </div>
         </div>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_COMMUNICATION'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->frating->communicate); ?>
           </div>
         </div>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_EXPERTISE'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->frating->expertise_payment); ?>
           </div>
         </div>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PROFESSIONALISM'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->frating->professional); ?>
           </div>
         </div>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_HIRE_AGAIN'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->frating->hire_work_again); ?>
           </div>
         </div>
@@ -465,10 +464,11 @@ JblanceHelper::setJoomBriToken();
                   </td>
                   <td data-title="<?php echo JText::_('COM_JBLANCE_COMMENTS'); ?>">
                     <?php
-                    if ($rate > 0)
+                    if ($rate > 0) {
                       echo $bproject->comments;
-                    else
+                    } else {
                       echo '<i>' . JText::_('COM_JBLANCE_NOT_YET_RATED') . '</i>';
+                    }
                     ?>
                   </td>
                 </tr>
@@ -492,33 +492,33 @@ JblanceHelper::setJoomBriToken();
     <div class="panel-heading"><h4><?php echo JText::_('COM_JBLANCE_RATING'); ?></h4></div>
     <div class="panel-body">
       <?php if (!empty($this->brating->quality_clarity)) : ?>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_CLARITY_SPECIFICATION'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->brating->quality_clarity); ?>
           </div>
         </div>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_COMMUNICATION'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->brating->communicate); ?>
           </div>
         </div>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PAYMENT_PROMPTNESS'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->brating->expertise_payment); ?>
           </div>
         </div>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PROFESSIONALISM'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->brating->professional); ?>
           </div>
         </div>
-        <div class="control-group">
+        <div class="form-group">
           <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_WORK_AGAIN'); ?>: </label>
-          <div class="controls">
+          <div class="input-group">
             <?php JblanceHelper::getRatingHTML($this->brating->hire_work_again); ?>
           </div>
         </div>
@@ -528,10 +528,10 @@ JblanceHelper::setJoomBriToken();
       endif;
       ?>
     </div>
-      </div>
+  </div>
   <?php echo JHtml::_('bootstrap.endTab'); ?>		<!-- end of buyer tab -->
   <?php echo JHtml::_('bootstrap.endTabSet'); ?>
   <input type="hidden" name="option" value="com_jblance">
   <input type="hidden" name="task" value="">
   <?php echo JHtml::_('form.token'); ?>
-  </form>	
+</form>	

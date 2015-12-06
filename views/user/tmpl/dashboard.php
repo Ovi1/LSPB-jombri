@@ -197,24 +197,19 @@ if (!JBLANCE_FREE_MODE) {
       for ($i = 0, $n = count($this->feeds); $i < $n; $i++) {
         $feed = $this->feeds[$i];
         ?>
-        <div class="media jb-borderbtm-dot" id="jbl_feed_item_<?php echo $feed->id; ?>">
-
-
-          //TODO
+        <div class="media border-b" id="jbl_feed_item_<?php echo $feed->id; ?>">
           <?php echo $feed->logo; ?>
-
-
           <div class="media-body">
             <?php echo $feed->title; ?>
-            <p>
+            <p class="text-right">
               <i class="material-icons">access_time</i> <?php echo $feed->daysago; ?> 
               <span id="feed_hide_<?php echo $feed->id; ?>" class="help-inline">
                 <?php if ($feed->isMine) : ?>
-                  <a class="btn btn-mini btn-link" onclick="processFeed('<?php echo $user->id; ?>', '<?php echo $feed->id; ?>', 'remove');" href="javascript:void(0);">
+                  <a class="btn btn-sm btn-link" onclick="processFeed('<?php echo $user->id; ?>', '<?php echo $feed->id; ?>', 'remove');" href="javascript:void(0);">
                     <i class="material-icons">remove_circle_outline</i> <?php echo JText::_('COM_JBLANCE_REMOVE'); ?>
                   </a>
                 <?php endif; ?>
-                <a class="btn btn-mini btn-link" onclick="processFeed('<?php echo $user->id; ?>', '<?php echo $feed->id; ?>', 'hide');" href="javascript:void(0);">
+                <a class="btn btn-sm btn-link" onclick="processFeed('<?php echo $user->id; ?>', '<?php echo $feed->id; ?>', 'hide');" href="javascript:void(0);">
                   <i class="material-icons">visibility_off</i> <?php echo JText::_('COM_JBLANCE_HIDE'); ?>
                 </a>
               </span>

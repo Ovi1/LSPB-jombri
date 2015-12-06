@@ -122,7 +122,7 @@ function checkBalance(){
 				<?php if($row->status == 'COM_JBLANCE_ACCEPTED') : ?>
 				<span class="label label-success"><?php echo JText::_($row->status); ?></span>
 				<?php elseif($row->status == 'COM_JBLANCE_DENIED') : ?>
-				<span class="label label-important"><?php echo JText::_($row->status); ?></span>
+				<span class="label label-info"><?php echo JText::_($row->status); ?></span>
 				<?php endif; ?>
 			</div>
 		</div>
