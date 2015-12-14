@@ -12,9 +12,8 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-//$doc = JFactory::getDocument();
-//$doc->addScript("components/com_jblance/js/selectnav.min.js");
-
+$doc = JFactory::getDocument();
+$doc->addScript("components/com_jblance/js/selectnav.min.js");
 $app = JFactory::getApplication();
 $tmpl = $app->input->get('tmpl', '', 'string');
 $preview = $app->input->get('preview', 0, 'int');
@@ -54,7 +53,7 @@ $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&' . JSessi
       <!--
       function showElement(layer) {
         var myLayer = document.getElementById(layer);
-        if (myLayer.style.display == "none") {
+        if (myLayer.style.display === "none") {
           myLayer.style.display = "block";
           myLayer.backgroundPosition = "top";
         }
@@ -106,12 +105,11 @@ $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&' . JSessi
           <ul class="nav navbar-nav">
             <?php
             foreach ($processedMenus as $menu) {
-              //$class	= empty( $menu->childs ) ? ' class="no-child"' : '';
+//              $class	= empty( $menu->childs ) ? 'class="dropdown"' : '';
               ?>
-              <li<?php echo $active == $menu->item->id ? ' class="active dropdown"' : ''; ?>>
+            <li<?php echo $active == $menu->item->id ? ' class="active"' : ''; ?> class="dropdown ">
                 <?php
                 if ($menu->item->type == 'separator') {
-                  
                   $atrib = 'class "dropdwon" ';
                   $href = 'javascript:void(0);';
                 } else {
@@ -157,7 +155,9 @@ $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&' . JSessi
                 <a href="javascript:void(0);" style="float: right; padding: 10px;" onclick="javascript:showElement('notify-menu')">
                   <img alt="" src="components/com_jblance/images/remove.gif" title="<?php echo JText::_('COM_JBLANCE_CLOSE'); ?>" alt="img">
                 </a>
-                <div class="jbl_h3title" style="padding: 5px;"><?php echo JText::_('COM_JBLANCE_NOTIFICATIONS'); ?></div>
+                <div class="jbl_h3title">
+                  <?php echo JText::_('COM_JBLANCE_NOTIFICATIONS'); ?>
+                </div>
                 <div style="max-height: 400px;overflow:auto;">
                   <?php
                   if (count($notifys)) {
@@ -204,7 +204,6 @@ $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&' . JSessi
         </div>
       </div>
     </nav>
-
     <div class="clearfix"></div>
     <?php
   }
