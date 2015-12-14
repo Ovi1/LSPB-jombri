@@ -41,7 +41,7 @@ JblanceHelper::setJoomBriToken();
       //
     }
     else {
-      alert('<?php echo JText::_('COM_JBLANCE_FIEDS_HIGHLIGHTED_RED_COMPULSORY', true); ?>');
+      alert ('<?php echo JText::_('COM_JBLANCE_FIEDS_HIGHLIGHTED_RED_COMPULSORY', true); ?>');
       return false;
     }
     return true;

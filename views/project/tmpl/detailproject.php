@@ -435,7 +435,7 @@ jQuery(document).ready(function($){
 		                        <?php if($bid->status == 'COM_JBLANCE_ACCEPTED') : ?>
 		                        <span class="label label-success"><?php echo JText::_($bid->status); ?></span>
 		                        <?php elseif($bid->status == 'COM_JBLANCE_DENIED') : ?>
-		                        <span class="label label-important"><?php echo JText::_($bid->status); ?></span>
+		                        <span class="label label-warning"><?php echo JText::_($bid->status); ?></span>
 		                        <?php endif; ?>
 		            		</div>
 						</div>

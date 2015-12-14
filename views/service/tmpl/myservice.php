@@ -48,7 +48,7 @@ $link_edit_service = JRoute::_('index.php?option=com_jblance&view=service&layout
               <?php echo $row->service_title; ?>;
               <?php
               if ($row->approved == 0)
-                echo '<span class="label label-important">' . JText::_('COM_JBLANCE_PENDING_APPROVAL') . '</span>';
+                echo '<span class="label label-danger">' . JText::_('COM_JBLANCE_PENDING_APPROVAL') . '</span>';
               ?>
               <br>
               <?php if ($row->buycount > 0) { ?>

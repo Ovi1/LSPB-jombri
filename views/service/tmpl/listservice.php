@@ -41,7 +41,7 @@ JArrayHelper::toInteger($id_categ);
 
   <?php if ($n) { ?>
     <div class="row">
-      <ul class="list-unstyled">
+      <div class="services">
         <?php
         for ($i = 0; $i < $n; $i++) {
           $row = $this->rows[$i];
@@ -49,13 +49,13 @@ JArrayHelper::toInteger($id_categ);
           $link_view = JRoute::_('index.php?option=com_jblance&view=service&layout=viewservice&id=' . $row->id);
           $sellerInfo = JFactory::getUser($row->user_id);
           ?>
-          <li class="col-md-3">
-            <div class="thumbnail">
+          <div class="col-md-3">
+            <div class="thumbnail" style="min-height: 300px;">
               <a href="<?php echo $link_view; ?>">
-                <img class="img-responsive" style="max-height: 250px" src="<?php echo $attachments[0]['location']; ?>" /></a>
+                <img class="img-responsive" style="height:180px; width:auto; " src="<?php echo $attachments[0]['location']; ?>" /></a>
               <div class="caption">
                 <div class="container-fluid">
-                  <h3><?php echo JblanceHelper::formatCurrency($row->price); ?> <small><i class="material-icons" style="vertical-align: bottom;">schedule</i> <?php echo JText::plural('COM_JBLANCE_N_DAYS', $row->duration); ?></small></h3>
+                  <h5><?php echo JblanceHelper::formatCurrency($row->price); ?> <small class="time"><i class="material-icons" style="vertical-align: bottom;">schedule</i> <?php echo JText::plural('COM_JBLANCE_N_DAYS', $row->duration); ?></small></h5>
                 <div class="title_container"><a href="<?php echo $link_view; ?>"><?php echo $row->service_title; ?></a></div>
                   <?php
                   $attrib = ' style="max-width:38px;" class="pull-left logo img-circle "';
@@ -70,10 +70,10 @@ JArrayHelper::toInteger($id_categ);
                 </div>
               </div>
             </div>
-          </li>
+          </div>
         <?php }
         ?>
-      </ul>
+      </div>
     </div>
     <?php
   } else {

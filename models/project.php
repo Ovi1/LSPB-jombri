@@ -698,9 +698,9 @@
  		elseif($status == 'COM_JBLANCE_FROZEN')
  			$statusLabel = 'label label-warning';
  		elseif($status == 'COM_JBLANCE_CLOSED')
- 			$statusLabel = 'label label-important';
+ 			$statusLabel = 'label label-info';
  		elseif($status == 'COM_JBLANCE_EXPIRED')
- 			$statusLabel = 'label label-inverse';
+ 			$statusLabel = 'label label-danger';
  		
  		return '<span class="'.$statusLabel.'">'.JText::_($status).'</span>';
  	}

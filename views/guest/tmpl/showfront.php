@@ -33,8 +33,9 @@
  $showFbConnect = true;
  $app_id = $config->fbApikey;
  $app_sec = $config->fbAppsecret;
- if(empty($app_id) || empty($app_sec))
- 	$showFbConnect = false;
+ if (empty($app_id) || empty($app_sec)) {
+  $showFbConnect = false;
+}
 ?>
 	
 <script type="text/javascript">
@@ -65,8 +66,8 @@ if($usersConfig->get('allowUserRegistration') == '0'){ ?>
 }
 ?>
 
-<div class="row-fluid jbbox-shadow jbbox-gradient">
-	<div class="span8">
+<div class="row jbbox-shadow jbbox-gradient">
+	<div class="col-md-12">
 		<div class="introduction">
 			<h2><?php echo JText::_($config->welcomeTitle); ?></h2>
 			<ul id="featurelist">
@@ -82,7 +83,7 @@ if($usersConfig->get('allowUserRegistration') == '0'){ ?>
 			<?php endif; ?>
 		</div>
 	</div>
-	<div class="span4">
+	<div class="col-md-4">
 	<!-- if user is guest -->
         <?php if($user->guest) : ?>
 	    <div class="jb-loginform">
@@ -141,9 +142,7 @@ if($usersConfig->get('allowUserRegistration') == '0'){ ?>
 	</div>
 </div>
 
-	<div style="clear:both;"></div>
-<div class="sp20">&nbsp;</div>
-
+<div class="clearfix"></div>
 <a id="ugselect"></a>
 	<?php
 	$totGroups = count($this->userGroups);
@@ -158,18 +157,19 @@ if($usersConfig->get('allowUserRegistration') == '0'){ ?>
 	<div class="row-fluid usergroup-table">	
 		<?php 
 		}?>
-		<div class="col-md-6 well well-small white userrole">
+		<div class="col-md-4 well well-small white userrole">
 		<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userGroup" id="userGroup">
 			<div class="userrole-name text-center">
 			<?php if($userGroup->approval == 1) : ?>
-			<div class="pull-right"><span class="label label-important"><?php echo JText::_('COM_JBLANCE_REQUIRE_APPROVAL'); ?></span></div>
+			<div class="pull-right"><span class="label label-danger"><?php echo JText::_('COM_JBLANCE_REQUIRE_APPROVAL'); ?></span></div>
 			<?php endif; ?>
 			<h2><?php echo $userGroup->name; ?></h2>
 			</div>
 			<?php echo stripslashes($userGroup->description); ?>
 			<hr>
 			<div class="text-center">
-				<button class="btn btn-primary btn-large" type="submit" id="btn_ug_id<?php echo $userGroup->id; ?>" onclick="javascript:selectRole('<?php echo $userGroup->id; ?>');"><?php echo JText::_('COM_JBLANCE_CHOOSE_AND_CONTINUE'); ?></button>
+			<button class="btn btn-primary btn-large" type="submit" id="btn_ug_id<?php echo $userGroup->id; ?>" onclick="javascript:selectRole('<?php echo $userGroup->id; ?>');"><?php echo JText::_('COM_JBLANCE_CHOOSE_AND_CONTINUE'); ?>
+      </button>
 			</div>
 			<input type="hidden" name="check" value="post" />
 			<input type="hidden" name="ugid" value="<?php echo $userGroup->id; ?>" />
