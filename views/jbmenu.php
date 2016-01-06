@@ -25,6 +25,9 @@ $limit = $config->feedLimitDashboard;
 $model = $this->getModel();
 $user = JFactory::getUser();
 $userid = $app->input->get('id', 0, 'int');
+if (empty($userid)) {  // get the current userid if not passed
+  $userid = $user->id;
+}
 $hasJBProfile = JblanceHelper::hasJBProfile($user->id);
 
 $link_edit_profile = JRoute::_('index.php?option=com_jblance&view=user&layout=editprofile');
@@ -94,14 +97,15 @@ $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&' . JSessi
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="<?php echo $link_edit_profile; ?>">
-                   <?php
+            <?php
           $att = "class='img-thumbnail img-responsive'";
           $avatar = JblanceHelper::getLogo($userid, $att);
           echo $avatar;
           ?>
+
           </a>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="mainmenu">
           <ul class="nav navbar-nav">
             <?php
             foreach ($processedMenus as $menu) {
