@@ -85,7 +85,7 @@ $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&' . JSessi
       //-->
     </script>
 
-    <nav class="navbar navbar-primary">
+    <nav class="dash navbar navbar-primary">
       <!--<a href="<?php echo JRoute::_('index.php?option=com_jblance&view=guest&layout=showfront'); ?>" class="<?php echo $active == 0 ? 'active' : 'active'; ?>"><?php echo JText::_('Home'); ?></a>
       -->
       <div class="container-fluid">
@@ -96,7 +96,7 @@ $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&' . JSessi
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo $link_edit_profile; ?>">
+          <a class="user-brand" href="<?php echo $link_edit_profile; ?>">
             <?php
           $att = "class='img-thumbnail img-responsive'";
           $avatar = JblanceHelper::getLogo($userid, $att);
