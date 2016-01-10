@@ -56,7 +56,7 @@ function validateForm(f){
 		return false;
 	}
 	
-	if(valid == true){
+	if(valid === true){
 		
     }
     else {
@@ -78,20 +78,20 @@ if($step)
 	<?php if(!$skipPlan) { ?>
 	<fieldset>
 	<legend><?php echo JText::_('COM_JBLANCE_MEMBERSHIP_CHOSEN'); ?></legend>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PLAN_NAME'); ?>: </label>
 			<div class="controls">
 				<?php $sub_id = $planChosen['plan_id'];
 				echo $planChosen['planname'.$sub_id]; ?>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PLAN_DURATION'); ?>: </label>
 			<div class="controls">
 				<?php echo $planChosen['planperiod'.$sub_id]; ?>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_BONUS_FUND'); ?>: </label>
 			<div class="controls">
 				<?php echo JblanceHelper::formatCurrency($planChosen['plancredit'.$sub_id]); ?>
@@ -101,14 +101,14 @@ if($step)
 			$totalamt = $planChosen['price'.$sub_id];
 			if($totalamt > 0) :
 			?>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PAY_MODE'); ?>: </label>
 			<div class="controls">
 				<?php echo JblanceHelper::getGwayName($planChosen['gateway']); ?>
 			</div>
 		</div>
 			<?php endif; ?>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_TOTAL_AMOUNT'); ?>: </label>
 			<div class="controls">
 				<?php
@@ -129,36 +129,36 @@ if($step)
 	
 	<fieldset>
 	<legend><?php echo JText::_('COM_JBLANCE_USER_INFORMATION'); ?></legend>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="name"><?php echo JText::_('COM_JBLANCE_NAME'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
-				<input class="input-large required" type="text" name="name" id="name" size="40" value="" />
+				<input class="form-control required" type="text" name="name" id="name" size="40" value="" />
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="username"><?php echo JText::_('COM_JBLANCE_USERNAME'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
-				<input type="text" name="username" id="username" class="input-large hasTooltip required validate-username" onchange="checkAvailable(this);" title="<?php echo JHtml::tooltipText(JText::_('COM_JBLANCE_TT_USERNAME')); ?>"> 
+				<input type="text" name="username" id="username" class="form-control hasTooltip required validate-username" onchange="checkAvailable(this);" title="<?php echo JHtml::tooltipText(JText::_('COM_JBLANCE_TT_USERNAME')); ?>"> 
 				<div id="status_username" class="dis-inl-blk"></div>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="email"><?php echo JText::_('COM_JBLANCE_EMAIL'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
-				<input type="text" name="email" id="email" class="input-large hasTooltip required validate-email" onchange="checkAvailable(this);" title="<?php echo JHtml::tooltipText(JText::_('COM_JBLANCE_TT_EMAIL')); ?>">
+				<input type="text" name="email" id="email" class="form-control hasTooltip required validate-email" onchange="checkAvailable(this);" title="<?php echo JHtml::tooltipText(JText::_('COM_JBLANCE_TT_EMAIL')); ?>">
 				<div id="status_email" class="dis-inl-blk"></div>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="password"><?php echo JText::_('COM_JBLANCE_PASSWORD'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
-				<input type="password" name="password" id="password" class="input-large hasTooltip required validate-password" title="<?php echo JHtml::tooltipText(JText::_('COM_JBLANCE_TT_PASSWORD')); ?>">
+				<input type="password" name="password" id="password" class="form-control hasTooltip required validate-password" title="<?php echo JHtml::tooltipText(JText::_('COM_JBLANCE_TT_PASSWORD')); ?>">
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="password2"><?php echo JText::_('COM_JBLANCE_CONFIRM_PASSWORD'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
-				<input type="password" size="40" maxlength="100" name="password2" id="password2" class="input-large hasTooltip required validate-password" title="<?php echo JHtml::tooltipText(JText::_('COM_JBLANCE_TT_REPASSWORD')); ?>">
+				<input type="password" size="40" maxlength="100" name="password2" id="password2" class="form-control hasTooltip required validate-password" title="<?php echo JHtml::tooltipText(JText::_('COM_JBLANCE_TT_REPASSWORD')); ?>">
 			</div>
 		</div>
 	</fieldset>
