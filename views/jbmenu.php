@@ -25,6 +25,9 @@ $limit = $config->feedLimitDashboard;
 $model = $this->getModel();
 $user = JFactory::getUser();
 $userid = $app->input->get('id', 0, 'int');
+if (empty($userid)) {  // get the current userid if not passed
+  $userid = $user->id;
+}
 $hasJBProfile = JblanceHelper::hasJBProfile($user->id);
 
 $link_edit_profile = JRoute::_('index.php?option=com_jblance&view=user&layout=editprofile');
@@ -82,26 +85,27 @@ $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&' . JSessi
       //-->
     </script>
 
-    <nav class="navbar navbar-primary">
+    <nav class="dash navbar navbar-primary">
       <!--<a href="<?php echo JRoute::_('index.php?option=com_jblance&view=guest&layout=showfront'); ?>" class="<?php echo $active == 0 ? 'active' : 'active'; ?>"><?php echo JText::_('Home'); ?></a>
       -->
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainmenu" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo $link_edit_profile; ?>">
-                   <?php
+          <a class="user-brand" href="<?php echo $link_edit_profile; ?>">
+            <?php
           $att = "class='img-thumbnail img-responsive'";
           $avatar = JblanceHelper::getLogo($userid, $att);
           echo $avatar;
           ?>
+
           </a>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="mainmenu">
           <ul class="nav navbar-nav">
             <?php
             foreach ($processedMenus as $menu) {
