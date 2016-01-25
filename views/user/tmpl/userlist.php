@@ -70,10 +70,10 @@ JblanceHelper::setJoomBriToken();
     <!-- show search fields if enabled -->
     <?php if ($show_search) : ?>
         <div class="col-md-12">
-            <div id="form-group">
+            <div class="form-group">
                 
-                <div class="input-group">
-                    <input type="text" name="keyword" id="keyword" class="form-control" value="<?php echo $keyword; ?>" class="input-xlarge" placeholder="<?php echo JText::_('COM_JBLANCE_KEYWORDS'); ?>"/>
+                <div class="input-group input-group-lg">
+                    <input type="text" name="keyword" id="keyword" class="form-control" value="<?php echo $keyword; ?>" placeholder="<?php echo JText::_('COM_JBLANCE_KEYWORDS'); ?>"/>
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary hasTooltip" title="<?php echo JHtml::tooltipText('COM_JBLANCE_SEARCH'); ?>"><i class="material-icons">search</i></button>
                         <button class="btn btn-default hasTooltip" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>"><i class="material-icons">remove_circle</i></button>
