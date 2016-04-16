@@ -113,7 +113,7 @@ if($step)
 		<div class="control-group">
 			<label class="control-label" for="biz_name"><?php echo JText::_('COM_JBLANCE_BUSINESS_NAME'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
-				<input class="input-medium required" type="text" name="biz_name" id="biz_name" value="" />
+				<input class="form-control required" type="text" name="biz_name" id="biz_name" value="" />
 			</div>
 		</div>
 		<?php endif; ?>
@@ -141,7 +141,7 @@ if($step)
 				<div class="sp10">&nbsp;</div>
 				<?php } ?>
 				<?php 
-				//$attribs = 'class="input-medium required" size="20" multiple ';
+				//$attribs = 'class="form-control required" size="20" multiple ';
 				//$categtree = $select->getSelectCategoryTree('id_category[]', 0, 'COM_JBLANCE_PLEASE_SELECT', $attribs, '', true);
 				//echo $categtree; 
 				//$attribs = '';
@@ -167,7 +167,7 @@ if($step)
 			<label class="control-label" for="level1"><?php echo JText::_('COM_JBLANCE_LOCATION'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls controls-row" id="location_info">
 				<?php 
-				$attribs = array('class' => 'input-medium required', 'data-level-id' => '1', 'onchange' => 'getLocation(this, \'project.getlocationajax\');');
+				$attribs = array('class' => 'form-control required', 'data-level-id' => '1', 'onchange' => 'getLocation(this, \'project.getlocationajax\');');
 				
 				echo $select->getSelectLocationCascade('location_level[]', '', 'COM_JBLANCE_PLEASE_SELECT', $attribs, 'level1');
 				?>

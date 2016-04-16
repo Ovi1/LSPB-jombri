@@ -109,7 +109,7 @@
 			}
 		}
 		
-		$lists 	= JHtml::_('select.genericlist', $put, 'category', "class='input-medium required' size='1'", 'value', 'text', '');
+		$lists 	= JHtml::_('select.genericlist', $put, 'category', "class='form-control required' size='1'", 'value', 'text', '');
 		return $lists;
 	}
  	

@@ -461,7 +461,7 @@
 			$types[] = JHtml::_('select.option', $item->value, JText::_($item->text));
 		}
 	
-		$lists 	= JHtml::_('select.genericlist', $types, $var, 'class="input-medium" size="1" style="width:200px;"  '.$option.'', 'value', 'text', $default);
+		$lists 	= JHtml::_('select.genericlist', $types, $var, 'class="form-control" size="1" style="width:200px;"  '.$option.'', 'value', 'text', $default);
 		return $lists;
 	}
 	

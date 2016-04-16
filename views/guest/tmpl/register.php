@@ -69,7 +69,7 @@ function validateForm(f){
 </script>
 <?php 
 if($step)
-	echo JblanceHelper::getProgressBar($step); 
+echo JblanceHelper::getProgressBar($step); 
 ?>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="regNewUser" class="form-horizontal form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data">
 <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_ACCOUNT_INFO'); ?></div>

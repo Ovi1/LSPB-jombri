@@ -101,7 +101,7 @@ function updateReason(){
 	<div class="control-group">
 		<label class="control-label" for="recipient"><?php echo JText::_('COM_JBLANCE_USERNAME'); ?> :</label>
 		<div class="controls">
-			<input type="text" name="recipient" id="recipient" value="" class="input-medium required" onchange="checkUsername(this);" />
+			<input type="text" name="recipient" id="recipient" value="" class="form-control required" onchange="checkUsername(this);" />
 			<span id="status_recipient" class="help-inline"></span>
 		</div>
 	</div>

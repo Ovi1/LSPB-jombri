@@ -481,7 +481,7 @@
  	function getSelectUpdateFrequency($var, $default = 'instantly'){
  		$put[] = JHtml::_('select.option',  'instantly', JText::_('COM_JBLANCE_INSTANTLY'));
  		$put[] = JHtml::_('select.option',  'daily', JText::_('COM_JBLANCE_DAILY'));
- 		$frequency = JHtml::_('select.genericlist', $put, $var, "class='required'", 'value', 'text', $default);
+ 		$frequency = JHtml::_('select.genericlist', $put, $var, "class='required form-control'", 'value', 'text', $default);
  		return $frequency;
  	}
  	

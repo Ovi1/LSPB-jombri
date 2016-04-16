@@ -70,6 +70,7 @@ if ($usersConfig->get('allowUserRegistration') == '0') {
 <div class="panel panel-default">
 <div class="panel-body">
   <div class="col-md-12">
+
     <div class="introduction">
       <h2><?php echo JText::_($config->welcomeTitle); ?></h2>
       <ul id="featurelist">
@@ -141,7 +142,7 @@ if ($usersConfig->get('allowUserRegistration') == '0') {
   <?php endif; ?>
 </div>
 <div class="clearfix"></div>
-<!--<a id="ugselect"></a>-->
+<a id="ugselect"></a>
 <div class="row">	
 <?php
 $totGroups = count($this->userGroups);

@@ -26,25 +26,18 @@
 ?>
 <?php include_once(JPATH_COMPONENT.'/views/profilemenu.php'); ?>
 <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_EMAIL_SETTINGS'); ?></div>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormNotify" class="form-validate form-horizontal" enctype="multipart/form-data ">
+<form id="email-notification-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormNotify" class="form-validate form-horizontal" enctype="multipart/form-data ">
   
-  <div class="panel panel-default">
-      <div class="panel-heading"><h3><i class="material-icons">notifications</i> <?php echo JText::_('COM_JBLANCE_RECEIVE_INDIVIDUAL_NOTIFICATIONS_WHEN'); ?></h3></div>
+    <div id="email-notification" class="panel panel-default">
+  <div class="panel-heading"><h4><i class="material-icons">notifications</i> <?php echo JText::_('COM_JBLANCE_RECEIVE_INDIVIDUAL_NOTIFICATIONS_WHEN'); ?></h4></div>
    <div class="panel-body">
-	<div class="form-group"  style="display: none;">
+       <div class="form-group" style="display: none;">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_FREQUENCY_OF_UPDATES'); ?>:</label>
 		<div class="checkbox-inline">
-			<?php echo  $model->getSelectUpdateFrequency('frequency', $this->row->frequency ? $this->row->frequency : 'instantly'); ?>
+		<?php echo  $model->getSelectUpdateFrequency('frequency', $this->row->frequency ? $this->row->frequency : 'instantly'); ?>
 		</div>
 	</div>
-	<div class="form-group"  style="display: none;">
-		<label class="control-label"><?php echo JText::_('COM_JBLANCE_FREQUENCY_OF_UPDATES'); ?>:</label>
-		<div class="controls">
-			<label class="checkbox-inline">
-			<?php echo  $model->getSelectUpdateFrequency('frequency', $this->row->frequency ? $this->row->frequency : 'instantly'); ?>
-			</label>
-		</div>
-	</div>
+
 	<?php if($userGroup->allowBidProjects){ ?>
 	<div class="form-group">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_NOTIFY_WHEN_RELEVANT_PROJECT_GETS_POSTED'); ?>:</label>
@@ -89,9 +82,8 @@
 			</label>
 		</div>
 	</div>
-<div class="clearfix"></div>
-	<div class="btn-group pull-rightl">
-    <input type="button" onclick="javascript:history.back()" value="<?php echo JText::_('COM_JBLANCE_CANCEL'); ?>" class="btn btn-default"/>
+	<div class="btn-group pull-left">
+        <input type="button" onclick="javascript:history.back()" value="<?php echo JText::_('COM_JBLANCE_CANCEL'); ?>" class="btn btn-default"/>
     	<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary" />
 	</div>
   </div>

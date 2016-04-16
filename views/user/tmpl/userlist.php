@@ -84,7 +84,7 @@ JblanceHelper::setJoomBriToken();
                     <div class="ordering-select pull-right">
                         <span class="boldfont"><?php echo JText::_('COM_JBLANCE_SORT_BY'); ?>:</span>
                         <?php
-                        $attribs = "class='input-medium advancedSelect' size='1'";
+                        $attribs = "class='form-control advancedSelect' size='1'";
                         echo $model->getSelectUserlistOrdering('ordering', $ordering, $attribs);
                         ?>		
                     </div>

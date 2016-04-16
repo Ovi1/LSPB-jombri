@@ -1,6 +1,6 @@
 <?php
 /**
- * @company		:	BriTech Solutions
+ * @company		:BriTech Solutions
  * @created by	:	JoomBri Team
  * @contact		:	www.joombri.in, support@joombri.in
  * @created on	:	22 March 2012

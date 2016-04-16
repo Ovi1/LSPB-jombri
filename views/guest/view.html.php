@@ -22,8 +22,9 @@
  }
  
  $document->addStyleSheet("components/com_jblance/css/style.css");
- if($direction === 'rtl')
- 	$document->addStyleSheet("components/com_jblance/css/style-rtl.css");
+ if ($direction === 'rtl') {
+    $document->addStyleSheet("components/com_jblance/css/style-rtl.css");
+}
 
 /**
  * HTML View class for the Jblance component

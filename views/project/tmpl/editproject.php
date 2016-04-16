@@ -197,7 +197,7 @@ jQuery(document).ready(function() {
 			<label class="control-label" for="id_category"><?php echo JText::_('COM_JBLANCE_PROJECT_CATEGORIES'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
 				<?php 
-				//$attribs = 'class="input-medium required" size="20" multiple ';
+				//$attribs = 'class="form-control required" size="20" multiple ';
 				//$defaultCategory = empty($this->row->id_category) ? 0 : explode(',', $this->row->id_category);
 				//$categtree = $select->getSelectCategoryTree('id_category[]', $defaultCategory, 'COM_JBLANCE_PLEASE_SELECT', $attribs, '', true);
 				//echo $categtree; 
@@ -313,10 +313,10 @@ jQuery(document).ready(function() {
 			?>
 			<div class="controls controls-row" id="location_info">
 				<?php 
-				$attribs = array('class' => 'input-medium', 'data-level-id' => '1', 'onchange' => 'getLocation(this, \'project.getlocationajax\');');
+				$attribs = array('class' => 'form-control', 'data-level-id' => '1', 'onchange' => 'getLocation(this, \'project.getlocationajax\');');
 				
 				if($this->row->id_location == 0){
-					$attribs['class'] = 'input-medium required';
+					$attribs['class'] = 'form-control required';
 					$attribs['style'] = 'display: inline-block;';
 				}
 				else {
