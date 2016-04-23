@@ -31,7 +31,7 @@ class JblanceControllerGuest extends JControllerLegacy {
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 		
 		$app 	= JFactory::getApplication();
-		$db		= JFactory::getDbo();
+		$db	= JFactory::getDbo();
 		$user 	= JFactory::getUser();
 		$ugid 	= $app->input->get('ugid', 0, 'int');
 		

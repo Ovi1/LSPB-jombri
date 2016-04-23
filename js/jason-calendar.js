@@ -585,7 +585,7 @@ function DateInput(DateName, Required, DateFormat, DefaultDate) {
         		 '</td>' + String.fromCharCode(13) + 
         		 '<td valign="middle">');
          writeln('<div class="input-append"><input' + InitialStatus + ' class="calendarDateInput input-mini" type="text" id="' + DateName + '_Year_ID" size="' + eval(DateName + '_Object.picked.yearPad.length') + '" maxlength="' + eval(DateName + '_Object.picked.yearPad.length') + '" title="'+CalendarTT["YEAR"]+'" value="' + eval(DateName + '_Object.picked.yearPad') + '" onKeyPress="return YearDigitsOnly(window.event)" onKeyUp="' + DateName + '_Object.checkYear(this)" onBlur="' + DateName + '_Object.fixYear(this)" />'+
-        		 '<button type="button" class="btn" title="'+CalendarTT["CALENDAR"]+'" id="' + DateName + '_ID_Link" onclick="javascript:' + DateName + '_Object.show()" onMouseOver="return ' + DateName + '_Object.iconHover(true)" onMouseOut="return ' + DateName + '_Object.iconHover(false)"><i class="icon-calendar"></i></button>'+
+        		 '<button type="button" class="btn btn-default" title="'+CalendarTT["CALENDAR"]+'" id="' + DateName + '_ID_Link" onclick="javascript:' + DateName + '_Object.show()" onMouseOver="return ' + DateName + '_Object.iconHover(true)" onMouseOut="return ' + DateName + '_Object.iconHover(false)"><i class="material-icons">date_range</i></button>'+
         		'</div></td>');
          write('<td valign="middle">');
          writeln('<span id="' + DateName + '_ID" style="position:absolute;visibility:hidden;width:' + (CellWidth * 7) + 'px;background-color:' + CalBGColor + ';border:1px solid dimgray;" onMouseOver="' + DateName + '_Object.handleTimer(true)" onMouseOut="' + DateName + '_Object.handleTimer(false)">');

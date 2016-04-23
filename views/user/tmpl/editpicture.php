@@ -40,7 +40,7 @@ JblanceHelper::setJoomBriToken();
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="profilePicture" id="profilePicture" class="form-validate" enctype="multipart/form-data">
   <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PROFILE_PICTURE'); ?>
     <div class="btn-group pull-right upload-icons">
-      <button type="button" class="btn btn-default select-image-btn">
+      <button type="button" class="btn btn-primary select-image-btn">
         <i class="material-icons">attach_file</i>
         <?php echo JText::_('COM_JBLANCE_UPLOAD_NEW'); ?>
       </button>
@@ -53,7 +53,7 @@ JblanceHelper::setJoomBriToken();
       </button>
     </div>
   </div>
-      <div id="upload-message" class="center-block col-md-12"></div>
+  <div id="upload-message" class="center-block col-md-12"></div>
   <div class="row">
     <div class="col-md-6">
       <div class="cropit-image-view">

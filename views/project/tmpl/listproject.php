@@ -75,9 +75,8 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
         ?>
       </div>
       <div class="col-md-5">
-        <h3 class="media-heading">
-          <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
-        </h3>
+          <h4 class="media-heading">
+          <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?></h4>
         <div class="font14">
           <strong><?php echo JText::_('COM_JBLANCE_POSTED_BY'); ?></strong>: <?php echo LinkHelper::GetProfileLink($row->publisher_userid, $buyer->$nameOrUsername); ?>
         </div>
@@ -114,11 +113,11 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
             <span class="badge badge-info"><?php echo $bidsCount; ?></span>
           <?php endif; ?>
         </div>
-        <div>
-          <i class="material-icons"></i> <?php echo JText::_('COM_JBLANCE_STATUS'); ?> : <?php echo $model->getLabelProjectStatus($row->status); ?>
-        </div>
       </div>
-      <div class="col-md-3">
+        <div id="status" class="col-md-3">
+   
+          <?php echo $model->getLabelProjectStatus($row->status); ?>
+          <div class="status">
         <div class="bid_project_left text-center">
           <?php if ($sealProjectBids || $row->is_sealed) : ?>
             <span class="label label-info"><?php echo JText::_('COM_JBLANCE_SEALED'); ?></span>
@@ -127,12 +126,12 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
           <?php endif; ?>
         </div>
         <div class="avg"><?php echo JText::_('COM_JBLANCE_AVG_BID'); ?></div>
+        </div>
       </div>
       <?php if ($row->is_private_invite) : ?>
 
         <div class="col-md-12">
           <p class="alert alert-info"><?php echo JText::_('COM_JBLANCE_THIS_IS_A_PRIVATE_INVITE_PROJECT_VISIBLE_TO_OWNER_INVITEES'); ?></p>
-
         </div>
       <?php endif; ?>
     </div>

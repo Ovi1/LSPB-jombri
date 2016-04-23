@@ -19,16 +19,16 @@
  $type 			= $app->input->get('type', 'plan', 'string');
 ?>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormJob" enctype="multipart/form-data">
+    		<div class="panel panel-default">
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_CHECKOUT'); ?></div>
 	<!-- ************************************************************** plan checkout section ******************************************* -->
+	<div class="panel-body">
 	<?php if($type == 'plan') : ?>
 		<?php  
 		$introtext = 'COM_JBLANCE_CHECKOUT_INFO'.($repeat ? '_REPEAT' : '' );
 		echo JText::sprintf($introtext, '<b>'.$this->subscr->invoiceNo.'</b>' ); ?>
-		<div class="sp10">&nbsp;</div>
-		<div class="well well-small jbbox-gradient">
 			<h3><?php echo JText::_('COM_JBLANCE_CART'); ?></h3>
-			<table style="width: 100%;">
+                        <table class="table table-bordered table-responsive">
 				<thead>
 					<tr>
 					<th class="text-left"><?php echo JText::_('COM_JBLANCE_NAME'); ?></th>
@@ -73,7 +73,7 @@
 					<td colspan="7"><hr></td>
 				</tr>
 				<tr>
-					<td colspan="7" align="center"><input type="submit" class="btn btn-primary" value="<?php echo JText::_('COM_JBLANCE_CHECKOUT'); ?>" /></td>
+					<td colspan="7" align="center"><input type="submit" class="btn btn-primary btn-block" value="<?php echo JText::_('COM_JBLANCE_CHECKOUT'); ?>" /></td>
 				</tr>
 			</table>
 		</div>
@@ -81,12 +81,14 @@
 		<input type="hidden" name="id" value="<?php echo $this->subscr->id; ?>" />
 		<input type="hidden" name="paymode" value="<?php echo $this->subscr->gateway; ?>" />
 		<input type="hidden" name="price" value="<?php echo $total; ?>" />
+                </div>
+                </div>
 		<!-- ************************************************************** deposit checkout section ******************************************* -->
 		<?php elseif($type == 'deposit') : ?>
-		<div class="sp10">&nbsp;</div>
-		<div class="well well-small jbbox-gradient">
-			<h2><?php echo JText::_('COM_JBLANCE_CART'); ?></h2>
-			<table style="width: 100%;">
+		<div class="panel panel-default">
+                    <div class="panel-heading"><h3><?php echo JText::_('COM_JBLANCE_CART'); ?></h3></div>
+                    <div class="panel-body">
+			<table class="table table-bordered table-responsive">
 				<thead>
 					<tr>
 					<th class="text-left"><?php echo JText::_('COM_JBLANCE_NAME'); ?></th>
@@ -112,10 +114,10 @@
 						?>
 					</td>
 				</tr>
-				<tr>
+<!--				<tr>
 					<td colspan="4" class="text-right"> </td>
 					<td colspan="3" class="text-right"><hr></td>
-				</tr>
+				</tr>-->
 				<tr>
 					<td colspan="4" class="text-right"><?php echo JText::_('COM_JBLANCE_TOTAL'); ?> :</td>
 					<td colspan="3" class="text-right">
@@ -125,14 +127,15 @@
 						?>
 					</td>
 				</tr>
-				<tr>
+<!--				<tr>
 					<td colspan="7"><hr></td>
-				</tr>
+				</tr>-->
 				<tr>
-					<td colspan="7" align="center"><input type="submit" class="btn btn-primary" value="<?php echo JText::_('COM_JBLANCE_CHECKOUT'); ?>" /></td>
+					<td colspan="7" align="center"><input type="submit" class="btn btn-success btn-block" value="<?php echo JText::_('COM_JBLANCE_CHECKOUT'); ?>" /></td>
 				</tr>
 	
 			</table>
+		</div>
 		</div>
 		<input type="hidden" name="id" value="<?php echo $this->deposit->id; ?>" />
 		<input type="hidden" name="paymode" value="<?php echo $this->deposit->gateway; ?>" />

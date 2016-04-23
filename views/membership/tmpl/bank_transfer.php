@@ -27,9 +27,10 @@
  $type 			= $app->input->get('type', 'plan', 'string');
 ?>
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PAYMENT_INFO'); ?></div>
-	<div class="well well-small jbbox-gradient">
-		<h2 class="jbj_manual"><?php echo JText::_('COM_JBLANCE_CART'); ?></h2>
-		<table style="width: 100%;">
+	<div class="panel panel-default">
+            <div class="panel-heading"><h3 class="jbj_manual"><?php echo JText::_('COM_JBLANCE_CART'); ?></h3></div>
+            <div class="panel-body">
+                <table class="table table-bordered table-responsive">
 			<!-- ************************************************************** plan banktransfer section ******************************************* -->
 			<?php if($type == 'plan') : ?>
 			<thead>
@@ -96,10 +97,10 @@
 					?>
 				</td>
 			</tr>
-			<tr>
+<!--			<tr>
 				<td colspan="3" class="text-right"> </td>
 				<td colspan="2" class="text-right"><hr></td>
-			</tr>
+			</tr>-->
 			<tr>
 				<td colspan="3" class="text-right"><?php echo JText::_('COM_JBLANCE_TOTAL'); ?> :</td>
 				<td colspan="2" class="text-right">
@@ -109,13 +110,12 @@
 					?>
 				</td>
 			</tr>
-			<tr>
+<!--			<tr>
 				<td colspan="7"><hr></td>
-			</tr>
+			</tr>-->
 			<?php endif; ?>
 		</table>
-	</div>
-	<div class="sp20">&nbsp;</div>
+	
 	
 	<table class="table table-bordered table-hover table-condensed">
 		<thead>
@@ -171,5 +171,7 @@
 	</div>
 	
 	<div class="form-actions">
-		<input type="button" onclick="location.href='<?php echo $link_balance; ?>';" value="<?php echo JText::_('COM_JBLANCE_CONTINUE'); ?>" class="btn btn-primary"/>
+		<input type="button" onclick="location.href='<?php echo $link_balance; ?>';" value="<?php echo JText::_('COM_JBLANCE_CONTINUE'); ?>" class="btn btn-success btn-block"/>
+	</div>
+                </div>
 	</div>

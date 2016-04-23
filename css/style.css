@@ -442,7 +442,7 @@ html[xmlns] #jbnav { display: block; }
 * html #jbnav { height: 1%; }
 #jbMenu .jbMenuIconLogout { top: 6px; position: relative; margin-right: 5px; float: right;}
 
-.notify-menu { background-color: white; overflow: visible; position: absolute; top: 32px; width: 330px; z-index: -1; border: 1px solid #C5C5C5; background: rgba(255, 255, 255, 0.98); box-shadow: 0 3px 8px rgba(0, 0, 0, .25); border-radius: 3px; border: 1px solid rgba(100, 100, 100, .4); background-clip: padding-box; padding: 5px; }
+/*.notify-menu { background-color: white; overflow: visible; position: absolute; top: 32px; width: 330px; z-index: -1; border: 1px solid #C5C5C5; background: rgba(255, 255, 255, 0.98); box-shadow: 0 3px 8px rgba(0, 0, 0, .25); border-radius: 3px; border: 1px solid rgba(100, 100, 100, .4); background-clip: padding-box; padding: 5px; }*/
 span.notify-count { background-color: #EA0000; position: absolute; right: -6px; top: -6px; height: 14px; min-width: 10px; font: 700 10px/14px Arial; color: white; text-align: center; padding: 0 2px; border-bottom: 1px solid #111; display: block; border-radius: 3px; }
 /* Menu End */
 
@@ -460,7 +460,6 @@ span.notify-count { background-color: #EA0000; position: absolute; right: -6px; 
 .panel h3.pane-toggler-down a { background: #f5f5f5 url(../images/slider_minus.png) right top no-repeat; border-bottom: solid 1px #ddd; }
 .panel h3.pane-toggler a { background: #f5f5f5 url(../images/slider_plus.png) right top no-repeat; }
 .pane-sliders .content { background: white; }
-.panel h3 a { display: block; padding: 2px; text-decoration: none; color: #444; font-size: 18px;}
 
 /* tabs */
 dl.tabs { float: left; margin: 10px 0 -1px 0; z-index: 50; }

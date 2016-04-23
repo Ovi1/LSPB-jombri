@@ -11,29 +11,28 @@
  * @description	: 	User Groups (jblance)
  */
  defined('_JEXEC') or die('Restricted access');
- 
  JHtml::_('jquery.framework');
  JHtml::_('behavior.formvalidator');
  JHtml::_('behavior.modal', 'a.jb-modal');
  JHtml::_('bootstrap.tooltip');
 
  $doc = JFactory::getDocument();
- $doc->addScript("components/com_jblance/js/utility.js"); 
+ $doc->addScript("js/utility.js"); 
 
- $app = JFactory::getApplication();
- $user	= JFactory::getUser();
- $model = $this->getModel();
- $config = JblanceHelper::getConfig();
- $taxpercent = $config->taxPercent;
- $taxname = $config->taxName;
+$app = JFactory::getApplication();
+$user = JFactory::getUser();
+$model = $this->getModel();
+$config = JblanceHelper::getConfig();
+$taxpercent = $config->taxPercent;
+$taxname = $config->taxName;
 
- $session = JFactory::getSession();
- $ugid = $session->get('ugid', 0, 'register');
- $planChosen = $session->get('planChosen', 0, 'register');
- $planId = $session->get('planid', 0, 'register');
- $skipPlan = $session->get('skipPlan', 0, 'register');
+$session = JFactory::getSession();
+$ugid = $session->get('ugid', 0, 'register');
+$planChosen = $session->get('planChosen', 0, 'register');
+$planId = $session->get('planid', 0, 'register');
+$skipPlan = $session->get('skipPlan', 0, 'register');
 
- $jbuser = JblanceHelper::get('helper.user');		// create an instance of the class UserHelper
+$jbuser = JblanceHelper::get('helper.user');		// create an instance of the class UserHelper
  
  if(empty($planId)){	//this is to check if the user has selected plan and entered this page
 	$link = JRoute::_('index.php?option=com_jblance&view=guest&layout=showfront', false);
@@ -68,9 +67,11 @@ function validateForm(f){
 //-->
 </script>
 <?php 
-if($step)
-echo JblanceHelper::getProgressBar($step); 
+if ($step) {
+    echo JblanceHelper::getProgressBar($step);
+}
 ?>
+
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="regNewUser" class="form-horizontal form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data">
 <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_ACCOUNT_INFO'); ?></div>
 <?php echo JText::_('COM_JBLANCE_FIELDS_COMPULSORY'); ?>
@@ -170,7 +171,7 @@ echo JblanceHelper::getProgressBar($step);
 	<p><?php echo JText::sprintf('COM_JBLANCE_BY_CLICKING_YOU_AGREE', $link); ?></p>
 	
 	<div class="form-actions">
-		<input type="submit" value="<?php echo JText::_( 'COM_JBLANCE_I_ACCEPT_CREATE_MY_ACCOUNT' ); ?>" class="btn btn-primary" />
+	<input type="submit" value="<?php echo JText::_( 'COM_JBLANCE_I_ACCEPT_CREATE_MY_ACCOUNT' ); ?>" class="btn btn-primary" />
 	</div>
 		
 	<input type="hidden" name="option" value="com_jblance" />			

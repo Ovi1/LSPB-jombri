@@ -78,14 +78,11 @@ JblanceHelper::setJoomBriToken();
   });
 //-->
 </script>
-
-<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_COMPOSE'); ?></div>
-
+    <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_COMPOSE'); ?></div>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormMessage" id="userFormMessage" class="form-validate form-vertical" onsubmit="return validateForm(this);" enctype="multipart/form-data">
-
+    <div class="panel panel-default">
+    <div class="panel-body">
   <div id="status_recipient" class="dis-inl-blk"></div>
-  
-  
   <div class="form-group">
   <div class="input-group">
     <input placeholder="<?php echo JText::_('COM_JBLANCE_TO'); ?>:" type="text" name="recipient" id="recipient" value="<?php echo $recUsername; ?>" class="form-control required" />
@@ -126,9 +123,9 @@ JblanceHelper::setJoomBriToken();
     
     </div>
     <div class="clearfix"></div>
-  <div class="">
-        <button type="button" onclick="javascript:history.back();" class="btn btn-default"><i class="material-icons">cancel</i><?php echo JText::_('COM_JBLANCE_BACK'); ?></button>
-    <button type="submit" name="submit" id="submit" class="btn btn-primary pull-right"><?php echo JText::_('COM_JBLANCE_SEND'); ?>  <i class="material-icons">send</i>
+    <div class="btn-group pull-right">
+    <button type="button" onclick="javascript:history.back();" class="btn btn-default"><i class="material-icons">cancel</i><?php echo JText::_('COM_JBLANCE_BACK'); ?></button>
+    <button type="submit" name="submit" id="submit" class="btn btn-primary"><?php echo JText::_('COM_JBLANCE_SEND'); ?>  <i class="material-icons">send</i>
     </button>
   </div>
 
@@ -137,5 +134,6 @@ JblanceHelper::setJoomBriToken();
   <input type="hidden" name="id" value="0" />
   <input type="hidden" name="type" value="COM_JBLANCE_OTHER" />
   <?php echo JHtml::_('form.token'); ?>
-  
+    </div>
+    </div>
 </form>

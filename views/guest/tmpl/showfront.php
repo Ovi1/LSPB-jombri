@@ -12,8 +12,8 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-JHtml::_('jquery.framework');
-JHtml::_('behavior.formvalidator');
+//JHtml::_('jquery.framework');
+//JHtml::_('behavior.formvalidator');
 
 $doc = JFactory::getDocument();
 $doc->addStyleSheet("components/com_jblance/css/pricing.css");
@@ -38,24 +38,13 @@ if (empty($app_id) || empty($app_sec)) {
 }
 ?>
 
-<script type="text/javascript">
-<!--
-  jQuery(document).ready(function ($) {
-    $("#signup").click(function () {
-      $("html, body").animate({
-        scrollTop: $("#ugselect").offset().top
-      }, 500);
-    });
-  });
 
-  function selectRole(ugId) {
-    jQuery("button.active").removeClass("active btn-success");
-    jQuery('#btn_ug_id' + ugId).addClass("active btn-success");
-  }
-//-->
-</script>
 
-<?php
+
+<div class="panel panel-default">
+
+<div class="panel-body">
+    <?php
 $usersConfig = JComponentHelper::getParams('com_users');
 if ($usersConfig->get('allowUserRegistration') == '0') {
   ?>
@@ -66,11 +55,7 @@ if ($usersConfig->get('allowUserRegistration') == '0') {
   <?php
 }
 ?>
-
-<div class="panel panel-default">
-<div class="panel-body">
   <div class="col-md-12">
-
     <div class="introduction">
       <h2><?php echo JText::_($config->welcomeTitle); ?></h2>
       <ul id="featurelist">
@@ -90,7 +75,7 @@ if ($usersConfig->get('allowUserRegistration') == '0') {
     <!-- if user is guest -->
 <?php if ($user->guest) : ?>
       <div class="jb-loginform">
-        <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="login" class="form-horizontal" id="form-login">
+        <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="login" id="form-login">
           <h3><?php echo JText::_('COM_JBLANCE_MEMBERS_LOGIN'); ?></h3>
           <div class="form-group">
           <div class="input-group">
@@ -110,7 +95,7 @@ if ($usersConfig->get('allowUserRegistration') == '0') {
             <span class="input-group-addon"><i class="material-icons">lock</i></span>
             <input type="password" class="form-control" name="password" id="password" />
             <span class="input-group-btn">
-              <a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>" class="btn" title="<?php echo JText::_('COM_JBLANCE_FORGOT_YOUR_PASSWORD') . '?'; ?>" tabindex="-1">
+              <a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>" class="btn " title="<?php echo JText::_('COM_JBLANCE_FORGOT_YOUR_PASSWORD') . '?'; ?>" tabindex="-1">
                 <i class="material-icons">help</i>
               </a>
             </span>

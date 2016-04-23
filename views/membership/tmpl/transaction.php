@@ -23,7 +23,11 @@
 ?>
 <form action="<?php echo $action; ?>" method="post" name="userFormJob" enctype="multipart/form-data">	
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_TRANSACTION_HISTORY'); ?></div>
-	<div class="well well-small pull-right span3 text-center font16">
+        <div class="panel panel-default">
+        <div class="panel-body">
+	<div class="panel-success">
+	<div class="panel-heading">
+	<div class="panel-body">
 		<b>
 			<?php echo JText::_('COM_JBLANCE_CURRENT_BALANCE'); ?> : <?php echo JblanceHelper::formatCurrency($total_amt); ?>
 			<?php if($total_withdraw > 0) : 
@@ -32,6 +36,8 @@
 			<img src="components/com_jblance/images/tooltip.png" class="hasTooltip" title="<?php echo $tipmsg; ?>"/>
 			<?php endif; ?>
 		</b>
+	</div>
+	</div>
 	</div>
 	<div class="clearfix"></div>
 	
@@ -60,8 +66,6 @@
 			<td><?php echo JblanceHelper::formatCurrency($value); ?></td>
 		</tr>
 	</table>
-	<div class="sp20">&nbsp;</div>
-		
 	<div id="no-more-tables">
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
@@ -114,7 +118,7 @@
 		<tfoot>
 			<tr>
 				<td colspan="5">
-					<div class="pagination pagination-centered clearfix">
+					<div class="pagination pagination-centered">
 						<div class="display-limit pull-right">
 							<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
 							<?php echo $this->pageNav->getLimitBox(); ?>
@@ -130,4 +134,6 @@
 	<input type="hidden" name="option" value="com_jblance" />
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
-</form>
+        </div>
+        </div>
+        </form>

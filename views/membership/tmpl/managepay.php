@@ -27,6 +27,8 @@
  
  $action	= JRoute::_('index.php?option=com_jblance&view=membership&layout=managepay');
 ?>
+<div class="panel panel-default">
+<div class="panel-body">
 <form action="<?php echo $action; ?>" method="post" name="userFormJob" enctype="multipart/form-data">	
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_MANAGE_PAYMENTS'); ?></div>
 	<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'escrowout')); ?>
@@ -318,3 +320,5 @@
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
 </form>
+</div>
+</div>
