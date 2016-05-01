@@ -87,10 +87,6 @@ $span = 'col-md-' . $span;
     }
 //-->
 </script>
-<?php
-if ($step)
-    echo JblanceHelper::getProgressBar($step);
-?>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3><?php echo JText::_('COM_JBLANCE_BUY_SUBSCR'); ?>
@@ -106,6 +102,11 @@ if ($step)
         </h3>
     </div>
     <div class="panel-body">
+<?php
+
+        if ($step)
+    echo JblanceHelper::getProgressBar($step);
+?>
         <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormJob" enctype="multipart/form-data">
 
             <?php

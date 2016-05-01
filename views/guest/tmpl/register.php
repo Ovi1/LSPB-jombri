@@ -17,7 +17,7 @@
  JHtml::_('bootstrap.tooltip');
 
  $doc = JFactory::getDocument();
- $doc->addScript("js/utility.js"); 
+ $doc->addScript("components/com_jblance/js/utility.js"); 
 
 $app = JFactory::getApplication();
 $user = JFactory::getUser();
@@ -66,18 +66,19 @@ function validateForm(f){
 }
 //-->
 </script>
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="regNewUser" class="form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data">
+<div class="panel panel-default">
+<div class="panel-heading"><h3><?php echo JText::_('COM_JBLANCE_ACCOUNT_INFO'); ?></h3></div>
+<div class="panel-body">
 <?php 
 if ($step) {
     echo JblanceHelper::getProgressBar($step);
 }
 ?>
-
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="regNewUser" class="form-horizontal form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data">
-<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_ACCOUNT_INFO'); ?></div>
-<?php echo JText::_('COM_JBLANCE_FIELDS_COMPULSORY'); ?>
-	
-	<?php if(!$skipPlan) { ?>
-	<fieldset>
+    
+<?php if(!$skipPlan) { ?>
+    
+        <fieldset class="col-md-4">
 	<legend><?php echo JText::_('COM_JBLANCE_MEMBERSHIP_CHOSEN'); ?></legend>
 		<div class="form-group">
 			<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PLAN_NAME'); ?>: </label>
@@ -128,8 +129,9 @@ if ($step) {
 	</fieldset>
 	<?php } ?>
 	
-	<fieldset>
+<fieldset class="col-md-8">
 	<legend><?php echo JText::_('COM_JBLANCE_USER_INFORMATION'); ?></legend>
+            <?php echo JText::_('COM_JBLANCE_FIELDS_COMPULSORY'); ?>
 		<div class="form-group">
 			<label class="control-label" for="name"><?php echo JText::_('COM_JBLANCE_NAME'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
@@ -171,10 +173,12 @@ if ($step) {
 	<p><?php echo JText::sprintf('COM_JBLANCE_BY_CLICKING_YOU_AGREE', $link); ?></p>
 	
 	<div class="form-actions">
-	<input type="submit" value="<?php echo JText::_( 'COM_JBLANCE_I_ACCEPT_CREATE_MY_ACCOUNT' ); ?>" class="btn btn-primary" />
+	<input type="submit" value="<?php echo JText::_( 'COM_JBLANCE_I_ACCEPT_CREATE_MY_ACCOUNT' ); ?>" class="btn btn-primary btn-block btn-lg" />
 	</div>
 		
 	<input type="hidden" name="option" value="com_jblance" />			
 	<input type="hidden" name="task" value="guest.grabuseraccountinfo" />
 	<?php echo JHtml::_('form.token'); ?>
+</div>
+</div>
 </form>

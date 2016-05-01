@@ -34,51 +34,52 @@ JblanceHelper::setJoomBriToken();
 
 <script type="text/javascript">
 <!--
-  function validateForm(f) {
-    var valid = document.formvalidator.isValid(f);
-
-    if (valid === true) {
-      //
+function validateForm(f){
+	var valid = document.formvalidator.isValid(f);
+	
+	if(valid == true){
+		
     }
     else {
-      alert ('<?php echo JText::_('COM_JBLANCE_FIEDS_HIGHLIGHTED_RED_COMPULSORY', true); ?>');
-      return false;
+		alert('<?php echo JText::_('COM_JBLANCE_FIEDS_HIGHLIGHTED_RED_COMPULSORY', true); ?>');
+		return false;
     }
-    return true;
-  }
+	return true;
+}
 
-  jQuery(document).ready(function ($) {
-    attachFile('uploadmessage', 'message.attachfile');
+jQuery(document).ready(function($){
+	attachFile('uploadmessage', 'message.attachfile');
 
-    $("#recipient").on("change", function () {
-      checkUsername($("#recipient-x"));
-    });
+	$("#recipient").on("change", function(){
+		checkUsername($("#recipient"));
+	});
 
-    $("#recipient").autocomplete({
-      serviceUrl: "index.php?option=com_jblance&task=message.getautocompleteusername&<?php echo JSession::getFormToken() . '=1'; ?>",
-      type: "POST",
-      paramName: "recipient",
-      minChars: 1,
-      onSearchStart: function (query) {
-        $("#recipient-x").val("");
-      },
-      transformResult: function (response) {
-        var resp = jQuery.parseJSON(response);//console.log(resp);
-        return {
-          suggestions: $.map(resp, function (value, key) {
-            return {value: value, data: key};
-          })
-        };
-      },
-      onSelect: function (suggestion) {
-        $("#recipient-x").val(suggestion.data);
-        $("#recipient").triggerHandler("change");
-      }
-    });
-  });
+	$("#recipient").autocomplete({ 
+		serviceUrl: "index.php?option=com_jblance&task=message.getautocompleteusername&<?php echo JSession::getFormToken().'=1'; ?>", 
+		type: "POST",
+		paramName: "recipient", 
+		minChars: 1, 
+		onSearchStart: function(query){
+			 $("#recipient-x").val("");
+		},
+	    transformResult: function(response){
+	    	var resp = jQuery.parseJSON(response);//console.log(resp);
+	    	return {
+	            suggestions: $.map(resp, function(value, key){
+	                return { value: value, data: key };
+	            })
+	        };
+	    },
+		onSelect: function (suggestion) {
+	       $("#recipient-x").val(suggestion.data);
+	       $("#recipient").triggerHandler("change");
+	    }
+	});
+});
 //-->
 </script>
-    <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_COMPOSE'); ?></div>
+
+<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_COMPOSE'); ?></div>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormMessage" id="userFormMessage" class="form-validate form-vertical" onsubmit="return validateForm(this);" enctype="multipart/form-data">
     <div class="panel panel-default">
     <div class="panel-body">
@@ -100,7 +101,7 @@ JblanceHelper::setJoomBriToken();
     <input class="form-control required" type="text" name="subject" id="subject" value="<?php echo $subject; ?>" placeholder="<?php echo JText::_('COM_JBLANCE_SUBJECT'); ?>:"/>
     </div>
     <div class="form-group">
-  <textarea class="form-control" style="width: 100%" name="message" id="message" rows="5"
+  <textarea class="form-control" style="width: 100%" name="message" id="message" rows="6"
              placeholder="<?php echo JText::_('COM_JBLANCE_MESSAGE'); ?>:">
   </textarea>
     </div>

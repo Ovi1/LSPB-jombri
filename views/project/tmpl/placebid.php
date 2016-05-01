@@ -97,7 +97,9 @@ jQuery(document).ready(function($){
 });
 //-->
 </script>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormBid" id="userFormBid" class="form-validate form-horizontal" onsubmit="return validateForm(this);" enctype="multipart/form-data">
+    <div class="panel panel-default">
+        <div class="panel-body">
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormBid" id="userFormBid" class="form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data">
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_BID_ON_PROJECT').' : '.$project->project_title; ?></div>
 	<?php 
 	$lastSubscr = $finance->getLastSubscription($user->id);
@@ -108,30 +110,27 @@ jQuery(document).ready(function($){
 	    <div><?php echo JText::_('COM_JBLANCE_BIDS_LEFT'); ?></div>
 	</div>
 	<?php endif; ?>
-	<div class="control-group">
-		<label class="control-label" for="amount"><?php echo JText::_('COM_JBLANCE_YOUR_BID_FOR_PROJECT'); ?>:</label>
-		<div class="controls">
-			<div class="input-prepend input-append">
-				<span class="add-on"><?php echo $currencysym; ?></span>
-				<input type="text" name="amount" id="amount" class="input-small required validate-numeric" value="<?php echo $bid->amount; ?>" />
-				<span class="add-on"><?php echo $currencycode; ?><?php echo ($project->project_type == 'COM_JBLANCE_HOURLY') ? ' / '.JText::_('COM_JBLANCE_HR') : ''; ?></span>
+	<div class="form-group">
+                        <label class="control-label" for="amount"><?php echo JText::_('COM_JBLANCE_YOUR_BID_FOR_PROJECT'); ?>:</label>
+			<div class="input-group">
+				<span class="input-group-addon"><?php echo $currencysym; ?></span>
+				<input type="text" name="amount" id="amount" class="form-control required validate-numeric" value="<?php echo $bid->amount; ?>" />
+				<span class="input-group-addon"><?php echo $currencycode; ?><?php echo ($project->project_type == 'COM_JBLANCE_HOURLY') ? ' / '.JText::_('COM_JBLANCE_HR') : ''; ?></span>
 			</div>
 			<span class="help-inline font12">
 				<?php echo JText::_('COM_JBLANCE_BUDGET_RANGE'); ?> : <?php echo JblanceHelper::formatCurrency($project->budgetmin, true, false, 0); ?> - <?php echo JblanceHelper::formatCurrency($project->budgetmax, true, false, 0).' '.$currencycode; ?><?php echo ($project->project_type == 'COM_JBLANCE_HOURLY') ? ' / '.JText::_('COM_JBLANCE_HR') : ''; ?>
 			</span>
-		</div>
 	</div>
 	<?php 
 	if($project->project_type == 'COM_JBLANCE_HOURLY'){ 
 		$commitment = new JRegistry;
 		$commitment->loadString($project->commitment);
 		?>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="delivery"><?php echo JText::_('COM_JBLANCE_WORK_FOR'); ?>:</label>
-		<div class="controls">
-			<div class="input-append">
-				<input type="text" name="delivery" id="delivery" class="input-small required validate-numeric" value="<?php echo $bid->delivery; ?>" />
-				<span class="add-on"><?php echo JText::_('COM_JBLANCE_HOURS_PER').' '.JText::_($commitment->get('interval')); ?></span>
+			<div class="input-group">
+                                <input type="text" name="delivery" id="delivery" class="form-control required validate-numeric" value="<?php echo $bid->delivery; ?>" />
+				<span class="input-group-addon"><?php echo JText::_('COM_JBLANCE_HOURS_PER').' '.JText::_($commitment->get('interval')); ?></span>
 				<input type="hidden" id="commitment_period" value="<?php echo $commitment->get('period'); ?>" />
 				<input type="hidden" id="commitment_interval" value="<?php echo $commitment->get('interval'); ?>" />
 			</div>
@@ -146,33 +145,32 @@ jQuery(document).ready(function($){
 				}
 				?>
 			</span>
-		</div>
 	</div>
 	<?php } ?>
 	<?php 
 	if($project->project_type == 'COM_JBLANCE_FIXED'){ ?>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="delivery"><?php echo JText::_('COM_JBLANCE_DAYS_DELIVER_PROJECT'); ?>:</label>
 		<div class="controls">
-			<div class="input-append">
-				<input type="text" name="delivery" id="delivery" class="input-small required validate-numeric" value="<?php echo $bid->delivery; ?>" />
-				<span class="add-on"><?php echo JText::_('COM_JBLANCE_BID_DAYS'); ?></span>
+			<div class="input-group">
+				<input type="text" name="delivery" id="delivery" class="form-control required validate-numeric" value="<?php echo $bid->delivery; ?>" />
+				<span class="input-group-addon"><?php echo JText::_('COM_JBLANCE_BID_DAYS'); ?></span>
 			</div>
 		</div>
 	</div>
 	<?php } ?>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="details"><?php echo JText::_('COM_JBLANCE_BID_DETAILS'); ?>: </label>
 		<div class="controls">
-			<textarea name="details" id="details" rows="5" class="input-xlarge required"><?php echo $bid->details; ?></textarea>
+			<textarea name="details" id="details" rows="5" class="form-control required"><?php echo $bid->details; ?></textarea>
 		</div>
 	</div>
 	
-	<div class="control-group">
+	<div class="form-group">
 		<div class="controls">
 			<!-- hide the outbid notification for sealed projects -->
 			<?php if(!($sealProjectBids || $this->project->is_sealed)) : ?>
-			<label class="checkbox">
+			<label class="checkbox-inline">
 				<input type="checkbox" name="outbid" id="outbid" value="1" <?php echo ($bid->outbid == 1) ? 'checked' : ''; ?> />
  				<?php echo JText::_('COM_JBLANCE_NOTIFY_OUT_BIDS'); ?>
 			</label>
@@ -180,16 +178,15 @@ jQuery(document).ready(function($){
 			
 			<!-- show the PM only for the first time placing bid -->
 			<?php if($bid->id == 0) : ?>
-			<label class="checkbox">
+			<label class="checkbox-inline">
 				<input type="checkbox" name="sendpm" id="sendpm" value="1" onclick="javascript:togglePrivateMsg();" />
  				<?php echo JText::_('COM_JBLANCE_SEND_PM_TO_PUBLISHER'); ?>
 			</label>
 			<div id="messagediv" style="display: none;">
-				<textarea name="message" id="message" rows="5" class="input-xlarge"></textarea>
-				<div class="sp10">&nbsp;</div>
+				<textarea name="message" id="message" rows="5" class="form-control"></textarea>
 				<div id="ajax-container-uploadmessage"></div>
 				<div id="file-attached-uploadmessage"></div>
-				<input type="button" id="uploadmessage" value="<?php echo JText::_('COM_JBLANCE_ATTACH_FILE'); ?>" class="btn">
+				<input type="button" id="uploadmessage" value="<?php echo JText::_('COM_JBLANCE_ATTACH_FILE'); ?>" class="btn btn-info">
 				<?php 
 				$tipmsg = JHtml::tooltipText(JText::_('COM_JBLANCE_ATTACH_FILE'), JText::_('COM_JBLANCE_ALLOWED_FILE_TYPES').' : '.$config->projectFileText.'<br>'.JText::_('COM_JBLANCE_MAXIMUM_FILE_SIZE').' : '.$config->projectMaxsize.' kB');
 				?>
@@ -206,12 +203,17 @@ jQuery(document).ready(function($){
 	<!-- show the agreement form is it is NDA project and not signed -->
 	<?php if($this->project->is_nda && !($bid->is_nda_signed)) : ?>
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_SIGN_NDA'); ?></div>
-	<div class="well well-small jbbox-gradient">
+	<div class="panel panel-info">
+	<div class="panel-body">
+            <div class="form-group">
 		<?php 
 		$ndaFile  =  JURI::root().'components/com_jblance/images/nda.txt';
 		echo JText::sprintf('COM_JBLANCE_NDA_BID_MUST_AGREE', $ndaFile); ?>
-		<div class="sp20">&nbsp;</div>
-		<label class="checkbox"><input type="checkbox" name="is_nda_signed" id="is_nda_signed" value="1" /><?php echo JText::_('COM_JBLANCE_NDA_FREELANCER_AGREE_TO_NDA'); ?></label>
+		<label class="checkbox-inline">
+                    <input type="checkbox" name="is_nda_signed" id="is_nda_signed" value="1" /><?php echo JText::_('COM_JBLANCE_NDA_FREELANCER_AGREE_TO_NDA'); ?>
+                </label>
+        </div>
+	</div>
 	</div>
 	<?php elseif($this->project->is_nda && $bid->is_nda_signed) : ?>
 		<div class="jbbox-info"><?php echo JText::_('COM_JBLANCE_NDA_ALREADY_SIGNED_AGREEMENT');?>
@@ -227,10 +229,9 @@ jQuery(document).ready(function($){
 		</div>
 	<?php endif; ?>
 	
-	<div class="clearfix"></div>
-	<div class="form-actions">
+        <div class="form-actions">
 		<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary" id="submitbtn" /> 
-		<input type="button" value="<?php echo JText::_('COM_JBLANCE_CANCEL'); ?>" onclick="javascript:history.back();" class="btn btn-primary" />
+		<input type="button" value="<?php echo JText::_('COM_JBLANCE_CANCEL'); ?>" onclick="javascript:history.back();" class="btn btn-default" />
 	</div>
 	
 	<input type="hidden" name="option" value="com_jblance" />			
@@ -239,3 +240,7 @@ jQuery(document).ready(function($){
 	<input type="hidden" name="project_id" value="<?php echo $project->id;?>" />
 	<?php echo JHtml::_('form.token'); ?>
 </form>
+ </div>
+ </div>
+ 
+ 

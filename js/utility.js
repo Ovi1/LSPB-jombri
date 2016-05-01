@@ -292,7 +292,7 @@ function processFeed(userid, activityid, type){
 		data: {"userid":userid, "activityid":activityid, "type":type}, 
 		beforeSend: function(){ jQuery("#feed_hide_"+activityid).empty().addClass("jbloading"); },
 		success: function(response){
-			if(response == "OK"){
+			if(response === "OK"){
 				jQuery("#jbl_feed_item_"+activityid).css("display", "none");
 			}
 			else {
@@ -552,6 +552,116 @@ function createDropzone(elementId, mockFile, controller){
 		myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
 	};
 	document.querySelector("#actions .cancel").onclick = function() {
+		myDropzone.removeAllFiles(true);
+	};
+}
+
+function createDropzoneNew(elementId, paramName, mockFile, task, allowed, removetask){
+	//Get the template HTML and remove it from the document template HTML and remove it from the doument
+	var previewNode = document.querySelector("#"+elementId+"-template");
+	previewNode.id = "";
+	var previewTemplate = previewNode.parentNode.innerHTML;
+	previewNode.parentNode.removeChild(previewNode);
+	
+	var myDropzone = new Dropzone("#"+elementId, { // Make the whole body a dropzone
+		url: "index.php?option=com_jblance&task="+task+"&"+JoomBriToken, // Set the url
+		paramName: paramName,
+		//autoDiscover : false,
+		//myAwesomeDropzone : false,
+		thumbnailWidth: 80,
+		thumbnailHeight: 80,
+		parallelUploads: 1,
+		previewTemplate: previewTemplate,
+		autoQueue: false, // Make sure the files aren't queued until manually added
+		previewsContainer: "#"+elementId+"-previews", // Define the container to display the previews
+		clickable: "."+elementId+"-fileinput-button", // Define the element that should be used as click trigger to select files.
+		maxFilesize: 2, // MB
+		maxFiles: 5,	//limited to 5 files only
+		params: {'paramName':paramName},
+		acceptedFiles: allowed,
+		init: function(){
+			// if images are uploaded successfully, add hidden fields. This function is called by emit function upon load and after file is successfully uploaded 
+			this.on("success", function(file, response){console.log(response);
+				if(typeof response !== "undefined" && response !== null){
+					var resp = jQuery.parseJSON(response);
+					if(resp["result"] == "OK"){
+						var hiddenvalue = resp["attachvalue"];
+					}
+				}
+				else {
+					var hiddenvalue = file.name + ";" + file.servername + ";" + file.size;
+				}
+				jQuery("<input/>", {
+					"type": "hidden",
+					"name": paramName+"[]",
+					"value" : hiddenvalue
+				}).appendTo(file.previewTemplate);
+			}); 
+		}
+	});
+	
+	var existingFileCount = 0;
+	var data = jQuery.parseJSON(mockFile);
+	jQuery.each(data, function(key, value){
+		var mockFile = { name: value.name, servername: value.servername, size: value.size, status: Dropzone.SUCCESS };
+		myDropzone.emit("addedfile", mockFile);
+		myDropzone.emit("thumbnail", mockFile, value.thumb);
+		myDropzone.emit("success", mockFile);
+		myDropzone.files.push(mockFile);  // added this line so the files array is the correct length.
+		existingFileCount = existingFileCount + 1;
+	});
+	
+	myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
+	
+	myDropzone.on("addedfile", function(file) {
+		// Hookup the start button
+		file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+		
+		// Add default option box for each preview.
+		//var defaultRadioButton = Dropzone.createElement('<div class="default_pic_container"><input type="radio" name="default_pic" value="'+file.name+'" /> Default</div>');
+		//file.previewElement.appendChild(defaultRadioButton);
+	});
+	
+	// Update the total progress bar
+	myDropzone.on("totaluploadprogress", function(progress) {
+		document.querySelector("#"+elementId+"-total-progress .bar").style.width = progress + "%";
+	});
+	
+	myDropzone.on("sending", function(file) {
+		// Show the total progress bar when upload starts
+		document.querySelector("#"+elementId+"-total-progress").style.opacity = "1";
+		// And disable the start button
+		file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+	});
+	
+	// Hide the total progress bar when nothing's uploading anymore
+	myDropzone.on("queuecomplete", function(progress) {
+		document.querySelector("#"+elementId+"-total-progress").style.opacity = "0";
+	});
+	
+	myDropzone.on("removedfile", function(file){
+		//if the input hidden node exist
+		if(file.previewTemplate.children[4]){
+			attachvalue = file.previewTemplate.children[4].value;
+			
+			var myRequest = jQuery.ajax({
+				url: "index.php?option=com_jblance&task="+removetask+"&"+JoomBriToken,
+				method: "POST",
+				data: {"attachvalue": attachvalue },
+				success: function(response){
+					//nothing
+				}
+			});
+			myDropzone.options.maxFiles = myDropzone.options.maxFiles + 1;
+		}
+	});
+	
+	// Setup the buttons for all transfers
+	// The "add files" button doesn't need to be setup because the config `clickable` has already been specified.
+	document.querySelector("#"+elementId+"-actions .start").onclick = function() {
+		myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+	};
+	document.querySelector("#"+elementId+"-actions .cancel").onclick = function() {
 		myDropzone.removeAllFiles(true);
 	};
 }

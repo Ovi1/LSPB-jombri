@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
 JHtml::_('jquery.framework');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('formbehavior.chosen', '#id_categ', null, array('placeholder_text_multiple' => JText::_('COM_JBLANCE_FILTER_PROJECT_BY_SKILLS')));
-//JHtml::_('formbehavior.chosen', '#id_location');
+JHtml::_('formbehavior.chosen', '#id_location');
 
 $doc = JFactory::getDocument();
 $doc->addScript("components/com_jblance/js/btngroup.js");
@@ -186,7 +186,7 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                 } elseif ($row->status == 'COM_JBLANCE_CLOSED') {
                     $statusLabel = 'label label-info';
                 } elseif ($row->status == 'COM_JBLANCE_EXPIRED') {
-                    $statusLabel = 'label label-info';
+                    $statusLabel = 'label label-danger';
                 }
 
                 $bidsCount = $model->countBids($row->id);
@@ -199,32 +199,13 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                 $isMine = ($row->publisher_userid == $user->id);
                 if ($row->is_private_invite) {
                     $invite_ids = explode(',', $row->invite_user_id);
-                    if (!in_array($user->id, $invite_ids) && !$isMine)
+                    if (!in_array($user->id, $invite_ids) && !$isMine) {
                         continue;
+                    }
                 }
                 ?>
-                <div class="clearfix">
-                    <div class="col-md-2 col-xs-4 col-sm-4">
-                        <?php
-                        $attrib = ' class="img-thumbnail"';
-                        $avatar = JblanceHelper::getLogo($row->publisher_userid, $attrib);
-                        echo!empty($avatar) ? LinkHelper::GetProfileLink($row->publisher_userid, $avatar) : '&nbsp;'
-                        ?>
-                    </div>
-                    <div class="col-md-4 col-xs-6 col-sm-4">
-                        <h3 class="media-heading">
-                            <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
-                        </h3>
-                        <div class="font14">
-                            <strong><?php echo JText::_('COM_JBLANCE_POSTED_BY'); ?></strong>: <?php echo LinkHelper::GetProfileLink($row->publisher_userid, $buyer->$nameOrUsername); ?>
-                        </div>
-                        <div class="font14">
-                            <strong><?php echo JText::_('COM_JBLANCE_SKILLS_REQUIRED'); ?></strong>: <?php echo JblanceHelper::getCategoryNames($row->id_category, 'tags-link', 'project'); ?>
-                        </div>
-                        <div class="font14">
-                            <strong><?php echo JText::_('COM_JBLANCE_LOCATION'); ?></strong>: <span class=""><?php echo JblanceHelper::getLocationNames($row->id_location); ?></span>
-                        </div>
-                        <ul class="promotions">
+            <div id="projectBox" class="clearfix">
+                             <ul class="promotions">
                             <?php if ($row->is_featured) : ?>
                                 <li data-promotion="featured"><?php echo JText::_('COM_JBLANCE_FEATURED'); ?></li>
                             <?php endif; ?>
@@ -241,6 +222,26 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                                 <li data-promotion="nda"><?php echo JText::_('COM_JBLANCE_NDA'); ?></li>
                             <?php endif; ?>
                         </ul>
+                    <div class="col-md-2 col-xs-4 col-sm-4">
+                        <?php
+                        $attrib = 'class="img-responsive"';
+                        $avatar = JblanceHelper::getLogo($row->publisher_userid, $attrib);
+                        echo!empty($avatar) ? LinkHelper::GetProfileLink($row->publisher_userid, $avatar) : '&nbsp;'
+                        ?>
+                    </div>
+                    <div class="col-md-4 col-xs-6 col-sm-4">
+                        <h4 class="media-heading">
+                            <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
+                        </h4>
+                        <div class="font14">
+                            <strong><?php echo JText::_('COM_JBLANCE_POSTED_BY'); ?></strong>: <?php echo LinkHelper::GetProfileLink($row->publisher_userid, $buyer->$nameOrUsername); ?>
+                        </div>
+                        <div class="font14">
+                            <strong><?php echo JText::_('COM_JBLANCE_SKILLS_REQUIRED'); ?></strong>: <?php echo JblanceHelper::getCategoryNames($row->id_category, 'tags-link', 'project'); ?>
+                        </div>
+                        <div class="font14">
+                            <strong><?php echo JText::_('COM_JBLANCE_LOCATION'); ?></strong>: <span class=""><?php echo JblanceHelper::getLocationNames($row->id_location); ?></span>
+                        </div>
                     </div>
                     <div class="col-md-3 col-xs-12">
 
@@ -250,24 +251,24 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                         <?php else : ?>
                             <span class="badge badge-info"><?php echo $bidsCount; ?></span>
                         <?php endif; ?>
-
-
-                        <i class="material-icons"></i> <?php echo JText::_('COM_JBLANCE_STATUS'); ?> : 
-                        <span class="<?php echo $statusLabel; ?>"><?php echo JText::_($row->status); ?></span>
                     </div>
 
-                    <div class="col-md-3 col-xs-12 ">
-                        <div class="text-center">
+                    <div id="status" class="col-md-3">
+                        <span class="<?php echo $statusLabel; ?>"><?php echo JText::_($row->status); ?></span>
 
-                            <?php if ($sealProjectBids || $row->is_sealed) : ?>
-                                <span class="label label-info"><?php echo JText::_('COM_JBLANCE_SEALED'); ?></span>
-                            <?php else : ?>
-                                <span class="font16 boldfont"><?php echo JblanceHelper::formatCurrency($avg, true, false, 0); ?></span><?php echo ($row->project_type == 'COM_JBLANCE_HOURLY') ? ' / ' . JText::_('COM_JBLANCE_HR') : ''; ?>
-                            <?php endif; ?>
-                            <div><?php echo JText::_('COM_JBLANCE_AVG_BID'); ?></div>
+                        <div class="status">
+                            <div class="bid_project_left text-center">
+                                <?php if ($sealProjectBids || $row->is_sealed) : ?>
+                                    <span class="label label-info"><?php echo JText::_('COM_JBLANCE_SEALED'); ?></span>
+                                <?php else : ?>
+                                    <span class="font16 boldfont"><?php echo JblanceHelper::formatCurrency($avg, true, false, 0); ?></span><?php echo ($row->project_type == 'COM_JBLANCE_HOURLY') ? ' / ' . JText::_('COM_JBLANCE_HR') : ''; ?>
+                                <?php endif; ?>
+                            </div>
+                            <div class="avg"><?php echo JText::_('COM_JBLANCE_AVG_BID'); ?></div>
                         </div>
                     </div>
                 </div>
+            <div class="lineseparator"></div>
                 <?php
             }
             ?>

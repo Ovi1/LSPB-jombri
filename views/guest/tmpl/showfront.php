@@ -16,7 +16,7 @@ defined('_JEXEC') or die('Restricted access');
 //JHtml::_('behavior.formvalidator');
 
 $doc = JFactory::getDocument();
-$doc->addStyleSheet("components/com_jblance/css/pricing.css");
+//$doc->addStyleSheet("components/com_jblance/css/pricing.css");
 
 $app = JFactory::getApplication();
 $user = JFactory::getUser();

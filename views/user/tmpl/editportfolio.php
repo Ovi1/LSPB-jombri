@@ -81,7 +81,6 @@ JblanceHelper::setJoomBriToken();
 //-->
 </script>
 <?php include_once(JPATH_COMPONENT . '/views/profilemenu.php'); ?>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormPortfolio" id="userFormPortfolio" class="form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data" novalidate>
     <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PORTFOLIOS'); ?>
         <div class="pull-right">
             <?php if (count($this->portfolios) >= $allowedPortfolio) : ?>
@@ -94,6 +93,7 @@ JblanceHelper::setJoomBriToken();
             <?php endif; ?>
         </div>
     </div>
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormPortfolio" id="userFormPortfolio" class="form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data" novalidate>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4> <?php echo ($this->row->id == 0) ? JText::_('COM_JBLANCE_ADD_PORTFOLIO') : JText::_('COM_JBLANCE_EDIT_PORTFOLIO'); ?></h4>
@@ -234,7 +234,6 @@ JblanceHelper::setJoomBriToken();
                 <div class="form-group">
                 <div class="input-group">
                     <label for="published"><?php echo JText::_('COM_JBLANCE_PORTFOLIO_IMAGE'); ?>:</label>
-                    <div class="controls">
                         <?php
                         if ($this->row->picture) {
                             $attachment = explode(";", $this->row->picture);
@@ -254,13 +253,12 @@ JblanceHelper::setJoomBriToken();
                         $tipmsg = JText::_('COM_JBLANCE_ATTACH_IMAGE') . ':' . JText::_('COM_JBLANCE_ALLOWED_FILE_TYPES') . ' : ' . $config->projectFileText . '<br>' . JText::_('COM_JBLANCE_MAXIMUM_FILE_SIZE') . ' : ' . $config->projectMaxsize . ' kB';
                         ?>
                         <a class="hasTooltip" title="<?php echo $tipmsg; ?>"><i class="material-icons">help</i></a>
-                    </div>
+                 
                 </div>
                 </div>
                 <div class="form-group">
                 <div class="input-group">
                     <label  for="published"><?php echo JText::_('COM_JBLANCE_ATTACHMENT'); ?>:</label>
-                    <div class="controls">
                         <?php
                         if ($this->row->attachment) {
                             echo LinkHelper::getPortfolioDownloadLink('portfolio', $this->row->id, 'user.download');
@@ -295,7 +293,7 @@ JblanceHelper::setJoomBriToken();
                             }
                             ?>
                         </ul>
-                    </div>
+                
                 </div>
                 </div>
                 <div class="btn-group">

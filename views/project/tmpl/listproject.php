@@ -29,7 +29,7 @@ $link_search = JRoute::_('index.php?option=com_jblance&view=project&layout=searc
 $projHelper = JblanceHelper::get('helper.project');  // create an instance of the class ProjectHelper
 $userHelper = JblanceHelper::get('helper.user');  // create an instance of the class UserHelper
 ?>
-<form action="<?php echo $action; ?>" method="post" name="userForm">
+<form  action="<?php echo $action; ?>" method="post" name="userForm">
   <div class="jbl_h3title"><?php echo $this->escape($this->params->get('page_heading', JText::_('COM_JBLANCE_LIST_OF_PROJECTS'))); ?>
     <a href="<?php echo $link_search; ?>" class="pull-right btn btn-primary"><?php echo JText::_('COM_JBLANCE_SEARCH_PROJECTS'); ?></a>  
   </div>
@@ -67,6 +67,23 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
     }
     ?>
     <div id="projectBox" class="row">
+         <ul class="promotions">
+          <?php if ($row->is_featured) : ?>
+            <li data-promotion="featured"><?php echo JText::_('COM_JBLANCE_FEATURED'); ?></li>
+          <?php endif; ?>
+          <?php if ($row->is_private) : ?>
+            <li data-promotion="private"><?php echo JText::_('COM_JBLANCE_PRIVATE'); ?></li>
+          <?php endif; ?>
+          <?php if ($row->is_urgent) : ?>
+            <li data-promotion="urgent"><?php echo JText::_('COM_JBLANCE_URGENT'); ?></li>
+          <?php endif; ?>
+          <?php if ($sealProjectBids || $row->is_sealed) : ?>
+            <li data-promotion="sealed"><?php echo JText::_('COM_JBLANCE_SEALED'); ?></li>
+          <?php endif; ?>
+          <?php if ($row->is_nda) : ?>
+            <li data-promotion="nda"><?php echo JText::_('COM_JBLANCE_NDA'); ?></li>
+          <?php endif; ?>
+        </ul>
       <div class="col-md-2">
         <?php
         $attrib = 'class="img-responsive"';
@@ -86,23 +103,7 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
         <div class="font14">
           <strong><?php echo JText::_('COM_JBLANCE_LOCATION'); ?></strong>: <span class=""><?php echo JblanceHelper::getLocationNames($row->id_location); ?></span>
         </div>
-        <ul class="promotions">
-          <?php if ($row->is_featured) : ?>
-            <li data-promotion="featured"><?php echo JText::_('COM_JBLANCE_FEATURED'); ?></li>
-          <?php endif; ?>
-          <?php if ($row->is_private) : ?>
-            <li data-promotion="private"><?php echo JText::_('COM_JBLANCE_PRIVATE'); ?></li>
-          <?php endif; ?>
-          <?php if ($row->is_urgent) : ?>
-            <li data-promotion="urgent"><?php echo JText::_('COM_JBLANCE_URGENT'); ?></li>
-          <?php endif; ?>
-          <?php if ($sealProjectBids || $row->is_sealed) : ?>
-            <li data-promotion="sealed"><?php echo JText::_('COM_JBLANCE_SEALED'); ?></li>
-          <?php endif; ?>
-          <?php if ($row->is_nda) : ?>
-            <li data-promotion="nda"><?php echo JText::_('COM_JBLANCE_NDA'); ?></li>
-          <?php endif; ?>
-        </ul>
+       
       </div>
       <div class="col-md-2">
         <div>
