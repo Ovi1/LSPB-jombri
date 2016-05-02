@@ -97,8 +97,8 @@ JblanceHelper::setJoomBriToken();
   <div class="clearfix"></div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3><?php echo JText::_('COM_JBLANCE_USER_INFORMATION'); ?></h3>
-      <?php if (!$isMine && $userInfo->allowBidProjects && $hasJBProfileForViewer && $viewerInfo->allowPostProjects) : ?>
+      <h3><?php echo JText::_('COM_JBLANCE_USER_INFORMATION'); ?>
+            <?php if (!$isMine && $userInfo->allowBidProjects && $hasJBProfileForViewer && $viewerInfo->allowPostProjects) : ?>
         <!-- show invite to project to non-profile-owner, if profile owner can bid and profile viewer can post project -->
 
         <div class="pull-right">
@@ -112,10 +112,11 @@ JblanceHelper::setJoomBriToken();
               <a onclick="favourite('<?php echo $userid; ?>', 1, 'profile');" href="javascript:void(0);" class="btn"><span><i class="material-icons">add</i></span> <?php echo JText::_('COM_JBLANCE_ADD_FAVOURITE') ?></a>
             <?php endif; ?>
           </span>
-          <a class="btn" href="<?php echo $link_sendpm; ?>"><i class="material-icons">message</i> <?php echo JText::_('COM_JBLANCE_SEND_MESSAGE'); ?></a>
+          <a class="btn btn-default" href="<?php echo $link_sendpm; ?>"><i class="material-icons">message</i> <?php echo JText::_('COM_JBLANCE_SEND_MESSAGE'); ?></a>
         </div>
 
       <?php endif; ?>
+      </h3>
     </div>
     <div class="panel-body">
       <div class="row-fluid">

@@ -104,7 +104,7 @@ class authorizenet_class {
 		else
 			$return['success'] = false;
 		
-		return $return;
+		return  $return;
 	}
 	
 	function validate_ipn($data){

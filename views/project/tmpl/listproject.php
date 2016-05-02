@@ -84,16 +84,25 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
             <li data-promotion="nda"><?php echo JText::_('COM_JBLANCE_NDA'); ?></li>
           <?php endif; ?>
         </ul>
-      <div class="col-md-2">
+      <div class="col-xs-4 col-sm-4 col-md-2">
         <?php
         $attrib = 'class="img-responsive"';
         $avatar = JblanceHelper::getLogo($row->publisher_userid, $attrib);
         echo!empty($avatar) ? LinkHelper::GetProfileLink($row->publisher_userid, $avatar) : '&nbsp;'
         ?>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-7">
           <h4 class="media-heading">
-          <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?></h4>
+          <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
+              <small>
+          <?php echo JText::_('COM_JBLANCE_BIDS'); ?> : 
+          <?php if ($sealProjectBids || $row->is_sealed) : ?>
+            <span class="label label-info"><?php echo JText::_('COM_JBLANCE_SEALED'); ?></span>
+          <?php else : ?>
+            <span class="badge badge-info"><?php echo $bidsCount; ?></span>
+          <?php endif; ?>
+              </small>
+         </h4>
         <div class="font14">
           <strong><?php echo JText::_('COM_JBLANCE_POSTED_BY'); ?></strong>: <?php echo LinkHelper::GetProfileLink($row->publisher_userid, $buyer->$nameOrUsername); ?>
         </div>
@@ -104,16 +113,6 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
           <strong><?php echo JText::_('COM_JBLANCE_LOCATION'); ?></strong>: <span class=""><?php echo JblanceHelper::getLocationNames($row->id_location); ?></span>
         </div>
        
-      </div>
-      <div class="col-md-2">
-        <div>
-          <i class="material-icons">label</i> <?php echo JText::_('COM_JBLANCE_BIDS'); ?> : 
-          <?php if ($sealProjectBids || $row->is_sealed) : ?>
-            <span class="label label-info"><?php echo JText::_('COM_JBLANCE_SEALED'); ?></span>
-          <?php else : ?>
-            <span class="badge badge-info"><?php echo $bidsCount; ?></span>
-          <?php endif; ?>
-        </div>
       </div>
         <div id="status" class="col-md-3">
    

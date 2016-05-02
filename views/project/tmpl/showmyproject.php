@@ -37,6 +37,7 @@ JText::script('COM_JBLANCE_YES');
 
 $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout=editproject');
 ?>
+
 <div class="panel panel-default">
     <div class="panel-heading"><h3>
             <?php echo JText::_('COM_JBLANCE_MY_PROJECTS'); ?>
@@ -75,19 +76,29 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                         $noInvitees = true;
                     }
                     ?>
-                    <div id="myprojects" class="col-md-3">
+                    <div id="myprojects" class="col-md-4">
 
                         <?php echo $model->getLabelProjectStatus($row->status); ?>
-
-
                         <div class="thumbnail">
-                            <h4>
+                            <h5>
                                 <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
                                 <?php
                                 if ($row->approved == 0)
                                     echo '&nbsp;<span class="label label-danger">' . JText::_('COM_JBLANCE_PENDING_APPROVAL') . '</span>';
                                 ?>
-                                <ul class="promotions" style="margin-top: 5px;">
+                               <span class="label label-success"><?php echo (!empty($bidInfo->p_status)) ? JText::_($bidInfo->p_status) : JText::_('COM_JBLANCE_NOT_YET_STARTED'); ?></span>
+                               <span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="<?php echo  JText::_('COM_JBLANCE_BIDS'); ?>"><?php echo $bidsCount; ?></span>
+                                                  <?php if (($row->buyer_commission > 0) && ($row->status == 'COM_JBLANCE_CLOSED')) { ?>
+                                    <a rel="{handler: 'iframe', size: {x: 650, y: 500}}" href="<?php echo $link_invoice; ?>" class="jb-modal btn btn-link btn-sm"><?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?></a>
+                                    <?php if (!empty($bidInfo->attachment)) : ?>
+                                        <div style="display: inline;">
+                                            <?php echo LinkHelper::getDownloadLink('nda', $bidInfo->bidid, 'project.download', 'btn btn-primary btn-small'); ?>
+                                        </div>
+                                        <?php
+                                    endif;
+                                    ?>
+                                <?php } ?> 
+                               <ul class="promotions" style="margin-top: 5px;">
                                     <?php if ($row->is_featured) : ?>
                                         <li data-promotion="featured"><?php echo JText::_('COM_JBLANCE_FEATURED'); ?></li>
                                     <?php endif; ?>
@@ -104,11 +115,8 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                                         <li data-promotion="nda"><?php echo JText::_('COM_JBLANCE_NDA'); ?></li>
                                     <?php endif; ?>
                                 </ul>
-                            </h4>
-                            <p>
-                                <?php echo JText::_('COM_JBLANCE_BIDS'); ?> : <span class="badge badge-info"><?php echo $bidsCount; ?></span>
-                            </p>
-                            <div class="btn-group">
+                            </h5>
+                             <div class="actions">
                                 <?php
                                 if ($row->status == 'COM_JBLANCE_OPEN' || $row->status == 'COM_JBLANCE_EXPIRED') {
                                     $expiredate = JFactory::getDate();
@@ -116,13 +124,13 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                                     $expiredate = JHtml::_('date', $expiredate, $dformat, false);
                                     $repostConfirmMessage = JText::sprintf('COM_JBLANCE_CONFIRM_REPOST_PROJECT', JblanceHelper::formatCurrency($chargePerProject), $expiredate, true);
                                     ?>
-                                    <a href="<?php echo $link_edit; ?>" class="btn btn-primary btn-sm"><?php echo JText::_('COM_JBLANCE_EDIT'); ?></a>
-                                    <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="javascript:modalConfirm('<?php echo JText::_('COM_JBLANCE_DELETE', true); ?>', '<?php echo JText::_('COM_JBLANCE_CONFIRM_DELETE_PROJECT', true); ?>', '<?php echo $link_del; ?>');" ><?php echo JText::_('COM_JBLANCE_DELETE'); ?></a>
+                                    <a href="<?php echo $link_edit; ?>" class="btn btn-primary btn-block btn-sm"><?php echo JText::_('COM_JBLANCE_EDIT'); ?></a>
+                                    <a href="javascript:void(0);" class="btn btn-danger btn-block btn-sm" onclick="javascript:modalConfirm('<?php echo JText::_('COM_JBLANCE_DELETE', true); ?>', '<?php echo JText::_('COM_JBLANCE_CONFIRM_DELETE_PROJECT', true); ?>', '<?php echo $link_del; ?>');" ><?php echo JText::_('COM_JBLANCE_DELETE'); ?></a>
                                     <?php if ($row->status == 'COM_JBLANCE_EXPIRED') { ?>
-                                        <a href="javascript:void(0);" class="btn btn-warning btn-sm" onclick="javascript:modalConfirm('<?php echo JText::_('COM_JBLANCE_REPOST', true); ?>', '<?php echo $repostConfirmMessage; ?>', '<?php echo $link_repost_proj; ?>');" ><?php echo JText::_('COM_JBLANCE_REPOST'); ?></a>
+                                        <a href="javascript:void(0);" class="btn btn-warning btn-block btn-sm" onclick="javascript:modalConfirm('<?php echo JText::_('COM_JBLANCE_REPOST', true); ?>', '<?php echo $repostConfirmMessage; ?>', '<?php echo $link_repost_proj; ?>');" ><?php echo JText::_('COM_JBLANCE_REPOST'); ?></a>
                                     <?php } ?>
                                     <?php if (($row->status == 'COM_JBLANCE_OPEN' || $row->status == 'COM_JBLANCE_EXPIRED') && $bidsCount > 0) { ?> 
-                                        <a href="<?php echo $link_pick_user; ?>" class="btn btn-success btn-sm"><?php echo JText::_('COM_JBLANCE_PICK_USER'); ?></a>
+                                        <a href="<?php echo $link_pick_user; ?>" class="btn btn-info btn-block btn-sm"><?php echo JText::_('COM_JBLANCE_PICK_USER'); ?></a>
                                     <?php }
                                     ?>
                                     <?php
@@ -132,7 +140,7 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                                     if ($bidInfo->p_status == 'COM_JBLANCE_COMPLETED' && !$hasRated) {
                                         $link_rate = JRoute::_('index.php?option=com_jblance&view=project&layout=rateuser&id=' . $row->id);
                                         ?>
-                                        <a href="<?php echo $link_rate; ?>" class="btn btn-primary btn-sm"><?php echo JText::_('COM_JBLANCE_RATE_FREELANCER'); ?></a>
+                                        <a href="<?php echo $link_rate; ?>" class="btn btn-primary btn-block btn-sm"><?php echo JText::_('COM_JBLANCE_RATE_FREELANCER'); ?></a>
                                         <?php
                                     }
                                 } elseif ($row->status == 'COM_JBLANCE_FROZEN') {
@@ -143,8 +151,8 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                                         ?>
                                         <div class="alert alert-error">
                                             <strong><?php echo JText::_('COM_JBLANCE_STATUS_DENIED_BY') . ' - ' . $detail_chosen->$nameOrUsername; ?></strong><br>
-                                            <a href="<?php echo $link_pick_user; ?>" class="btn btn-success btn-sm"><?php echo JText::_('COM_JBLANCE_PICK_USER'); ?></a>
-                                            <a href="<?php echo $link_reopen_proj; ?>" class="btn btn-warning btn-sm"><?php echo JText::_('COM_JBLANCE_REOPEN'); ?></a>
+                                            <a href="<?php echo $link_pick_user; ?>" class="btn btn-info btn-block btn-sm"><?php echo JText::_('COM_JBLANCE_PICK_USER'); ?></a>
+                                            <a href="<?php echo $link_reopen_proj; ?>" class="btn btn-warning btn-block btn-sm"><?php echo JText::_('COM_JBLANCE_REOPEN'); ?></a>
                                         </div>
 
                                         <?php
@@ -158,33 +166,21 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                                     }
                                 }
                                 ?>
-                                <?php if (($row->buyer_commission > 0) && ($row->status == 'COM_JBLANCE_CLOSED')) { ?>
-                                    <a rel="{handler: 'iframe', size: {x: 650, y: 500}}" href="<?php echo $link_invoice; ?>" class="jb-modal btn btn-success btn-sm"><?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?></a>
-                                    <?php if (!empty($bidInfo->attachment)) : ?>
-                                        <div style="display: inline;">
-                                            <?php echo LinkHelper::getDownloadLink('nda', $bidInfo->bidid, 'project.download', 'btn btn-primary btn-small'); ?>
-                                        </div>
-                                        <?php
-                                    endif;
-                                    ?>
-                                <?php } ?>
+             
                                 <?php if ($noInvitees) : ?>
-                                    <a href="<?php echo $link_invite_user; ?>" class="btn btn-inverse btn-sm"><?php echo JText::_('COM_JBLANCE_INVITE_USERS'); ?></a>
+                                    <a href="<?php echo $link_invite_user; ?>" class="btn btn-inverse btn-block btn-sm"><?php echo JText::_('COM_JBLANCE_INVITE_USERS'); ?></a>
 
                                 <?php endif; ?>
                             </div>
-
-
-                            <div class="span4">
+                            <div class="pay-status">
                                 <?php
                                 if ($row->status == 'COM_JBLANCE_CLOSED') {
                                     $link_progress = JRoute::_('index.php?option=com_jblance&view=project&layout=projectprogress&id=' . $bidInfo->bidid); // id is the bid id and NOT project id
                                     ?>
-                                    <span class="label label-success"><?php echo (!empty($bidInfo->p_status)) ? JText::_($bidInfo->p_status) : JText::_('COM_JBLANCE_NOT_YET_STARTED'); ?></span>
-                                    <div class="progress progress-success progress-striped" title="<?php echo JText::_('COM_JBLANCE_PROGRESS') . ' : ' . $bidInfo->p_percent . '%'; ?>">
-                                        <div class="progress-bar" style="width: <?php echo $bidInfo->p_percent; ?>%"></div>
+                                    <a href="<?php echo $link_progress; ?>" class="btn btn-primary btn-block btn-sm"><?php echo JText::_('COM_JBLANCE_VIEW_PROGRESS'); ?></a>
+                                    <div class="progress" title="<?php echo JText::_('COM_JBLANCE_PROGRESS') . ' : ' . $bidInfo->p_percent . '%'; ?>">
+                                        <div class="progress-bar progress-bar-primary" style="width: <?php echo $bidInfo->p_percent; ?>%"><?php echo $bidInfo->p_percent; ?>%</div>
                                     </div>
-                                    <a href="<?php echo $link_progress; ?>" class="btn btn-primary btn-sm"><?php echo JText::_('COM_JBLANCE_VIEW_PROGRESS'); ?></a>
                                 <?php } ?>
                                 <div class="payment-status">
                                     <?php if ($enableEscrowPayment) { ?>
@@ -193,31 +189,35 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                                             $perc = ($row->paid_amt / $bidInfo->bidamount) * 100;
                                             $perc = round($perc, 2) . '%';
                                             ?>
-                                            <div class="progress progress-striped" title="<?php echo JText::_('COM_JBLANCE_PAYMENT_STATUS') . ' : ' . $perc; ?>">
-                                                <div class="progress-bar progress-success" style="width: <?php echo $perc; ?>"></div>
+                                            <div class="progress" title="<?php echo JText::_('COM_JBLANCE_PAYMENT_STATUS') . ' : ' . $perc; ?>">
+                                                <div class="progress-bar progress-bar-warning" style="width: <?php echo $perc; ?>">
+                                                <?php echo JText::_('COM_JBLANCE_PAYMENT_STATUS') . ' : ' . $perc; ?>
+                                                </div>
                                             </div>
                                             <?php
                                             if ($perc < 100) {
                                                 ?>
-                                                <a class="btn btn-primary btn-sm" href="<?php echo $link_transfer; ?>"><?php echo JText::_('COM_JBLANCE_PAY_NOW'); ?></a>
+                                                <a class="btn btn-primary btn-block btn-sm" href="<?php echo $link_transfer; ?>"><?php echo JText::_('COM_JBLANCE_PAY_NOW'); ?></a>
                                                 <?php
                                             }
                                         } elseif ($row->status == 'COM_JBLANCE_CLOSED' && $row->project_type == 'COM_JBLANCE_HOURLY') {
                                             ?>
                                             <?php if ($row->paid_status != 'COM_JBLANCE_PYMT_COMPLETE') { ?>
-                                                <a class="btn btn-primary btn-sm" href="<?php echo $link_transfer; ?>"><?php echo JText::_('COM_JBLANCE_PAY_NOW'); ?></a>
+                                                <a class="btn btn-primary btn-block btn-sm" href="<?php echo $link_transfer; ?>"><?php echo JText::_('COM_JBLANCE_PAY_NOW'); ?></a>
                                             <?php } ?>
                                             <?php
                                             //show mark payment as complete button for partially paid status
                                             if ($row->paid_status == 'COM_JBLANCE_PYMT_PARTIAL') {
                                                 ?>
-                                                <a href="javascript:void(0);" class="btn btn-primary btn-sm" onclick="javascript:modalConfirm('<?php echo JText::_('COM_JBLANCE_PAYMENT_COMPLETE'); ?>', '<?php echo JText::_('COM_JBLANCE_CONFIRM_PAYMENT_COMPLETE'); ?>', '<?php echo $link_pay_comp; ?>');" ><?php echo JText::_('COM_JBLANCE_PAYMENT_COMPLETE'); ?></a>
+                                                <a href="javascript:void(0);" class="btn btn-primary btn-block btn-sm" onclick="javascript:modalConfirm('<?php echo JText::_('COM_JBLANCE_PAYMENT_COMPLETE'); ?>', '<?php echo JText::_('COM_JBLANCE_CONFIRM_PAYMENT_COMPLETE'); ?>', '<?php echo $link_pay_comp; ?>');" ><?php echo JText::_('COM_JBLANCE_PAYMENT_COMPLETE'); ?></a>
                                                 <?php
                                             }
                                             if ($row->paid_status == 'COM_JBLANCE_PYMT_COMPLETE') {
                                                 ?>
-                                                <div class="progress  progress-striped" title="<?php echo JText::_('COM_JBLANCE_PAYMENT_STATUS') . ' : ' . '100%'; ?>">
-                                                    <div class="progress-bar progress-success " style="width: <?php echo '100%'; ?>"></div>
+                                                <div class="progress" title="<?php echo JText::_('COM_JBLANCE_PAYMENT_STATUS') . ' : ' . '100%'; ?>">
+                                                    <div class="progress-bar progress-bar-success " style="width: <?php echo '100%'; ?>">
+                                                       <?php echo JText::_('COM_JBLANCE_PAYMENT_STATUS') . ' : ' . '100%'; ?>
+                                                    </div>
                                                 </div>
                                                 <?php
                                             }
@@ -231,17 +231,22 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                     </div>
                 <?php } ?>
             <?php endif; ?>
-
-            <div class="pagination pagination-centered">
+                    <div class="row"></div>
+        <div class="pagination pagination-centered">
                 <div class="display-limit">
                     <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
                     <?php echo $this->pageNav->getLimitBox(); ?>
                 </div>
                 <?php echo $this->pageNav->getPagesLinks(); ?>
-            </div>
-
+        </div>
             <input type="hidden" name="option" value="com_jblance" />			
             <input type="hidden" name="task" value="" />	
         </form>
+
     </div>
 </div>
+<script type="text/javascript">
+$(function () {
+$('.badge').tooltip('toggle');
+})
+</script>

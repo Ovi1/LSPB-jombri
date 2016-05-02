@@ -1,1 +1,0 @@
-INSERT INTO `#__jblance_paymode` (gateway_name, published, ordering, shortcode, gwcode, withdraw, withdrawFee, withdrawDesc, depositfeeFixed, depositfeePerc, params) VALUES ('PayFast', '1', '0', 'PFZA', 'payfastza', '0', '0', 'Withdraw funds to your PayFast account.', '0.3', '2.9', '{}');

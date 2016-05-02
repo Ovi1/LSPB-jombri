@@ -91,7 +91,7 @@ JblanceHelper::setJoomBriToken();
 
             echo!empty($avatar) ? LinkHelper::GetProfileLink($row->idFrom, $avatar, '', '', ' pull-left') : '&nbsp;'
             ?>
-          </div>
+            </div>
             <div class="col-md-11 col-sm-10 col-xs-9  msg-body">
               <span class="text-msg">
                 <p>
@@ -107,7 +107,6 @@ JblanceHelper::setJoomBriToken();
               <div class="clearfix"></div>
                 <small class="info text-muted  pull-right">
                   <div class="pull-left author"><i class="material-icons ">account_circle</i> <?php echo LinkHelper::GetProfileLink($row->idFrom, $userDtl->$nameOrUsername); ?> </div>
-                  
                   <i class="material-icons">access_time</i> <?php echo JHtml::_('date', $row->date_sent, $dformat, true); ?>  
                   <span id="feed_hide_<?php echo $row->id; ?>" class="help-inline">
                     <a onclick="processMessage('<?php echo $row->id; ?>', 'message.processmessage');" href="javascript:void(0);">
@@ -132,7 +131,7 @@ JblanceHelper::setJoomBriToken();
       </div>
 
       <div class="form-group">
-        <textarea name="message" id="message" rows="4" class="form-control required" placeholder="<?php echo JText::_('COM_JBLANCE_ENTER_MESSAGE'); ?>">
+        <textarea name="message" id="message" rows="6" class="form-control required" placeholder="<?php echo JText::_('COM_JBLANCE_ENTER_MESSAGE'); ?>">
         </textarea>
       </div>
       <div class="form-group">
