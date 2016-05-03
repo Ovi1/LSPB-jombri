@@ -54,7 +54,9 @@ function validateForm(f){
 }
 //-->
 </script>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userForm" id="userForm" class="form-validate form-horizontal" onsubmit="return validateForm(this)">
+    <div class="panel panel-default">
+    <div class="panel-body">
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userForm" id="userForm" class="form-validate" onsubmit="return validateForm(this)">
 
 	<?php if($step == 1) : ?>
 		<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_WITHDRAW_FUNDS'); ?></div>
@@ -95,20 +97,18 @@ function validateForm(f){
 				<?php echo $gwInfo->gateway_name; ?>
 			</div>
 		</div>
-		<div class="control-group">
+			<div class="form-group">
 			<label class="control-label" for="amount"><?php echo JText::_('COM_JBLANCE_WITHDRAW_AMOUNT'); ?> :</label>
-			<div class="controls">
-				<div class="input-prepend">
-					<span class="add-on"><?php echo $currencysym; ?></span>
-					<input type="text" name="amount" id="amount" class="input-small required validate-numeric" />
+				<div class="input-group">
+					<span class="input-group-addon"><?php echo $currencysym; ?></span>
+					<input type="text" name="amount" id="amount" class="form-control required validate-numeric" />
 				</div>
 				<span class="help-inline">
 					<em>(<?php echo JText::_('COM_JBLANCE_YOUR_BALANCE').' : '.JblanceHelper::formatCurrency($totalFund); ?>)</em><br>
 					<em>(<?php echo JText::_('COM_JBLANCE_MIN_AMOUNT').' : '.JblanceHelper::formatCurrency($minWithdraw); ?>)</em><br>
 				</span>
 			</div>
-		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label"><?php echo JText::_('COM_JBLANCE_WITHDRAWAL_FEE'); ?>:</label>
 			<div class="controls">
 				<?php echo JblanceHelper::formatCurrency($gwInfo->withdrawFee); ?>	
@@ -123,7 +123,7 @@ function validateForm(f){
 		        echo $field->input;
 		    else:
 		    ?>
-		    <div class="control-group">
+		    <div class="form-group">
 		        <?php echo $field->label; ?>
 		        <div class="controls"><?php echo $field->input ?></div>
 		   </div>
@@ -133,7 +133,7 @@ function validateForm(f){
 		?>
 		
 		<div class="form-actions">
-			<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SUBMIT')?>" class="btn btn-primary" />
+			<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SUBMIT')?>" class="btn btn-block btn-primary" />
 		</div>
 	<?php elseif($step == 3) : ?>
 
@@ -144,3 +144,5 @@ function validateForm(f){
 	<input type="hidden" name="gateway" value="<?php echo $gateway; ?>" />
 	<?php echo JHtml::_('form.token'); ?>
 </form>
+    </div>
+    </div>

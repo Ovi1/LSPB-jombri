@@ -4,7 +4,7 @@
 		<field type="text" name="projectId" id="projectId" label="ProjectID" description="COM_JBLANCE_PAYPAL_EMAIL_ID_EXAMPLE" size="11"  maxLength="11" class="required"/>
 		<field type="text" name="signPassword" id="signPassword" label="Project Password" description="COM_JBLANCE_PAYPAL_CURRENCY_EXAMPLE" size="255"  maxLength="255" class="required" />
 		<field type="text" name="ppCurrency" id="psCurrency" label="COM_JBLANCE_PAYPAL_CURRENCY" description="COM_JBLANCE_PAYPAL_CURRENCY_EXAMPLE" size="3" default="EUR" maxLength="255"/>
-		<field type="radio" name="ppTestmode" id="devtest" label="TEST MODE" default="0" description="COM_JBLANCE_PAYPAL_TEST_MODE_EXAMPLE">
+		<field type="radio" name="pstestmode" id="test" label="TEST MODE" default="0" description="COM_JBLANCE_PAYPAL_TEST_MODE_EXAMPLE">
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
