@@ -84,14 +84,14 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
             <li data-promotion="nda"><?php echo JText::_('COM_JBLANCE_NDA'); ?></li>
           <?php endif; ?>
         </ul>
-      <div class="col-xs-4 col-sm-4 col-md-2">
+      <div class="col-xs-6 col-sm-4 col-md-2">
         <?php
         $attrib = 'class="img-responsive"';
         $avatar = JblanceHelper::getLogo($row->publisher_userid, $attrib);
         echo!empty($avatar) ? LinkHelper::GetProfileLink($row->publisher_userid, $avatar) : '&nbsp;'
         ?>
       </div>
-      <div class="col-md-7">
+      <div class="col-xs-6 col-sm-8 col-md-7 ">
           <h4 class="media-heading">
           <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
               <small>
@@ -116,7 +116,7 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
           <p class="alert alert-info"><?php echo JText::_('COM_JBLANCE_THIS_IS_A_PRIVATE_INVITE_PROJECT_VISIBLE_TO_OWNER_INVITEES'); ?></p>
       <?php endif; ?>
       </div>
-        <div id="status" class="col-md-3">
+        <div id="status" class="col-xs-12 col-sm-12 col-md-3">
    
           <?php echo $model->getLabelProjectStatus($row->status); ?>
           <div class="status">
