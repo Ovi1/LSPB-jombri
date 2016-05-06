@@ -33,8 +33,13 @@ JText::script('COM_JBLANCE_YES');
 
 $link_deposit = JRoute::_('index.php?option=com_jblance&view=membership&layout=depositfund', false);
 ?>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        
+    <h3><?php echo JText::_('COM_JBLANCE_MY_BIDS'); ?></h3>
+    </div>
+<div class="panel-body">
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userForm">
-    <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_MY_BIDS'); ?></div>
 
     <?php if (empty($this->rows)) : ?>
         <div class="alert alert-info">
@@ -168,3 +173,5 @@ $link_deposit = JRoute::_('index.php?option=com_jblance&view=membership&layout=d
         ?>
 <?php endif; ?>
 </form>
+</div>
+</div>

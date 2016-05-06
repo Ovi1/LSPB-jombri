@@ -236,7 +236,7 @@ JblanceHelper::setJoomBriToken();
                                 </div>
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-primary start">
-                                        <i class="material-icons">file_upload</i> <span><?php echo JText::_('COM_JBLANCE_START'); ?></span>
+                                        <i class="material-icons">file_upload</i> <span><?php echo JText::_('COM_JBLANCE_START_UPLOAD'); ?></span>
                                     </button>
                                     <button data-dz-remove class="btn btn-warning cancel">
                                         <i class="material-icons">cancel</i> <span><?php echo JText::_('COM_JBLANCE_CANCEL'); ?></span>

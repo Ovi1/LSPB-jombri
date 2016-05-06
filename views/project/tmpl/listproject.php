@@ -112,7 +112,9 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
         <div class="font14">
           <strong><?php echo JText::_('COM_JBLANCE_LOCATION'); ?></strong>: <span class=""><?php echo JblanceHelper::getLocationNames($row->id_location); ?></span>
         </div>
-       
+      <?php if ($row->is_private_invite) : ?>
+          <p class="alert alert-info"><?php echo JText::_('COM_JBLANCE_THIS_IS_A_PRIVATE_INVITE_PROJECT_VISIBLE_TO_OWNER_INVITEES'); ?></p>
+      <?php endif; ?>
       </div>
         <div id="status" class="col-md-3">
    
@@ -128,12 +130,6 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
         <div class="avg"><?php echo JText::_('COM_JBLANCE_AVG_BID'); ?></div>
         </div>
       </div>
-      <?php if ($row->is_private_invite) : ?>
-
-        <div class="col-md-12">
-          <p class="alert alert-info"><?php echo JText::_('COM_JBLANCE_THIS_IS_A_PRIVATE_INVITE_PROJECT_VISIBLE_TO_OWNER_INVITEES'); ?></p>
-        </div>
-      <?php endif; ?>
     </div>
     <div class="lineseparator"></div>
     <?php

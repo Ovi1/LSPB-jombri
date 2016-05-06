@@ -4,8 +4,8 @@
 .jbl_h3title { font-size: 20px; border-bottom: 1px solid #eeeeee; margin: 10px 0; padding: 0 0 3px 0; display: block; }
 .jbloading { width: 48px; height: 16px; background:url(../images/loading.gif) center center no-repeat #fff; }
 .dis-inl-blk { display: inline-block; }
-.successbg { background: url(../images/s1.png) no-repeat; padding-left: 18px; color: green; }
-.failurebg { background: url(../images/s0.png) no-repeat; padding-left: 18px; color: red; }
+.successbg { background: url(../images/s1.png) no-repeat; padding-left: 22px;     padding-top: 3px; color: green; }
+.failurebg { background: url(../images/s0.png) no-repeat; padding-left: 22px;     padding-top: 3px; color: red; }
 .redfont { color: red; }
 .greenfont { color: #04A414; }
 .yellowfont { color: yellow; }

@@ -88,21 +88,27 @@ function updateSkillCount(){
 }
 //-->
 </script>
-<?php 
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        	<h3><?php echo JText::_('COM_JBLANCE_PROFILE_INFO'); ?></h3>
+
+    </div>
+    <div class="panel-body">
+        <?php 
 if($step)
 	echo JblanceHelper::getProgressBar($step); 
 ?>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userGroup" class="form-validate form-horizontal" onsubmit="return validateForm(this);" enctype="multipart/form-data" novalidate>
-	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PROFILE_INFO'); ?></div>
-	<fieldset>
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userGroup" class="form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data" novalidate>
+        <fieldset class="col-md-4">
 		<legend><?php echo JText::_('COM_JBLANCE_USER_INFORMATION'); ?></legend>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_USERNAME'); ?>:</label>
 			<div class="controls">
 				<?php echo $accountInfo['username']; ?>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_NAME'); ?>:</label>
 			<div class="controls">
 				<?php echo $accountInfo['name']; ?>
@@ -110,7 +116,7 @@ if($step)
 		</div>
 		<!-- Company Name should be visible only to users who can post job -->
 		<?php if($userInfo->allowPostProjects) : ?>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="biz_name"><?php echo JText::_('COM_JBLANCE_BUSINESS_NAME'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
 				<input class="form-control required" type="text" name="biz_name" id="biz_name" value="" />
@@ -119,17 +125,15 @@ if($step)
 		<?php endif; ?>
 		<!-- Skills and hourly rate should be visible only to users who can work/bid -->
 		<?php if($userInfo->allowBidProjects) : ?>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="rate"><?php echo JText::_('COM_JBLANCE_HOURLY_RATE'); ?> <span class="redfont">*</span>:</label>
-			<div class="controls">
-				<div class="input-prepend input-append">
-					<span class="add-on"><?php echo $currencysym; ?></span>
-					<input class="input-mini required validate-numeric" type="text" name="rate" id="rate" value="" />
-					<span class="add-on"><?php echo $currencycod.' / '.JText::_('COM_JBLANCE_HOUR'); ?></span>
-				</div>
+			<div class="input-group">
+					<span class="input-group-addon"><?php echo $currencysym; ?></span>
+					<input class="form-control required validate-numeric" type="text" name="rate" id="rate" value="" />
+					<span class="input-group-addon"><?php echo $currencycod.' / '.JText::_('COM_JBLANCE_HOUR'); ?></span>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="id_category"><?php echo JText::_('COM_JBLANCE_SKILLS'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
 				<?php if($maxSkills > 0){ ?>
@@ -138,7 +142,6 @@ if($step)
 		    		<div><?php echo JText::_('COM_JBLANCE_SKILLS'); ?></div>
 				</div>
 				<div class="clearfix"></div>
-				<div class="sp10">&nbsp;</div>
 				<?php } ?>
 				<?php 
 				//$attribs = 'class="form-control required" size="20" multiple ';
@@ -155,15 +158,15 @@ if($step)
 		<?php endif; ?>
 	</fieldset>
 	
-	<fieldset>
+    <fieldset class="col-md-8">
 		<legend><?php echo JText::_('COM_JBLANCE_CONTACT_INFORMATION'); ?></legend>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="address"><?php echo JText::_('COM_JBLANCE_ADDRESS'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
-				<textarea name="address" id="address" rows="3" class="input-xlarge required"></textarea>
+			<textarea name="address" id="address" rows="3" class="form-control required"></textarea>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="level1"><?php echo JText::_('COM_JBLANCE_LOCATION'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls controls-row" id="location_info">
 				<?php 
@@ -175,16 +178,16 @@ if($step)
 				<div id="ajax-container" class="dis-inl-blk"></div>	
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="postcode"><?php echo JText::_('COM_JBLANCE_ZIP_POSTCODE'); ?> <span class="redfont">*</span>:</label>
 			<div class="controls">
-				<input class="input-small required" type="text" name="postcode" id="postcode" value="" />
+				<input class="form-control required" type="text" name="postcode" id="postcode" value="" />
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="form-group">
 			<label class="control-label" for="mobile"><?php echo JText::_('COM_JBLANCE_CONTACT_NUMBER'); ?> :</label>
 			<div class="controls">
-				<input class="input-large" type="text" name="mobile" id="mobile" value="" />
+				<input class="form-control" type="text" name="mobile" id="mobile" value="" />
 			</div>
 		</div>
 	</fieldset>
@@ -200,7 +203,7 @@ if($step)
 	
 	if($joombriProfile){
 		if(empty($this->fields)){
-			echo '<p class="jbbox-warning">'.JText::_('COM_JBLANCE_NO_PROFILE_FIELD_ASSIGNED_FOR_USERGROUP').'</p>';
+		echo '<p class="jbbox-warning">'.JText::_('COM_JBLANCE_NO_PROFILE_FIELD_ASSIGNED_FOR_USERGROUP').'</p>';
 		}
 		$fields = JblanceHelper::get('helper.fields');		// create an instance of the class fieldsHelper
 		
@@ -215,12 +218,12 @@ if($step)
 		
 		if(count($parents)){
 			foreach($parents as $pt){ ?>
-		<fieldset>
+        <fieldset class="col-md-12">
 			<legend><?php echo JText::_($pt->field_title); ?></legend>
 			<?php
 			foreach($children as $ct){
 				if($ct->parent == $pt->id){ ?>
-				<div class="control-group">
+				<div class="form-group">
 					<?php
 					$labelsuffix = '';
 					if($ct->field_type == 'Checkbox') $labelsuffix = '[]'; //added to validate checkbox
@@ -239,10 +242,14 @@ if($step)
 		}
 	}
 	?>
-	<div class="form-actions">
-		<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary" />
+        <div class="row"></div>
+        <div class="form-actions" style="margin-top: 10px;">
+		<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary btn-block" />
+	
 	</div>
 	<input type="hidden" name="option" value="com_jblance">
 	<input type="hidden" name="task" value="guest.saveusernew">
 	<?php echo JHtml::_('form.token'); ?>
 </form>	
+    </div>
+    </div>
