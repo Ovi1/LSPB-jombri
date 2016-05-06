@@ -18,16 +18,16 @@
  $repeat 		= $app->input->get('repeat', 0, 'int');
  $type 			= $app->input->get('type', 'plan', 'string');
 ?>
+<div class="panel panel-default">
+<div class="panel-heading"><h3><?php echo JText::_('COM_JBLANCE_CHECKOUT'); ?></h3></div>
+<div class="panel-body">
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormJob" enctype="multipart/form-data">
-    		<div class="panel panel-default">
-	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_CHECKOUT'); ?></div>
 	<!-- ************************************************************** plan checkout section ******************************************* -->
-	<div class="panel-body">
 	<?php if($type == 'plan') : ?>
 		<?php  
 		$introtext = 'COM_JBLANCE_CHECKOUT_INFO'.($repeat ? '_REPEAT' : '' );
 		echo JText::sprintf($introtext, '<b>'.$this->subscr->invoiceNo.'</b>' ); ?>
-			<h3><?php echo JText::_('COM_JBLANCE_CART'); ?></h3>
+			<h5><?php echo JText::_('COM_JBLANCE_CART'); ?></h5>
                         <table class="table table-bordered table-responsive">
 				<thead>
 					<tr>
@@ -86,7 +86,7 @@
 		<!-- ************************************************************** deposit checkout section ******************************************* -->
 		<?php elseif($type == 'deposit') : ?>
 		<div class="panel panel-default">
-                    <div class="panel-heading"><h3><?php echo JText::_('COM_JBLANCE_CART'); ?></h3></div>
+                    <div class="panel-heading"><h5><?php echo JText::_('COM_JBLANCE_CART'); ?></h5></div>
                     <div class="panel-body">
 			<table class="table table-bordered table-responsive">
 				<thead>
@@ -147,6 +147,8 @@
 	<input type="hidden" name="buy" value="<?php echo $type; ?>" />
 	<?php echo JHtml::_('form.token'); ?>
 </form>
+</div>
+</div>
 <?php 
 	function getDaysType($daysType){
 		if($daysType == 'days')

@@ -48,7 +48,7 @@ class paysera_class {
         $data['orderid'] = $item_num;
         $data['invoiceNo'] = $invoiceNo;
         $data['p_firstname'] = $user->name;
-        $data['p_lastname'] = $user->email;
+        $data['p_email'] = $user->email;
         $data['currency'] = $ppCurrency;
         $data['amount'] = $amount * 100;
         $data['test'] = 1;

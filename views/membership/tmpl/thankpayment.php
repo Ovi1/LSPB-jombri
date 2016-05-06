@@ -18,13 +18,14 @@
  $type = $app->input->get('type', '', 'string');
 ?>
 <!-- display pages based on the type -->
-<?php if($type == 'cancel') : ?>
 <div class="panel panel-default">
 <div class="panel-body">
+<?php if($type == 'cancel') : ?>
 <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PAYMENT_CANCELLED'); ?></div>
 <p class="jbbox-warning">
 	<span class="font16"><?php echo JText::_('COM_JBLANCE_YOUR_PAYMENT_IS_CANCELLED'); ?></span>
 </p>
+
 <?php else : ?>
 <fieldset class="form-horizontal">
 	<legend><?php echo JText::_('COM_JBLANCE_THANK_YOU'); ?></legend>
@@ -55,8 +56,8 @@
 		</div>
 	</div>
 	<div class="form-actions">
-		<a rel="{handler: 'iframe', size: {x: 650, y: 500}}" href="<?php echo $this->row->lnk_invoice; ?>" class="jb-modal btn btn-primary"><span><?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?></span></a>
-		<a href="<?php echo $this->row->lnk_continue; ?>" class="btn btn-default"><span><?php echo JText::_('COM_JBLANCE_CONTINUE'); ?></span></a>
+		<a rel="{handler: 'iframe', size: {x: 650, y: 500}}" href="<?php echo $this->row->lnk_invoice; ?>" class="jb-modal btn btn-info"><span><?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?></span></a>
+		<a href="<?php echo $this->row->lnk_continue; ?>" class="btn btn-success"><span><?php echo JText::_('COM_JBLANCE_CONTINUE'); ?></span></a>
 	</div>
 </fieldset>
 	

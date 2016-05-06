@@ -71,10 +71,6 @@ $link_edit_service = JRoute::_('index.php?option=com_jblance&view=service&layout
                 <?php }
                 ?>
             <?php endif; ?>
-        </form>
-
-    </div>
-                    <div class="row-fluid">
                     <div class="pagination pagination-centered pull-right">
                         <div class="display-limit">
                             <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
@@ -82,7 +78,9 @@ $link_edit_service = JRoute::_('index.php?option=com_jblance&view=service&layout
                         </div>
                         <?php echo $this->pageNav->getPagesLinks(); ?>
                     </div>
-                    </div>
    
+        </form>
+
+    </div>
            
 </div>
