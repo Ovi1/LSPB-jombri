@@ -18,6 +18,8 @@
  $user 		  = JFactory::getUser();
  $financeHelp = JblanceHelper::get('helper.finance');		// create an instance of the class FinanceHelper
  ?>
+<div class="panel panel-default">
+<div class="panel-body">
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userForm">
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_SERVICES_SOLD'); ?></div>
 
@@ -35,11 +37,11 @@
 		
 		$hasPaid = $financeHelp->hasPaid($row->id, 'COM_JBLANCE_SERVICE');
 	?>
-	<div class="row-fluid">
-		<div class="span2">
-			<img class="img-polaroid" src="<?php echo $attachments[0]['thumb']; ?>" width="80px" />
+	<div class="row">
+		<div class="col-md-2">
+			<img class="img-responsive" src="<?php echo $attachments[0]['thumb']; ?>" width="80px" />
 		</div>
-		<div class="span6">
+		<div class="col-md-6">
 			<h3>
 				<?php echo $row->service_title; ?>
 			</h3>
@@ -58,16 +60,17 @@
 				} ?>
 			</p>
 		</div>
-		<div class="span4 text-center">
+		<div class="col-md-4 text-center">
 			<span class="font20"><?php echo JblanceHelper::formatCurrency($row->totalprice, true, false, 0); ?></span> 
 			<?php echo JText::_('COM_JBLANCE_IN'); ?> <span class="font16"><?php echo JText::plural('COM_JBLANCE_N_DAYS', $row->totalduration); ?></span>
 			<div class="small">
 				<span class="label label-success"><?php echo (!empty($row->p_status)) ? JText::_($row->p_status) : JText::_('COM_JBLANCE_NOT_YET_STARTED'); ?></span>
 			</div>
-			<div class="sp10">&nbsp;</div>
 			<?php if(!empty($row->p_status)){ ?>
-			<div class="progress progress-success progress-striped" title="<?php echo JText::_('COM_JBLANCE_PROGRESS').' : '.$row->p_percent.'%'; ?>" style="margin: 0px auto; width:50%; float: none;">
-				<div class="bar" style="width: <?php echo $row->p_percent; ?>%"></div>
+			<div class="progress" title="<?php echo JText::_('COM_JBLANCE_PROGRESS').' : '.$row->p_percent.'%'; ?>">
+				<div class="progress-bar progress-bar-success" style="width: <?php echo $row->p_percent; ?>%">
+                                <?php echo JText::_('COM_JBLANCE_PROGRESS').' : '.$row->p_percent.'%'; ?>
+                                </div>
 			</div>
 			<?php } ?>
 		</div>
@@ -86,3 +89,5 @@
 		<?php echo $this->pageNav->getPagesLinks(); ?>
 	</div>
 </form>
+</div>
+</div>

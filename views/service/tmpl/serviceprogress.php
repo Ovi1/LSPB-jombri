@@ -109,10 +109,11 @@ jQuery(document).ready(function($){
 });
 //-->
 </script>
-
+<div class="panel panel-default">
+<div class="panel-body">
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_SERVICE_PROGRESS'); ?></div>
-	<div class="row-fluid">
-		<div class="span6">
+	<div class="row">
+		<div class="col-md-6">
 			<fieldset class="form-horizontal">
 				<legend><?php echo JText::_('COM_JBLANCE_SERVICE_DETAILS'); ?></legend>
 				<div class="control-group">
@@ -147,7 +148,7 @@ jQuery(document).ready(function($){
 				</div>
 			</fieldset>
 		</div>
-		<div class="span6">
+		<div class="col-md-6">
 			<fieldset class="form-horizontal">
 				<legend><?php echo JText::_('COM_JBLANCE_ADD_ONS'); ?></legend>
 				
@@ -195,12 +196,12 @@ jQuery(document).ready(function($){
 	
 	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'progress', JText::_('COM_JBLANCE_PROGRESS', true)); ?>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="progress-update" class="form-validate" onsubmit="return validateFormProgress(this);">
-	<div class="row-fluid">
- 		<div class="span12">
+	<div class="row">
+ 		<div class="col-md-12">
  			<fieldset class="form-vertical">
  				<legend><?php echo JText::_('COM_JBLANCE_PROGRESS'); ?></legend>
  				<div class="row-fluid">
- 					<div class="span8">
+ 					<div class="col-md-8">
 		 				<?php if($isSeller) : ?>
 		 				<?php if($service->p_status == ''){ ?>
 		 				<div class="control-group">
@@ -215,7 +216,7 @@ jQuery(document).ready(function($){
 		 				<div class="control-group" id="div_p_percent">
 							<label class="control-label"><?php echo JText::_('COM_JBLANCE_PERCENT_OF_COMPLETION'); ?> :</label>
 							<div class="controls">
-								<input type="text" name="p_percent" id="p_percent" class="input-xlarge" value="<?php echo $service->p_percent; ?>" data-slider-value="<?php echo $service->p_percent; ?>" style="display: none;" />
+								<input type="text" name="p_percent" id="p_percent" class="form-control" value="<?php echo $service->p_percent; ?>" data-slider-value="<?php echo $service->p_percent; ?>" style="display: none;" />
 		 						<span style="margin-left: 15px;"><?php echo JText::_('COM_JBLANCE_CURRENT_PROGRESS'); ?>: <span id="p_percent_text"><?php echo $service->p_percent; ?></span>%</span>
 							</div>
 						</div>
@@ -238,15 +239,16 @@ jQuery(document).ready(function($){
 						<div class="control-group">
 							<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PERCENT_OF_COMPLETION'); ?> :</label>
 							<div class="controls">
-								<div class="progress progress-success progress-striped span6">
-									<div class="bar" style="width: <?php echo $service->p_percent; ?>%"></div>
+								<div class="progress">
+									<div class="progress-bar progress-success-bar" style="width: <?php echo $service->p_percent; ?>%">
+                                                                        </div>
+                                                                        <?php echo $service->p_percent; ?>%
 								</div>
-								&nbsp;<?php echo $service->p_percent; ?>%
 							</div>
 						</div>
 						<?php endif; ?> <!-- end of isseller, isbuyer -->
  					</div>
- 					<div class="span4">
+ 					<div class="col-md-4">
 		 				<?php if($service->p_started != "0000-00-00 00:00:00") : ?>
 						<div class="control-group">
 							<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_STARTED'); ?> :</label>
@@ -371,8 +373,7 @@ jQuery(document).ready(function($){
 	<?php } ?>
 	<div class="control-group">
 		<div class="controls well">
-			<textarea name="message" id="message" rows="3" class="input-block-level required" placeholder="<?php echo JText::_('COM_JBLANCE_ENTER_MESSAGE'); ?>"></textarea>
-			<div class="sp10">&nbsp;</div>
+			<textarea name="message" id="message" rows="3" class="form-control required" placeholder="<?php echo JText::_('COM_JBLANCE_ENTER_MESSAGE'); ?>"></textarea>
 			<div id="ajax-container-uploadmessage"></div>
 			<div id="file-attached-uploadmessage"></div>
 			<div class="pull-left">
@@ -401,3 +402,6 @@ jQuery(document).ready(function($){
 </form>
 	<?php echo JHtml::_('bootstrap.endTab'); ?>		<!-- end of messages tab -->
 	<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+
+        </div>
+        </div>

@@ -59,7 +59,7 @@
 	<?php if($userGroup->allowPostProjects){ ?>
 	<div class="form-group">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_NOTIFY_BID_NEW_ACCEPTED_DENIED'); ?>:</label>
-		<div class="">
+		<div class="controls">
 			<label class="checkbox-inline">
 			<?php echo $select->YesNoBool('notifyBidNewAcceptDeny', $this->row->notifyBidNewAcceptDeny); ?>
 			</label>

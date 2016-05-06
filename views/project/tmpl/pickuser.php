@@ -61,6 +61,8 @@ function checkBalance(){
 }
 //-->
 </script>
+<div class="panel panel-default">
+<div class="panel-body">
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userForm">
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PICK_USER').' : '.$this->project->project_title; ?></div>
 	<div class="well well-small pull-right span3 text-center font16">
@@ -72,19 +74,17 @@ function checkBalance(){
 	for($i=0, $n=count($this->rows); $i < $n; $i++){
 		$row = $this->rows[$i];
 	?>
-	<div class="row-fluid">
-		<div class="span1" style="width:5px;">
-			<?php if($row->status == '') : ?>
+	<div class="row">
+		<div class="col-md-1">
+                    			<?php if($row->status == '') : ?>
 			<input type="radio" name="assigned_userid" id="assigned_userid_<?php echo $row->id; ?>" value="<?php echo $row->user_id; ?>"/>
 			<?php endif; ?>
-		</div>
-		<div class="span1">
 			<?php
-			$attrib = 'width=56 height=56 class="img-polaroid"';
+			$attrib = 'class="img-responsive"';
 			$avatar = JblanceHelper::getLogo($row->user_id, $attrib);
 			echo !empty($avatar) ? LinkHelper::GetProfileLink($row->user_id, $avatar) : '&nbsp;'; ?>
 		</div>
-		<div class="span6">
+		<div class="col-md-5">
 			<h5 class="media-heading">
 				<?php echo LinkHelper::GetProfileLink(intval($row->user_id), $this->escape($row->$nameOrUsername)); ?>
 			</h5>
@@ -100,10 +100,10 @@ function checkBalance(){
 				?>
 			</p>
 		</div>
-		<div class="span2">
+		<div class="col-md-2">
 			<?php $rate = JblanceHelper::getAvarageRate($row->user_id, true); ?>
 		</div>
-		<div class="span2">
+		<div class="col-md-4">
 			<div class="text-center">
 				<span class="font20">
 					<?php echo JblanceHelper::formatCurrency($row->amount, true, false, 0); ?>
@@ -131,11 +131,15 @@ function checkBalance(){
 	<?php 
 	}
 	?>
+	<div class="row">
 	<div class="form-actions">
 		<input type="submit" value="<?php echo JText::_('COM_JBLANCE_PICK_USER'); ?>" class="btn btn-primary" onclick="return checkBalance();" />
+	</div>
 	</div>
 	<input type="hidden" name="option" value="com_jblance" />			
 	<input type="hidden" name="task" value="project.savepickuser" />	
 	<input type="hidden" name="id" value="<?php echo $row->project_id; ?>" />
 	<?php echo JHtml::_('form.token'); ?>
 </form>
+    </div>
+    </div>

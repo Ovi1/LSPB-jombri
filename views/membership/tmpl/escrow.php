@@ -45,29 +45,29 @@ function validateForm(f){
 	return true;
 }
 
-jQuery(document).ready(function($){
-	jQuery("#pay_for").on("keyup", function(e){
-		var pay_for = jQuery("#pay_for").val();
-		var amt = parseFloat(jQuery("#bid_amount").val() * jQuery("#pay_for").val());
-		jQuery("#amount").val(amt);
-	});
-
-	jQuery("input[name='reason']").on("click", updateReason);
-});
-
-function updateReason(){
-	if(jQuery("#full_payment_option:checked").length || jQuery("#partial_payment_option:checked").length){
-		jQuery("#projectBox").css("display", "block");
-		jQuery("#project_id").addClass("required").prop("required", "required");
-	}
-	else if(jQuery("#other_reason_option:checked").length){
-		jQuery("#projectBox").css("display", "none");
-		if(jQuery("#project_id"))
-			jQuery("#project_id").removeClass("required").removeProp("required").val("");
-		jQuery("#pay_for").removeClass("required").removeProp("required");
-		jQuery("#div_pay_for").css("display", "none");
-	}
-}
+//jQuery(document).ready(function($){
+//	jQuery("#pay_for").on("keyup", function(e){
+//		var pay_for = jQuery("#pay_for").val();
+//		var amt = parseFloat(jQuery("#bid_amount").val() * jQuery("#pay_for").val());
+//		jQuery("#amount").val(amt);
+//	});
+//
+//	jQuery("input[name='reason']").on("click", updateReason);
+//});
+//
+//function updateReason(){
+//	if(jQuery("#full_payment_option:checked").length || jQuery("#partial_payment_option:checked").length){
+//		jQuery("#projectBox").css("display", "block");
+//		jQuery("#project_id").addClass("required").prop("required", "required");
+//	}
+//	else if(jQuery("#other_reason_option:checked").length){
+//		jQuery("#projectBox").css("display", "none");
+//		if(jQuery("#project_id"))
+//			jQuery("#project_id").removeClass("required").removeProp("required").val("");
+//		jQuery("#pay_for").removeClass("required").removeProp("required");
+//		jQuery("#div_pay_for").css("display", "none");
+//	}
+//}
 //-->
 </script>
 <div class="panel panel-default">

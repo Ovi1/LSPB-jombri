@@ -23,10 +23,10 @@ class paysera_class {
     function payseraPayment() {
 
         $payconfig = $this->payconfig;
-        $projectId      =   $payconfig->projectId;
-        $signPassword   =   $payconfig->signPassword;
-        $ppCurrency     =   $payconfig->psCurrency;
-        $pstestmode     =   $payconfig->test;
+        $projectId = $payconfig->projectId;
+        $signPassword = $payconfig->signPassword;
+        $ppCurrency = $payconfig->psCurrency;
+        $pstestmode = $payconfig->test;
 
         $details = $this->details;
         $amount = $details['amount'];
@@ -81,32 +81,31 @@ class paysera_class {
         echo '</form>';
     }
 
-//    function payseraReturn($data) {
-//        $payconfig = $this->payconfig;
-//        $pstestmode = $payconfig->$pstestmode;
-//        $request = WebToPay::validateAndParseData($data, $this->projectId, $this->signPassword);
-//        $return = array();
-//        if ($this->validate_ipn($request)) {
-//            $item_num = array_key_exists('orderid', $data) ? $data['orderid'] : '';		// get the invoice number from the post variable
-//            $return['success'] = true;
-//            $return['orderid'] = $item_num;
-//        } else {
-//            $return['success'] = false;
-//        }
-//
-//        return $return;
-//    }
-//
-//    function validate_ipn($data) {
-//        $payconfig = $this->payconfig;
-//        $pstestmode = $payconfig->$pstestmode;
-//        $request = WebToPay::validateAndParseData($data, $this->projectId, $this->signPassword);
-//        if ($data['status'] === 1) {
-//            return TRUE;
-//        } else {
-//            return FALSE;
-//        }
-//    } 
-    }
-    
+    function payseraReturn($data) {
+        print_r($data);
+        try {
+            $response = WebToPay::checkResponse($data, array(
+                        'projectid' => 74747,
+                        'sign_password' => 'a4a8a31750a23de2da88ef6a491dfd5c',
+            ));
+            print_r($response);
+            $orderId =  $response['orderid'];
+            $amount =   $response['amount'];
+            $currency = $response['currency'];
 
+            if ($response['status'] == 1) {
+                $invoice_num = $response['invoiceno'];  // get the invoice number from the post variable
+                $return['success'] = true;
+                $return['invoice_num'] = $invoice_num;
+            } else
+                $return['success'] = false;
+
+            //print_r($return);exit;
+
+            return $return;
+        } catch (Exception $e) {
+            echo get_class($e) . ': ' . $e->getMessage();
+        }
+    }
+
+}

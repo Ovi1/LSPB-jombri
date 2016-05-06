@@ -229,9 +229,17 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                         echo!empty($avatar) ? LinkHelper::GetProfileLink($row->publisher_userid, $avatar) : '&nbsp;'
                         ?>
                     </div>
-                    <div class="col-md-4 col-xs-6 col-sm-4">
+                    <div class="col-md-7 col-xs-6 col-sm-4">
                         <h4 class="media-heading">
                             <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
+                                          <small>
+          <?php echo JText::_('COM_JBLANCE_BIDS'); ?> : 
+          <?php if ($sealProjectBids || $row->is_sealed) : ?>
+            <span class="label label-info"><?php echo JText::_('COM_JBLANCE_SEALED'); ?></span>
+          <?php else : ?>
+            <span class="badge badge-info"><?php echo $bidsCount; ?></span>
+          <?php endif; ?>
+              </small>
                         </h4>
                         <div class="font14">
                             <strong><?php echo JText::_('COM_JBLANCE_POSTED_BY'); ?></strong>: <?php echo LinkHelper::GetProfileLink($row->publisher_userid, $buyer->$nameOrUsername); ?>
@@ -243,7 +251,7 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                             <strong><?php echo JText::_('COM_JBLANCE_LOCATION'); ?></strong>: <span class=""><?php echo JblanceHelper::getLocationNames($row->id_location); ?></span>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xs-12">
+<!--                    <div class="col-md-3 col-xs-12">
 
                         <i class="material-icons">label</i> <?php echo JText::_('COM_JBLANCE_BIDS'); ?> : 
                         <?php if ($sealProjectBids || $row->is_sealed) : ?>
@@ -251,7 +259,7 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                         <?php else : ?>
                             <span class="badge badge-info"><?php echo $bidsCount; ?></span>
                         <?php endif; ?>
-                    </div>
+                    </div>-->
 
                     <div id="status" class="col-md-3">
                         <span class="<?php echo $statusLabel; ?>"><?php echo JText::_($row->status); ?></span>

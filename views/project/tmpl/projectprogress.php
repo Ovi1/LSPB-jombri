@@ -108,10 +108,11 @@ jQuery(document).ready(function($){
 });
 //-->
 </script>
-
+<div class="panel panel-default">
+<div class="panel-body">
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PROJECT_PROGRESS'); ?></div>
 	<div class="row-fluid">
-		<div class="span6">
+		<div class="col-md-12">
 			<fieldset class="form-horizontal">
 				<legend><?php echo JText::_('COM_JBLANCE_PROJECT_DETAILS'); ?></legend>
 				<div class="control-group">
@@ -151,12 +152,12 @@ jQuery(document).ready(function($){
 	
 	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'progress', JText::_('COM_JBLANCE_PROGRESS', true)); ?>
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="progress-update" class="form-validate" onsubmit="return validateFormProgress(this);">
-	<div class="row-fluid">
- 		<div class="span12">
+	<div class="row">
+ 		<div class="col-md-12">
  			<fieldset class="form-vertical">
  				<!-- <legend><?php echo JText::_('COM_JBLANCE_PROGRESS'); ?></legend> -->
- 				<div class="row-fluid">
- 					<div class="span8">
+ 				<div class="row">
+ 					<div class="col-md-8">
 		 				<?php if($isfreelancer) : ?>
 		 				<?php if($project->p_status == ''){ ?>
 		 				<div class="control-group">
@@ -194,15 +195,15 @@ jQuery(document).ready(function($){
 						<div class="control-group">
 							<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PERCENT_OF_COMPLETION'); ?> :</label>
 							<div class="controls">
-								<div class="progress progress-success progress-striped span6">
-									<div class="bar" style="width: <?php echo $project->p_percent; ?>%"></div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-success" style="width: <?php echo $project->p_percent; ?>%"></div>
 								</div>
 								&nbsp;<?php echo $project->p_percent; ?>%
 							</div>
 						</div>
 						<?php endif; ?> <!-- end of isfreelancer, isbuyer -->
  					</div>
- 					<div class="span4">
+ 					<div class="col-md-4">
 		 				<?php if($project->p_started != "0000-00-00 00:00:00") : ?>
 						<div class="control-group">
 							<label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_STARTED'); ?> :</label>
@@ -311,7 +312,7 @@ jQuery(document).ready(function($){
 				<?php
 				if(!empty($message->attachment) && $message->approved == 1) : ?>
 					<span>
-						<i class="icon-download"></i>
+						<i class="material-icons">get_app</i>
 				<?php echo LinkHelper::getDownloadLink('message', $message->id, 'message.download'); ?>
 					</span>
 				<?php	
@@ -326,8 +327,7 @@ jQuery(document).ready(function($){
 	<?php } ?>
 	<div class="control-group">
 		<div class="controls well">
-			<textarea name="message" id="message" rows="3" class="input-block-level required" placeholder="<?php echo JText::_('COM_JBLANCE_ENTER_MESSAGE'); ?>"></textarea>
-			<div class="sp10">&nbsp;</div>
+			<textarea name="message" id="message" rows="3" class="input-block-level form-control required" placeholder="<?php echo JText::_('COM_JBLANCE_ENTER_MESSAGE'); ?>"></textarea>
 			<div id="ajax-container-uploadmessage"></div>
 			<div id="file-attached-uploadmessage"></div>
 			<div class="pull-left">
@@ -335,11 +335,11 @@ jQuery(document).ready(function($){
 				$tipmsg = JHtml::tooltipText(JText::_('COM_JBLANCE_ATTACH_FILE'), JText::_('COM_JBLANCE_ALLOWED_FILE_TYPES').' : '.$config->projectFileText.'<br>'.JText::_('COM_JBLANCE_MAXIMUM_FILE_SIZE').' : '.$config->projectMaxsize.' kB');
 				?>
 				<img src="components/com_jblance/images/tooltip.png" class="hasTooltip" title="<?php echo $tipmsg; ?>"/>
-				<input type="button" id="uploadmessage" value="<?php echo JText::_('COM_JBLANCE_ATTACH_FILE'); ?>" class="btn btn-primary">
+				<input type="button" id="uploadmessage" value="<?php echo JText::_('COM_JBLANCE_ATTACH_FILE'); ?>" class="btn btn-info">
 			</div>
-			<div style="text-align: right;">
+		
 				<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SEND'); ?>" class="btn btn-primary"  id="btnsend"/>
-			</div>
+		
 		</div>
 	</div>
 	<input type="hidden" name="option" value="com_jblance" />			
@@ -356,3 +356,5 @@ jQuery(document).ready(function($){
 </form>
 	<?php echo JHtml::_('bootstrap.endTab'); ?>		<!-- end of messages tab -->
 	<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+</div>
+</div>

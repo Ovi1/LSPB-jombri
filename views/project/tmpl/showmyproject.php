@@ -140,7 +140,7 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                                     if ($bidInfo->p_status == 'COM_JBLANCE_COMPLETED' && !$hasRated) {
                                         $link_rate = JRoute::_('index.php?option=com_jblance&view=project&layout=rateuser&id=' . $row->id);
                                         ?>
-                                        <a href="<?php echo $link_rate; ?>" class="btn btn-primary btn-block btn-sm"><?php echo JText::_('COM_JBLANCE_RATE_FREELANCER'); ?></a>
+                                        <a href="<?php echo $link_rate; ?>" class="btn btn-success btn-block btn-sm"><i class="material-icons">star</i><?php echo JText::_('COM_JBLANCE_RATE_FREELANCER'); ?></a>
                                         <?php
                                     }
                                 } elseif ($row->status == 'COM_JBLANCE_FROZEN') {

@@ -65,6 +65,7 @@ if (!JBLANCE_FREE_MODE) {
     }
 }
 ?>
+
 <div class="jbl_h3title"><?php echo JText::_($this->userInfo->name) . ' ' . JText::_('COM_JBLANCE_DASHBOARD'); ?></div>
 <div class="row">
     <div class="col-md-3">

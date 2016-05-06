@@ -20,8 +20,10 @@ $link_edit_service = JRoute::_('index.php?option=com_jblance&view=service&layout
 ?>
 <div class="panel panel-default">
     <div  class="panel-heading">
-        <div class="pull-right"><a href="<?php echo $link_edit_service; ?>" class="btn btn-primary"><?php echo JText::_('COM_JBLANCE_ADD_SERVICE'); ?></a></div>
-        <h3><?php echo JText::_('COM_JBLANCE_MY_SERVICES'); ?></h3>
+        <h3><?php echo JText::_('COM_JBLANCE_MY_SERVICES'); ?>
+            <a href="<?php echo $link_edit_service; ?>" class="btn btn-primary pull-right"><?php echo JText::_('COM_JBLANCE_ADD_SERVICE'); ?></a>
+        
+        </h3>
     </div>
     <div class="panel-body">
         <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userForm">
@@ -43,26 +45,25 @@ $link_edit_service = JRoute::_('index.php?option=com_jblance&view=service&layout
                         <div class="thumbnail">
                             <img class="img-responsive" src="<?php echo $attachments[0]['thumb']; ?>"  />
                             <div class="caption">
-                                <h4>
+                                <h5>
                                     <?php echo $row->service_title; ?>;
                                     <?php
                                     if ($row->approved == 0)
                                         echo '<span class="label label-danger">' . JText::_('COM_JBLANCE_PENDING_APPROVAL') . '</span>';
                                     ?>
-                                    <br>
                                     <?php if ($row->buycount > 0) { ?>
                                         <a href="<?php echo $link_sold; ?>">
                                             <span class="label label-success"><?php echo JText::plural('COM_JBLANCE_N_SERVICES_BOUGHT', $row->buycount); ?></span>
                                         </a>
                                         <div class="small"><?php echo $getStatusCounts; ?></div>
                                     <?php } ?>
-                                </h4>
+                                </h5>
                                 <p><?php echo JText::_('COM_JBLANCE_IN'); ?> <?php echo JText::plural('COM_JBLANCE_N_DAYS', $row->duration); ?></p>
                                 <p><i class="material-icons">attach_money</i><?php echo JblanceHelper::formatCurrency($row->price, true, false, 0); ?></p> 
                                 <!-- Split button -->
                                 <div class="btn-group">
-                                    <a class="btn btn-primary"  href="<?php echo $link_view; ?>"><?php echo JText::_('COM_JBLANCE_VIEW_SERVICE'); ?></a></button>
-                                    <a class="btn btn-default" href="<?php echo $link_edit; ?>"><?php echo JText::_('COM_JBLANCE_EDIT_SERVICE'); ?></a></li>
+                                    <a class="btn btn-primary btn-block"  href="<?php echo $link_view; ?>"><?php echo JText::_('COM_JBLANCE_VIEW_SERVICE'); ?></a></button>
+                                    <a class="btn btn-default btn-block" href="<?php echo $link_edit; ?>"><?php echo JText::_('COM_JBLANCE_EDIT_SERVICE'); ?></a></li>
                                 </div>
                             </div>
                         </div>

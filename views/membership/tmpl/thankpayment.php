@@ -19,6 +19,8 @@
 ?>
 <!-- display pages based on the type -->
 <?php if($type == 'cancel') : ?>
+<div class="panel panel-default">
+<div class="panel-body">
 <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PAYMENT_CANCELLED'); ?></div>
 <p class="jbbox-warning">
 	<span class="font16"><?php echo JText::_('COM_JBLANCE_YOUR_PAYMENT_IS_CANCELLED'); ?></span>
@@ -54,8 +56,10 @@
 	</div>
 	<div class="form-actions">
 		<a rel="{handler: 'iframe', size: {x: 650, y: 500}}" href="<?php echo $this->row->lnk_invoice; ?>" class="jb-modal btn btn-primary"><span><?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?></span></a>
-		<a href="<?php echo $this->row->lnk_continue; ?>" class="btn btn-primary"><span><?php echo JText::_('COM_JBLANCE_CONTINUE'); ?></span></a>
+		<a href="<?php echo $this->row->lnk_continue; ?>" class="btn btn-default"><span><?php echo JText::_('COM_JBLANCE_CONTINUE'); ?></span></a>
 	</div>
 </fieldset>
 	
 <?php endif; ?>
+</div>
+</div>

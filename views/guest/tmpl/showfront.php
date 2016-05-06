@@ -55,22 +55,6 @@ if ($usersConfig->get('allowUserRegistration') == '0') {
   <?php
 }
 ?>
-  <div class="col-md-12">
-    <div class="introduction">
-      <h2><?php echo JText::_($config->welcomeTitle); ?></h2>
-      <ul id="featurelist">
-        <li><?php echo JText::_('COM_JBLANCE_HIRE_ONLINE_FRACTION_COST'); ?></li>
-        <li><?php echo JText::_('COM_JBLANCE_OUTSOURCE_ANYTHING_YOU_CAN_THINK'); ?></li>
-        <li><?php echo JText::_('COM_JBLANCE_PROGRAMMERS_DESIGNERS_CONTENT_WRITERS_READY'); ?></li>
-        <li><?php echo JText::_('COM_JBLANCE_PAY_FREELANCERS_ONCE_HAPPY_WITH_WORK'); ?></li>
-      </ul>
-      <?php if ($user->guest) : ?>
-        <a href="#ugselect" id="signup" class="btn btn-large btn-primary"><?php echo JText::_('COM_JBLANCE_SIGN_UP_NOW'); ?></a>
-      <?php else: ?>
-        <a href="#ugselect" id="signup" class="btn btn-large btn-primary"><?php echo JText::_('COM_JBLANCE_CHOOSE_YOUR_ROLE'); ?></a>
-<?php endif; ?>
-    </div>
-  </div>
   <div class="col-md-6">
     <!-- if user is guest -->
 <?php if ($user->guest) : ?>

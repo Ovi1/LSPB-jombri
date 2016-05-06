@@ -72,6 +72,8 @@ jQuery(document).ready(function($){
 });
 //-->
 </script>
+<div class="panel panel-default">
+<div class="panel-body">
 <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormProject" id="userFormProject" class="form-validate form-horizontal" onsubmit="return validateForm(this);">
 	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_RATE_USER'); ?></div>
 	<div class="control-group">
@@ -126,7 +128,7 @@ jQuery(document).ready(function($){
 	<div class="control-group">
 		<label class="control-label" for="comments"><?php echo JText::_('COM_JBLANCE_COMMENTS'); ?>: </label>
 		<div class="controls">
-			<textarea name="comments" rows="5" class="input-xlarge required"></textarea>
+			<textarea name="comments" rows="5" class="form-control required"></textarea>
 		</div>
 	</div>
 	<div class="form-actions">
@@ -143,3 +145,5 @@ jQuery(document).ready(function($){
 	<input type="hidden" name="type" value="COM_JBLANCE_PROJECT" />
 	<?php echo JHtml::_('form.token'); ?>
 	</form>
+</div>
+</div>
