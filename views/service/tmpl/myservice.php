@@ -46,7 +46,7 @@ $link_edit_service = JRoute::_('index.php?option=com_jblance&view=service&layout
                             <img class="img-responsive" src="<?php echo $attachments[0]['thumb']; ?>"  />
                             <div class="caption">
                                 <h5>
-                                    <?php echo $row->service_title; ?>;
+                                    <?php echo $row->service_title; ?>
                                     <?php
                                     if ($row->approved == 0)
                                         echo '<span class="label label-danger">' . JText::_('COM_JBLANCE_PENDING_APPROVAL') . '</span>';
@@ -71,14 +71,15 @@ $link_edit_service = JRoute::_('index.php?option=com_jblance&view=service&layout
                 <?php }
                 ?>
             <?php endif; ?>
-                    <div class="pagination pagination-centered pull-right">
+                    <div class="pull-right">
                         <div class="display-limit">
                             <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
                             <?php echo $this->pageNav->getLimitBox(); ?>
                         </div>
-                        <?php echo $this->pageNav->getPagesLinks(); ?>
                     </div>
-   
+            <div class="pagination pagination-centered">
+                        <?php echo $this->pageNav->getPagesLinks(); ?>
+        </div>
         </form>
 
     </div>

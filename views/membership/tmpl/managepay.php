@@ -13,7 +13,6 @@
  defined('_JEXEC') or die('Restricted access');
  
  JHtml::_('behavior.modal', 'a.jb-modal');
- JHtml::_('behavior.tabstate');
  
  $model 			  = $this->getModel();
  $config 			  = JblanceHelper::getConfig();
@@ -28,19 +27,27 @@
  $action	= JRoute::_('index.php?option=com_jblance&view=membership&layout=managepay');
 ?>
 <div class="panel panel-default">
+<div class="panel-heading"><h3><?php echo JText::_('COM_JBLANCE_MANAGE_PAYMENTS'); ?></h3></div>
 <div class="panel-body">
 <form action="<?php echo $action; ?>" method="post" name="userFormJob" enctype="multipart/form-data">	
-	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_MANAGE_PAYMENTS'); ?></div>
-	<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'escrowout')); ?>
+         <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#escrow" aria-controls="escrow" role="tab" data-toggle="tab"><?php echo JText::_('COM_JBLANCE_OUTGOING_ESCROW_PAYMENTS'); ?></a></li>
+    <li role="presentation"><a href="#escrowin" aria-controls="escrowin" role="tab" data-toggle="tab"><?php echo JText::_('COM_JBLANCE_INCOMING_ESCROW_PAYMENTS')?></a></li>
+    <li role="presentation"><a href="#withdraws" aria-controls="withdraws" role="tab" data-toggle="tab"><?php echo JText::_('COM_JBLANCE_WITHDRAWALS')?></a></li>
+    <li role="presentation"><a href="#deposits" aria-controls="deposits" role="tab" data-toggle="tab"><?php echo JText::_('COM_JBLANCE_DEPOSITS'); ?>
+</a></li>
+  </ul>
 	<?php
 	$countEscrowOut = $model->countManagePayPending('escrowout');
 	$newTitle = ($countEscrowOut > 0) ? ' <span class="badge badge-important">'.$countEscrowOut.'</span>' : '';
 	
 	//check if escrow is enabled
 	if($enableEscrowPayment){ ?>
-	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'escrowout', JText::_('COM_JBLANCE_OUTGOING_ESCROW_PAYMENTS').$newTitle); ?>
 	<?php 
 	if(count($this->escrow_out)) : ?>
+  <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="escrow">
 	<div id="no-more-tables">
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
@@ -102,18 +109,19 @@
 		else : 
 			echo '<div class="alert alert-info">'.JText::_('COM_JBLANCE_NO_PENDING_PAYMENTS_FOUND').'</div>';
 		endif;	//end of count escrow ?>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>		<!-- end of escrowout tab -->
+        <!-- end of escrowout tab -->
 	<?php 	
 	}		//end of escrow enabled
 	?>
+  </div>
 	<?php
 	$countEscrowIn = $model->countManagePayPending('escrowin');
 	$newTitle = ($countEscrowIn > 0) ? ' <span class="badge badge-important">'.$countEscrowIn.'</span>' : '';
 	//check if escrow is enabled
 	if($enableEscrowPayment){ ?>
-	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'escrowin', JText::_('COM_JBLANCE_INCOMING_ESCROW_PAYMENTS').$newTitle); ?>
 	<?php
 	if(count($this->escrow_in)) : ?>
+       <div role="tabpanel" class="tab-pane  fade in" id="escrowin">
 	<div id="no-more-tables">
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
@@ -173,19 +181,19 @@
 		else :
 			echo '<div class="alert alert-info">'.JText::_('COM_JBLANCE_NO_PENDING_PAYMENTS_FOUND').'</div>';
 		endif;	//end of escrow count ?>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>		<!-- end of escrowin tab -->
 	<?php	
-	}		//end of escrow enabled
+	}
 	?>
+        </div>	
 	<?php
 	$countWithdraw = $model->countManagePayPending('withdraw');
 	$newTitle = ($countWithdraw > 0) ? ' <span class="badge badge-important">'.$countWithdraw.'</span>' : '';
 	
 	//check if withdraw fund is enabled
 	if($enableWithdrawFund){ ?>
-	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'withdrawals', JText::_('COM_JBLANCE_WITHDRAWALS').$newTitle); ?>	
 	<?php
 	if(count($this->withdraws)) : ?>
+        <div role="tabpanel" class="tab-pane  fade in" id="withdraws">
 	<div id="no-more-tables">
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
@@ -201,9 +209,7 @@
 		<tfoot>
 			<tr>
 				<td colspan="7">
-					<div class="pagination">
 					<?php echo $this->pageNavWithdraw->getListFooter(); ?>
-					</div>
 				</td>
 			</tr>
 		</tfoot>
@@ -231,7 +237,7 @@
 					<?php echo JblanceHelper::getApproveStatus($withdraw->approved); ?>
 				</td>
 				<td class="text-center">
-					<a class="btn btn-mini jb-modal" title="<?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?>" href="<?php echo $link_invoice; ?>" rel="{handler: 'iframe', size: {x: 650, y: 500}}"><i class="icon-print"></i></a>
+					<a class="btn btn-mini jb-modal" title="<?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?>" href="<?php echo $link_invoice; ?>" rel="{handler: 'iframe', size: {x: 650, y: 500}}"><i class="material-icons">print</i></a>
 				</td>
 			</tr>
 	<?php
@@ -244,16 +250,16 @@
 		else :
 			echo '<div class="alert alert-info">'.JText::_('COM_JBLANCE_NO_PENDING_PAYMENTS_FOUND').'</div>';
 		endif;	//end of withdraw count ?>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>		<!-- end of withdrawal tab -->
 	<?php
 	}		//end of escrow withdraw
 	?>
+        </div>		<!-- end of withdrawal tab -->
 	<?php
 	$countDeposit = $model->countManagePayPending('deposit');
 	$newTitle = ($countDeposit > 0) ? ' <span class="badge badge-important">'.$countDeposit.'</span>' : ''; ?>
-	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'deposits', JText::_('COM_JBLANCE_DEPOSITS').$newTitle); ?>
 	<?php
 	if(count($this->deposits)) : ?>
+        <div role="tabpanel" class="tab-pane fade in" id="deposits">
 	<div id="no-more-tables">
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
@@ -269,9 +275,7 @@
 		<tfoot>
 			<tr>
 				<td colspan="7">
-					<div class="pagination">
 					<?php echo $this->pageNavDeposit->getListFooter(); ?>
-					</div>
 				</td>
 			</tr>
 		</tfoot>
@@ -299,7 +303,7 @@
 					<?php echo JblanceHelper::getApproveStatus($deposit->approved); ?>
 				</td>
 				<td class="text-center">
-					<a class="btn btn-mini jb-modal" title="<?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?>" href="<?php echo $link_invoice; ?>" rel="{handler: 'iframe', size: {x: 650, y: 500}}"><i class="icon-print"></i></a>
+					<a class="btn btn-mini jb-modal" title="<?php echo JText::_('COM_JBLANCE_PRINT_INVOICE'); ?>" href="<?php echo $link_invoice; ?>" rel="{handler: 'iframe', size: {x: 650, y: 500}}"><i class="material-icons">print</i></a>
 				</td>
 			</tr>
 	<?php
@@ -313,9 +317,8 @@
 		echo '<div class="alert alert-info">'.JText::_('COM_JBLANCE_NO_PENDING_PAYMENTS_FOUND').'</div>';
 	endif;
 	?>
-	<?php echo JHtml::_('bootstrap.endTab'); ?>		<!-- end of deposits tab -->
-	
-	<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+        </div>
+        </div><!--end tab content-->
 	<input type="hidden" name="option" value="com_jblance" />
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>

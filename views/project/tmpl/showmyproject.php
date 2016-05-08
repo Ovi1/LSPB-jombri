@@ -232,12 +232,14 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                 <?php } ?>
             <?php endif; ?>
                     <div class="row"></div>
-        <div class="pagination pagination-centered">
-                <div class="display-limit">
-                    <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
-                    <?php echo $this->pageNav->getLimitBox(); ?>
-                </div>
-                <?php echo $this->pageNav->getPagesLinks(); ?>
+                    <div class="pull-right">
+                        <div class="display-limit">
+                            <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
+                            <?php echo $this->pageNav->getLimitBox(); ?>
+                        </div>
+                    </div>
+            <div class="pagination pagination-centered">
+                        <?php echo $this->pageNav->getPagesLinks(); ?>
         </div>
             <input type="hidden" name="option" value="com_jblance" />			
             <input type="hidden" name="task" value="" />	

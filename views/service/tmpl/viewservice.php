@@ -84,22 +84,6 @@ $link_edit = JRoute::_('index.php?option=com_jblance&view=service&layout=editser
     </div>
     <div class="panel-body">
         <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormProject" id="userFormProject" class="form-validate" enctype="multipart/form-data">
-            <div class="page-actions">
-                <?php if ($enableAddThis) : ?>
-                    <div id="social-bookmark" class="page-action pull-left">
-                        <!-- AddThis Button BEGIN -->
-                        <div class="addthis_toolbox addthis_default_style ">
-                            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                            <a class="addthis_button_tweet"></a>
-                            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a> 
-                            <a class="addthis_counter addthis_pill_style"></a>
-                        </div>
-        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
-                        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=<?php echo $addThisPubid; ?>"></script>
-                        <!-- AddThis Button END -->
-                    </div>
-                <?php endif; ?>
-            </div>
             <div class="clearfix"></div>
 
             <div class="row">
@@ -107,7 +91,7 @@ $link_edit = JRoute::_('index.php?option=com_jblance&view=service&layout=editser
 
                     <div class="thumbnail">
                         <?php
-                        $attrib = 'width=128px height=128px class="img-circle"';
+                        $attrib = 'width=128px height=128px class="img-responsive"';
                         $avatar = JblanceHelper::getLogo($row->user_id, $attrib);
                         echo!empty($avatar) ? LinkHelper::GetProfileLink($row->user_id, $avatar, '', '', '') : '&nbsp;';
                         ?>
@@ -141,7 +125,7 @@ $link_edit = JRoute::_('index.php?option=com_jblance&view=service&layout=editser
                 </div>
                 <div class="col-md-12">
                     <div class="clearfix"></div>
-                    <div class=""<?php echo nl2br($row->description); ?></div>
+                    <div><?php echo nl2br($row->description); ?></div>
                     <?php
                     $registry = new JRegistry;
                     $registry->loadString($row->extras);
@@ -232,7 +216,6 @@ $link_edit = JRoute::_('index.php?option=com_jblance&view=service&layout=editser
                         }
                         ?>
                     </div>
-    </div>
 <?php endif; ?>
             <input type="hidden" name="option" value="com_jblance" /> 
             <input type="hidden" name="task" value="service.placeorder" /> 

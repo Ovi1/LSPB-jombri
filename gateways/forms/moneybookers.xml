@@ -7,7 +7,7 @@
 		<field type="text" name="mbCurrency" id="mbCurrency" label="COM_JBLANCE_MONEYBOOKERS_CURRENCY" description="COM_JBLANCE_MONEYBOOKERS_CURRENCY_EXAMPLE" size="3" default="USD" maxLength="255" class="required" />
 	</fieldset>
 	<fieldset name="withdraw">
-		<field type="text" name="mbRecipientName" id="mbRecipientName" label="COM_JBLANCE_MONEYBOOKERS_NAME" description="" size="60" default="" maxLength="255" class="required" labelclass="control-label" />
-		<field type="text" name="mbRecipientEmail" id="mbRecipientEmail" label="COM_JBLANCE_MONEYBOOKERS_EMAIL" description="" size="60" default="" maxLength="255" class="required validate-email" labelclass="control-label" />
+		<field type="text" name="mbRecipientName" id="mbRecipientName" label="COM_JBLANCE_MONEYBOOKERS_NAME" description="" size="60" default="" maxLength="255" class="form-control required" labelclass="control-label" />
+		<field type="text" name="mbRecipientEmail" id="mbRecipientEmail" label="COM_JBLANCE_MONEYBOOKERS_EMAIL" description="" size="60" default="" maxLength="255" class="form-control required validate-email" labelclass="control-label" />
 	</fieldset>
 </form>

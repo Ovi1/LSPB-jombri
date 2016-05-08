@@ -91,7 +91,7 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
         echo!empty($avatar) ? LinkHelper::GetProfileLink($row->publisher_userid, $avatar) : '&nbsp;'
         ?>
       </div>
-      <div class="col-xs-6 col-sm-8 col-md-7 ">
+      <div class="col-xs-6 col-sm-8 col-md-7">
           <h4 class="media-heading">
           <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
               <small>
@@ -140,13 +140,15 @@ $userHelper = JblanceHelper::get('helper.user');  // create an instance of the c
       <?php echo JText::_('COM_JBLANCE_NO_PROJECT_POSTED'); ?>
     </div>
   <?php } ?>
-  <div class="pagination pagination-centered clearfix">
-    <div class="display-limit pull-right">
-      <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
-      <?php echo $this->pageNav->getLimitBox(); ?>
-    </div>
-    <?php echo $this->pageNav->getPagesLinks(); ?>
-  </div>
+                    <div class="pull-right">
+                        <div class="display-limit">
+                            <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
+                            <?php echo $this->pageNav->getLimitBox(); ?>
+                        </div>
+                    </div>
+            <div class="pagination pagination-centered">
+                        <?php echo $this->pageNav->getPagesLinks(); ?>
+        </div>
   <?php
   $link_rss = JRoute::_('index.php?option=com_jblance&view=project&format=feed');
   $rssvisible = (!$config->showRss) ? 'style=display:none' : '';

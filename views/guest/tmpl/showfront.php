@@ -91,9 +91,8 @@ if ($usersConfig->get('allowUserRegistration') == '0') {
             </label>
             <input type="submit" value="<?php echo JText::_('COM_JBLANCE_LOGIN'); ?>" name="submit" id="submit" class="btn btn-small" />
             <?php if ($user_info['loginUrl'] != '' && $showFbConnect) { ?>
-              <a class="btn btn-primary btn-small" href="<?php echo $user_info['loginUrl']; ?>">
-                <span><?php echo JText::_('COM_JBLANCE_SIGN_IN_WITH_FACEBOOK'); ?></span>
-              </a> 
+              <a class="btn btn-fb btn-small" href="<?php echo $user_info['loginUrl']; ?>">
+                  <img class="fb" src="components/com_jblance/images/fb.png"><?php echo JText::_('COM_JBLANCE_SIGN_IN_WITH_FACEBOOK'); ?></a> 
               <?php }
             ?>
           </div>
@@ -111,8 +110,6 @@ if ($usersConfig->get('allowUserRegistration') == '0') {
   <?php endif; ?>
 </div>
 <div class="clearfix"></div>
-<a id="ugselect"></a>
-<div class="row">	
 <?php
 $totGroups = count($this->userGroups);
 if ($totGroups == 0) {
@@ -150,7 +147,7 @@ for ($i = 0; $i < $totGroups; $i++) {
   <?php }
 
 ?>
-</div>
+
 </div>
 <p class="jbbox-info">
   <?php echo JText::_('COM_JBLANCE_REQUIRE_APPROVAL_NOTE'); ?>

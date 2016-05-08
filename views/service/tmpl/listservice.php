@@ -85,10 +85,11 @@ JArrayHelper::toInteger($id_categ);
   }
   ?>
 
-</form>
-
 <div class="pull-right dropmenu">
   <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
   <?php echo $this->pageNav->getLimitBox(); ?>
-  <?php echo $this->pageNav->getPagesLinks(); ?>
 </div>
+    <div class="pagination">
+  <?php echo $this->pageNav->getPagesLinks(); ?>
+    </div>
+</form>

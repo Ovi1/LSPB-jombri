@@ -226,13 +226,15 @@ JblanceHelper::setJoomBriToken();
             <?php echo JText::_('COM_JBLANCE_NO_USER_OR_MATCHING_YOUR_QUERY'); ?>
         </div>
     <?php } ?>
-    <div class="pagination pagination-centered clearfix">
-        <div class="display-limit pull-right">
-            <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
-            <?php echo $this->pageNav->getLimitBox(); ?>
+                    <div class="pull-right">
+                        <div class="display-limit">
+                            <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
+                            <?php echo $this->pageNav->getLimitBox(); ?>
+                        </div>
+                    </div>
+            <div class="pagination pagination-centered">
+                        <?php echo $this->pageNav->getPagesLinks(); ?>
         </div>
-        <?php echo $this->pageNav->getPagesLinks(); ?>
-    </div>
 </div>
 </div>
 </form> 

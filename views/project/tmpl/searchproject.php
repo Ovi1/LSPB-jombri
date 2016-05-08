@@ -222,14 +222,14 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                                 <li data-promotion="nda"><?php echo JText::_('COM_JBLANCE_NDA'); ?></li>
                             <?php endif; ?>
                         </ul>
-                    <div class="col-md-2 col-xs-4 col-sm-4">
+                    <div class="col-xs-6 col-sm-4 col-md-2">
                         <?php
                         $attrib = 'class="img-responsive"';
                         $avatar = JblanceHelper::getLogo($row->publisher_userid, $attrib);
                         echo!empty($avatar) ? LinkHelper::GetProfileLink($row->publisher_userid, $avatar) : '&nbsp;'
                         ?>
                     </div>
-                    <div class="col-md-7 col-xs-6 col-sm-4">
+                    <div class="col-xs-6 col-sm-8 col-md-7">
                         <h4 class="media-heading">
                             <?php echo LinkHelper::getProjectLink($row->id, $row->project_title); ?>
                                           <small>
@@ -261,7 +261,7 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                         <?php endif; ?>
                     </div>-->
 
-                    <div id="status" class="col-md-3">
+                    <div id="status" class="col-xs-12 col-sm-12 col-md-3">
                         <span class="<?php echo $statusLabel; ?>"><?php echo JText::_($row->status); ?></span>
 
                         <div class="status">
@@ -285,13 +285,15 @@ $action = JRoute::_('index.php?option=com_jblance&view=project&layout=searchproj
                     <?php echo JText::_('COM_JBLANCE_NO_MATCHING_RESULTS_FOUND'); ?>
                 </div>
             <?php } ?>
-            <div class="pagination pagination-centered clearfix">
-                <div class="display-limit pull-right">
-                    <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
-                    <?php echo $this->pageNav->getLimitBox(); ?>
-                </div>
-                <?php echo $this->pageNav->getPagesLinks(); ?>
-            </div>
+                          <div class="pull-right">
+                        <div class="display-limit">
+                            <?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
+                            <?php echo $this->pageNav->getLimitBox(); ?>
+                        </div>
+                    </div>
+            <div class="pagination pagination-centered">
+                        <?php echo $this->pageNav->getPagesLinks(); ?>
+        </div>
         </div>
     </div>
     <input type="hidden" name="option" value="com_jblance" />

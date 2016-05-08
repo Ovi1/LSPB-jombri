@@ -68,7 +68,7 @@ JblanceHelper::setJoomBriToken();
 
     jQuery(document).ready(function ($) {
         if ($("#portfoliopicture").length) {
-            attachFile('portfoliopicture',     'user.attachportfoliofile');
+            attachFile('portfoliopicture', 'user.attachportfoliofile');
             attachFile('portfolioattachment1', 'user.attachportfoliofile');
             attachFile('portfolioattachment2', 'user.attachportfoliofile');
             attachFile('portfolioattachment3', 'user.attachportfoliofile');
@@ -81,24 +81,24 @@ JblanceHelper::setJoomBriToken();
 //-->
 </script>
 <?php include_once(JPATH_COMPONENT . '/views/profilemenu.php'); ?>
-    <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PORTFOLIOS'); ?>
-        <div class="pull-right">
-            <?php if (count($this->portfolios) >= $allowedPortfolio) : ?>
-                <?php $msg = JText::sprintf('COM_JBLANCE_REACHED_PORTFOLIO_LIMIT', $allowedPortfolio, array('jsSafe' => true)); ?>
-                <a href="javascript:void(0);" class="btn btn-primary" onclick="javascript:modalAlert('<?php echo JText::_('COM_JBLANCE_LIMIT_EXCEEDED', true); ?>', '<?php echo $msg; ?>', false);">
-                    <span><?php echo JText::_('COM_JBLANCE_ADD_PORTFOLIO'); ?></span>
-                </a>
-            <?php else : ?>
-                <a href="<?php echo $link_new; ?>" class="btn btn-primary"><span><?php echo JText::_('COM_JBLANCE_ADD_PORTFOLIO'); ?></span></a>
-            <?php endif; ?>
-        </div>
+<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PORTFOLIOS'); ?>
+    <div class="pull-right">
+        <?php if (count($this->portfolios) >= $allowedPortfolio) : ?>
+            <?php $msg = JText::sprintf('COM_JBLANCE_REACHED_PORTFOLIO_LIMIT', $allowedPortfolio, array('jsSafe' => true)); ?>
+            <a href="javascript:void(0);" class="btn btn-primary" onclick="javascript:modalAlert('<?php echo JText::_('COM_JBLANCE_LIMIT_EXCEEDED', true); ?>', '<?php echo $msg; ?>', false);">
+                <span><?php echo JText::_('COM_JBLANCE_ADD_PORTFOLIO'); ?></span>
+            </a>
+        <?php else : ?>
+            <a href="<?php echo $link_new; ?>" class="btn btn-primary"><span><?php echo JText::_('COM_JBLANCE_ADD_PORTFOLIO'); ?></span></a>
+        <?php endif; ?>
     </div>
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormPortfolio" id="userFormPortfolio" class="form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data" novalidate>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4> <?php echo ($this->row->id == 0) ? JText::_('COM_JBLANCE_ADD_PORTFOLIO') : JText::_('COM_JBLANCE_EDIT_PORTFOLIO'); ?></h4>
-        </div>
-        <div class="panel-body">
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4> <?php echo ($this->row->id == 0) ? JText::_('COM_JBLANCE_ADD_PORTFOLIO') : JText::_('COM_JBLANCE_EDIT_PORTFOLIO'); ?></h4>
+    </div>
+    <div class="panel-body">
+        <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormPortfolio" id="userFormPortfolio" class="form-validate" onsubmit="return validateForm(this);" enctype="multipart/form-data" novalidate>
             <?php if (count($this->portfolios) > 0) { ?>
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
@@ -146,94 +146,95 @@ JblanceHelper::setJoomBriToken();
                     </tbody>
                 </table>
                 <?php
-            } else
+            } else {
                 echo '<p>' . JText::_('COM_JBLANCE_NO_PORTFOLIO') . '</p>';
+            }
             ?>
             <!-- Show the Edit layout only when there is no portfolio or add new or edit link is clicked -->
             <?php if (/* count($this->portfolios) == 0 ||  */$this->row->id > 0 || ($type == 'addnew' && $allowedPortfolio > 0)) { ?>
                 <div class="form-group">
-                <div class="input-group">
-                    <label class="input-group-addon" for="title"><?php echo JText::_('COM_JBLANCE_TITLE'); ?>:</label>
-                    <div class="controls">
-                        <input type="text" class="form-control required" name="title" id="title" value="<?php echo $this->row->title; ?>" />
+                    <div class="input-group">
+                        <label class="input-group-addon" for="title"><?php echo JText::_('COM_JBLANCE_TITLE'); ?>:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control required" name="title" id="title" value="<?php echo $this->row->title; ?>" />
+                        </div>
                     </div>
                 </div>
-                </div>
                 <div class="form-group">
-                <div class="input-group">
-                    <label class="input-group-addon" for="id_category"><?php echo JText::_('COM_JBLANCE_SKILLS'); ?>:</label>
-                    <div class="controls">
-                        <?php
-                        //$attribs = 'class="form-control required" size="20" multiple ';
-                        //$defaultCategory = empty($this->row->id_category) ? 0 : explode(',', $this->row->id_category);
-                        //$categtree = $select->getSelectCategoryTree('id_category[]', $defaultCategory, 'COM_JBLANCE_PLEASE_SELECT', $attribs, '', true);
-                        //echo $categtree; 
-                        //$attribs = '';
-                        //$select->getCheckCategoryTree('id_category[]', explode(',', $this->row->id_category), $attribs);
-                        ?>
-                        <?php
-                        $attribs = "class='form-control required' size='5' MULTIPLE";
-                        echo $select->getSelectCategoryTree('id_category[]', explode(',', $this->row->id_category), '', $attribs, '', true);
-                        ?>
+                    <div class="input-group">
+                        <label class="input-group-addon" for="id_category"><?php echo JText::_('COM_JBLANCE_SKILLS'); ?>:</label>
+                        <div class="controls">
+                            <?php
+                            //$attribs = 'class="form-control required" size="20" multiple ';
+                            //$defaultCategory = empty($this->row->id_category) ? 0 : explode(',', $this->row->id_category);
+                            //$categtree = $select->getSelectCategoryTree('id_category[]', $defaultCategory, 'COM_JBLANCE_PLEASE_SELECT', $attribs, '', true);
+                            //echo $categtree; 
+                            //$attribs = '';
+                            //$select->getCheckCategoryTree('id_category[]', explode(',', $this->row->id_category), $attribs);
+                            ?>
+                            <?php
+                            $attribs = "class='form-control required' size='5' MULTIPLE";
+                            echo $select->getSelectCategoryTree('id_category[]', explode(',', $this->row->id_category), '', $attribs, '', true);
+                            ?>
+                        </div>
                     </div>
                 </div>
-                </div>
                 <div class="form-group">
-                <div class="input-group">
-                    <label class="input-group-addon" for="start_date"><?php echo JText::_('COM_JBLANCE_START_DATE'); ?>:</label>
-                    <div class="controls">
-                        <?php
-                        $startdate = (empty($this->row->start_date)) ? '' : $this->row->start_date;
-                        echo JHtml::_('calendar', $startdate, 'start_date', 'start_date', '%Y-%m-%d', array('class' => 'form-control', 'size' => '20', 'maxlength' => '32'));
-                        ?>
+                    <div class="input-group">
+                        <label class="input-group-addon" for="start_date"><?php echo JText::_('COM_JBLANCE_START_DATE'); ?>:</label>
+                        <div class="controls">
+                            <?php
+                            $startdate = (empty($this->row->start_date)) ? '' : $this->row->start_date;
+                            echo JHtml::_('calendar', $startdate, 'start_date', 'start_date', '%Y-%m-%d', array('class' => 'form-control', 'size' => '20', 'maxlength' => '32'));
+                            ?>
+                        </div>
                     </div>
                 </div>
-                </div>
                 <div class="form-group">
-                <div class="input-group">
-                    <label class="input-group-addon" for="finish_date"><?php echo JText::_('COM_JBLANCE_FINISH_DATE'); ?>:</label>
-                    <div class="controls">
-                        <?php
-                        $finishdate = (empty($this->row->finish_date)) ? '' : $this->row->finish_date;
-                        echo JHtml::_('calendar', $finishdate, 'finish_date', 'finish_date', '%Y-%m-%d', array('class' => 'form-control', 'size' => '20', 'maxlength' => '32'));
-                        ?>
+                    <div class="input-group">
+                        <label class="input-group-addon" for="finish_date"><?php echo JText::_('COM_JBLANCE_FINISH_DATE'); ?>:</label>
+                        <div class="controls">
+                            <?php
+                            $finishdate = (empty($this->row->finish_date)) ? '' : $this->row->finish_date;
+                            echo JHtml::_('calendar', $finishdate, 'finish_date', 'finish_date', '%Y-%m-%d', array('class' => 'form-control', 'size' => '20', 'maxlength' => '32'));
+                            ?>
+                        </div>
                     </div>
                 </div>
-                </div>
                 <div class="form-group">
-                <div class="input-group">
-                    <label class="input-group-addon" for="link"><?php echo JText::_('COM_JBLANCE_WEB_ADDRESS'); ?>:</label>
-                    <div class="controls">
-                        <input type="text" class="form-control" name="link" id="link" value="<?php echo $this->row->link; ?>" />
+                    <div class="input-group">
+                        <label class="input-group-addon" for="link"><?php echo JText::_('COM_JBLANCE_WEB_ADDRESS'); ?>:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="link" id="link" value="<?php echo $this->row->link; ?>" />
+                        </div>
                     </div>
                 </div>
-                </div>
                 <div class="form-group">
-                <div class="input-group">
-                    <label  for="published"><?php echo JText::_('COM_JBLANCE_PUBLISHED'); ?>:</label>
-                    <div class="controls">
-                        <?php echo $select->YesNoBool('published', $this->row->published == 0 ? 0 : 1); ?>
+                    <div class="input-group">
+                        <label  for="published"><?php echo JText::_('COM_JBLANCE_PUBLISHED'); ?>:</label>
+                        <div class="controls">
+                            <?php echo $select->YesNoBool('published', $this->row->published == 0 ? 0 : 1); ?>
+                        </div>
                     </div>
                 </div>
-                </div>
                 <div class="form-group">
-                <div class="input-group">
-                    <label class="input-group-addon" for="video_link"><?php echo JText::_('COM_JBLANCE_YOUTUBE_LINK'); ?>:</label>
-                    <div class="controls">
+                    <div class="input-group">
+                        <label class="input-group-addon" for="video_link"><?php echo JText::_('COM_JBLANCE_YOUTUBE_LINK'); ?>:</label>
+
                         <input type="text" class="form-control" name="video_link" id="video_link" value="<?php echo $this->row->video_link; ?>" />
+
                     </div>
                 </div>
-                </div>
                 <div class="form-group">
-                <div class="input-group">
-                    <label class="input-group-addon" for="description"></label>
-              
+                    <div class="input-group">
+                        <label class="input-group-addon" for="description"></label>
+
                         <textarea name="description" placeholder="<?php echo JText::_('COM_JBLANCE_DESCRIPTION'); ?>" id="description" class="form-control required hasTooltip" rows="3"><?php echo JFilterInput::getInstance()->clean($this->row->description, 'string'); ?></textarea>
-                </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                <div class="input-group">
-                    <label for="published"><?php echo JText::_('COM_JBLANCE_PORTFOLIO_IMAGE'); ?>:</label>
+                    <div class="input-group">
+                        <label for="published"><?php echo JText::_('COM_JBLANCE_PORTFOLIO_IMAGE'); ?>:</label>
                         <?php
                         if ($this->row->picture) {
                             $attachment = explode(";", $this->row->picture);
@@ -253,12 +254,12 @@ JblanceHelper::setJoomBriToken();
                         $tipmsg = JText::_('COM_JBLANCE_ATTACH_IMAGE') . ':' . JText::_('COM_JBLANCE_ALLOWED_FILE_TYPES') . ' : ' . $config->projectFileText . '<br>' . JText::_('COM_JBLANCE_MAXIMUM_FILE_SIZE') . ' : ' . $config->projectMaxsize . ' kB';
                         ?>
                         <a class="hasTooltip" title="<?php echo $tipmsg; ?>"><i class="material-icons">help</i></a>
-                 
-                </div>
+
+                    </div>
                 </div>
                 <div class="form-group">
-                <div class="input-group">
-                    <label  for="published"><?php echo JText::_('COM_JBLANCE_ATTACHMENT'); ?>:</label>
+                    <div class="input-group">
+                        <label  for="published"><?php echo JText::_('COM_JBLANCE_ATTACHMENT'); ?>:</label>
                         <?php
                         if ($this->row->attachment) {
                             echo LinkHelper::getPortfolioDownloadLink('portfolio', $this->row->id, 'user.download');
@@ -276,35 +277,35 @@ JblanceHelper::setJoomBriToken();
                                 }
                                 ?>
                                 <li>
-                                   
-                                        <div class="btn-group" role="group">
-                                            <button type="button" id="portfolioattachment<?php echo $i; ?>" class="btn btn-default"><i class="material-icons">attach_file</i> <?php echo JText::_('COM_JBLANCE_ATTACH_FILE') . ' - ' . $i; ?></button>
-                                            <div id="ajax-container-portfolioattachment<?php echo $i; ?>"></div>
-                                            <div id="file-attached-portfolioattachment<?php echo $i; ?>"></div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <?php if (!empty($this->row->$attachmentColumnNum)) { ?>
-                                                <div class=""><em><?php echo JText::_('COM_JBLANCE_OLD_FILE'); ?>: </em><?php echo LinkHelper::getPortfolioDownloadLink('portfolio', $this->row->id, 'user.download', $attachmentColumnNum); //echo LinkHelper::GetHrefLink($fileUrl, $showName);    ?></div>
-                                            <?php } ?>
-                                        </div>
-                                  
+
+                                    <div class="btn-group" role="group">
+                                        <button type="button" id="portfolioattachment<?php echo $i; ?>" class="btn btn-default"><i class="material-icons">attach_file</i> <?php echo JText::_('COM_JBLANCE_ATTACH_FILE') . ' - ' . $i; ?></button>
+                                        <div id="ajax-container-portfolioattachment<?php echo $i; ?>"></div>
+                                        <div id="file-attached-portfolioattachment<?php echo $i; ?>"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?php if (!empty($this->row->$attachmentColumnNum)) { ?>
+                                            <div class=""><em><?php echo JText::_('COM_JBLANCE_OLD_FILE'); ?>: </em><?php echo LinkHelper::getPortfolioDownloadLink('portfolio', $this->row->id, 'user.download', $attachmentColumnNum); //echo LinkHelper::GetHrefLink($fileUrl, $showName);     ?></div>
+                                        <?php } ?>
+                                    </div>
+
                                 </li>
                                 <?php
                             }
                             ?>
                         </ul>
-                
-                </div>
+
+                    </div>
                 </div>
                 <div class="btn-group">
                     <input type="button" value="<?php echo JText::_('COM_JBLANCE_CANCEL'); ?>" onclick="javascript:history.back();" class="btn btn-danger" />
                     <input type="submit" value="<?php echo JText::_('COM_JBLANCE_SAVE'); ?>" class="btn btn-primary" /> 
                 </div>
-            </div>
-        </div>
-    <?php } ?>
-    <input type="hidden" name="option" value="com_jblance" />
-    <input type="hidden" name="task" value="user.saveportfolio" />
-    <input type="hidden" name="id" value="<?php echo $this->row->id; ?>" />
-    <?php echo JHtml::_('form.token'); ?>
-</form>
+            <?php } ?>
+            <input type="hidden" name="option" value="com_jblance" />
+            <input type="hidden" name="task" value="user.saveportfolio" />
+            <input type="hidden" name="id" value="<?php echo $this->row->id; ?>" />
+            <?php echo JHtml::_('form.token'); ?>
+        </form>
+    </div>
+</div>

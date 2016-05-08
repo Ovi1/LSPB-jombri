@@ -82,30 +82,9 @@ $isExpired = ($row->status == 'COM_JBLANCE_EXPIRED') ? true : false;
     });
 </script>
 <!--<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userForm">-->
-
-
-<?php if ($enableAddThis) : ?>
-    <div class="page-actions">
-        <div id="social-bookmark" class="page-action pull-left">
-            <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style ">
-                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                <a class="addthis_button_tweet"></a>
-                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a> 
-                <a class="addthis_counter addthis_pill_style"></a>
-            </div>
-            <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
-            <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=<?php echo $addThisPubid; ?>"></script>
-            <!-- AddThis Button END -->
-        </div>
-    </div>
-<?php endif; ?>
-
-<div class="clearfix"></div><br>
-
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h2><?php echo $row->project_title; ?> <small><?php echo JText::_('COM_JBLANCE_PROJECT_DETAILS'); ?></small>
+        <h3><?php echo $row->project_title; ?> <small><?php echo JText::_('COM_JBLANCE_PROJECT_DETAILS'); ?></small>
             <div    class="pull-right">
                 <!-- show the bid button only if the status is OPEN & not expired -->
                 <?php if ($row->status == 'COM_JBLANCE_OPEN' && !$isMine) : ?>
@@ -140,7 +119,7 @@ $isExpired = ($row->status == 'COM_JBLANCE_EXPIRED') ? true : false;
                     <?php endif; ?> <!-- end of ismine if -->
                 <?php endif; ?>
             </div>
-        </h2>
+        </h3>
     </div>
 
     <div class="panel-body">
@@ -342,7 +321,6 @@ $isExpired = ($row->status == 'COM_JBLANCE_EXPIRED') ? true : false;
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PUBLIC_CLARIFICATION_BOARD'); ?>
-            <div class="pull-right"><a href="#addmessage_bm" class="btn btn-default"><?php echo JText::_('COM_JBLANCE_ADD_MESSAGE'); ?></a></div>
         </div>
         <span style="font-style:italic;"><?php echo JText::sprintf('COM_JBLANCE_X_MESSAGES', count($this->forums)); ?></span>
         <div id="comments">
@@ -365,22 +343,17 @@ $isExpired = ($row->status == 'COM_JBLANCE_EXPIRED') ? true : false;
                 }
                 ?>
             </ul>
-            <form id="commentForm" method="post" action="<?php echo JRoute::_('index.php'); ?>" class="form-horizontal">
-                <a id="addmessage_bm"></a>
+            <form id="commentForm" method="post" action="<?php echo JRoute::_('index.php'); ?>" class="form-vertical">
                 <!-- show the forum add message only for bidder and publisher -->
                 <?php
                 $hasBid = $projHelper->hasBid($row->id, $user->id);
                 if (($user->id == $row->publisher_userid) || $hasBid) :
                     ?>
-                    <div class="">
+                    <div class="form-group">
 
                         <textarea id="message" name="message" rows="6" class="form-control"></textarea>
-
-                        <div class="input-group">
-                            <input type="submit" value="<?php echo JText::_('COM_JBLANCE_POST_MESSAGE'); ?>" id="btnSendMessage" class="btn btn-primary btn-block" />
-                        </div>
+                        <input type="submit" value="<?php echo JText::_('COM_JBLANCE_POST_MESSAGE'); ?>" id="btnSendMessage" class="btn btn-primary btn-block" />
                         <div style="margin-top: 5px;"><?php echo JText::_('COM_JBLANCE_SHARING_CONTACT_PROHIBITED'); ?></div>
-
                         <input type="hidden" name="project_id" value="<?php echo $row->id; ?>" />
                         <input type="hidden" name="user_id" value="<?php echo $user->id; ?>" />
                     </div>

@@ -29,7 +29,10 @@ class paysera_class {
         $pstestmode = $payconfig->test;
 
         $details = $this->details;
+        $taxrate = $details['taxrate'];
         $amount = $details['amount'];
+        $totamt = (float) ($amount + $amount * ($taxrate / 100));
+        $totamt = round($totamt, 2)*100;
         $item_num = $details['orderid'];
         $invoiceNo = $details['invoiceNo'];
         $user = JFactory::getUser($details['user_id']);
@@ -50,7 +53,8 @@ class paysera_class {
         $data['p_firstname'] = $user->name;
         $data['p_email'] = $user->email;
         $data['currency'] = $ppCurrency;
-        $data['amount'] = $amount * 100;
+        $data['amount'] = $totamt;
+
         $data['test'] = 1;
         $data['version'] = '1.6';
 
@@ -89,8 +93,8 @@ class paysera_class {
                         'sign_password' => 'a4a8a31750a23de2da88ef6a491dfd5c',
             ));
             print_r($response);
-            $orderId =  $response['orderid'];
-            $amount =   $response['amount'];
+            $orderId = $response['orderid'];
+            $totamt = $response['amount'];
             $currency = $response['currency'];
 
             if ($response['status'] == 1) {

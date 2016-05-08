@@ -10,10 +10,10 @@
 		<field type="text" name="btNotifyFaxno" id="btNotifyFaxno" label="COM_JBLANCE_FAX_NO" description="COM_JBLANCE_FAX_NO_EXAMPLE" size="60" default="001 123456789" maxLength="255" class="required" />
 	</fieldset>
 	<fieldset name="withdraw">
-		<field type="text" name="btAccnum" id="btAccnum" label="COM_JBLANCE_ACCOUNT_NO" description="" size="60" default="" maxLength="255" class="required" labelclass="control-label" />
-		<field type="text" name="btBankname" id="btBankname" label="COM_JBLANCE_BANK_NAME" description="" size="60" default="" maxLength="255" class="required" labelclass="control-label" />
-		<field type="text" name="btAccHoldername" id="btAccHoldername" label="COM_JBLANCE_BANK_ACCOUNT_NAME" description="" size="60" default="" maxLength="255" class="required" labelclass="control-label" />
-		<field type="text" name="btIBAN" id="btIBAN" label="COM_JBLANCE_IBAN" description="" size="60" default="" maxLength="255" class="" labelclass="control-label" />
-		<field type="text" name="btSWIFT" id="btSWIFT" label="COM_JBLANCE_SWIFT" description="" size="60" default="" maxLength="255" class="" labelclass="control-label" />
+		<field type="text" name="btAccnum" id="btAccnum" label="COM_JBLANCE_ACCOUNT_NO" description="" size="60" default="" maxLength="255" class="form-control required" labelclass="control-label" />
+		<field type="text" name="btBankname" id="btBankname" label="COM_JBLANCE_BANK_NAME" description="" size="60" default="" maxLength="255" class="form-control required" labelclass="control-label" />
+		<field type="text" name="btAccHoldername" id="btAccHoldername" label="COM_JBLANCE_BANK_ACCOUNT_NAME" description="" size="60" default="" maxLength="255" class="form-control required" labelclass="control-label" />
+		<field type="text" name="btIBAN" id="btIBAN" label="COM_JBLANCE_IBAN" description="" size="60" default="" maxLength="255" class="form-control" labelclass="control-label" />
+		<field type="text" name="btSWIFT" id="btSWIFT" label="COM_JBLANCE_SWIFT" description="" size="60" default="" maxLength="255" class="form-control" labelclass="control-label" />
 	</fieldset>
 </form>
