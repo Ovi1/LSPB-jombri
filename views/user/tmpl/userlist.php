@@ -34,7 +34,7 @@ $actionLetter = (!empty($letter)) ? '&letter=' . $letter : '';
 $config = JblanceHelper::getConfig();
 $showUsername = $config->showUsername;
 $showBizName = $config->showBizName;
-$nameOrUsername = ($showUsername) ? 'username' : 'name';
+$nameOrUsername = ($showUsername) ? 'user' : 'username';
 
 $keyword = $app->input->get('keyword', '', 'string');
 $id_category = $app->input->get('id_category', array(), 'array');
@@ -55,7 +55,7 @@ $actionAll = JRoute::_('index.php?option=com_jblance&view=user&layout=userlist')
 
 JblanceHelper::setJoomBriToken();
 ?>
-<script type="text`/javascript">
+<script type="text/javascript">
     <!--
     jQuery(document).ready(function($) {
     $("#rating").barrating("show", {
@@ -69,6 +69,7 @@ JblanceHelper::setJoomBriToken();
 <form action="<?php echo $action; ?>" method="post" name="userFormJob" enctype="multipart/form-data">
     <!-- show search fields if enabled -->
     <?php if ($show_search) : ?>
+        <div class="panel panel-default">
         <div class="col-md-12">
             <div class="form-group">
                 
@@ -94,24 +95,25 @@ JblanceHelper::setJoomBriToken();
 
 
 
-        <div class="row-fluid top10">
-            <div class="span4">
+        <div class="row">
+            <div class="col-md-4">
                 <?php
                 $attribs = 'class="input-xlarge advancedSelect" size="1"';
                 $categtree = $select->getSelectCategoryTree('id_category[]', $id_category, 'COM_JBLANCE_ALL_SKILLS', $attribs, '', true);
                 echo $categtree;
                 ?>
             </div>
-            <div class="span4">
+            <div class="col-md-4">
                 <?php
-                $attribs = "class='input-xlarge advancedSelect' size='1'";
+                $attribs = "class='form-control dvancedSelect' size='1'";
                 echo $select->getSelectLocationTree('id_location[]', $id_location, '', 'COM_JBLANCE_ALL_LOCATIONS', $attribs, '');
                 ?>
             </div>
         </div>
 
-        <div class="row-fluid top10">
-            <div class="span6">
+
+            <div class="row">
+            <div class="col-md-6">
                 <div class="control-group">
                     <label class="control-label" for="rating"><?php echo JText::_('COM_JBLANCE_RATING'); ?></label>
                     <div class="controls brating" title="<?php echo JText::_('COM_JBLANCE_RATING_ABOVE'); ?>">
@@ -119,7 +121,7 @@ JblanceHelper::setJoomBriToken();
                     </div>
                 </div>
             </div>
-            <div class="span6">
+            <div class="col-md-6">
                 <div class="control-group">
                     <label class="control-label" for="project_type"><?php echo JText::_('COM_JBLANCE_HOURLY_RATE'); ?></label>
                     <div class="controls">
@@ -136,17 +138,11 @@ JblanceHelper::setJoomBriToken();
                 </div>
             </div>
         </div>
-
-        <div class="row-fluid pull-right">
-            <div class="span12">
-                <button type="submit" class="btn pull-right" title=""><i class="material-icons">search</i> <?php echo JHtml::tooltipText('COM_JBLANCE_SEARCH'); ?></button>
-            </div>
         </div>
     <?php endif; ?>
     <div class="panel">
-    
     <div class="panel-body">
-    <div class="jbl_h3title"><?php echo $this->escape($this->params->get('page_heading', JText::_('COM_JBLANCE_USERLIST'))); ?>
+        <div class="panel-heading"><h3><?php echo $this->escape($this->params->get('page_heading', JText::_('COM_JBLANCE_USERLIST'))); ?></h3>
     <!-- hide alpha index if search form is enabled -->
     <?php if (!$show_search) : ?>
   
@@ -155,14 +151,16 @@ JblanceHelper::setJoomBriToken();
             foreach (range('A', 'Z') as $i) :
                 $link_comp_index = JRoute::_('index.php?option=com_jblance&view=user&layout=userlist&letter=' . strtolower($i), false);
                 if (strcasecmp($letter, $i) == 0)
-                    echo JHtml::_('link', $link_comp_index, $i, array('title' => $i, 'class' => 'btn btn-mini active'));
+                    echo JHtml::_('link', $link_comp_index, $i, array('title' => $i, 'class' => 'btn btn-sm btn-primary active'));
                 else
-                    echo JHtml::_('link', $link_comp_index, $i, array('title' => $i, 'class' => 'btn btn-mini'));
+                    echo JHtml::_('link', $link_comp_index, $i, array('title' => $i, 'class' => 'btn btn-default btn-sm'));
             endforeach;
             ?>	
    
     <?php endif; ?>
-    </div>
+        
+        </div>
+
     <?php
     for ($i = 0, $x = count($this->rows); $i < $x; $i++) {
         $row = $this->rows[$i];
@@ -233,7 +231,7 @@ JblanceHelper::setJoomBriToken();
                         </div>
                     </div>
             <div class="pagination pagination-centered">
-                        <?php echo $this->pageNav->getPagesLinks(); ?>
+            <?php echo $this->pageNav->getPagesLinks(); ?>
         </div>
 </div>
 </div>

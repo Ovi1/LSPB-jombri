@@ -22,7 +22,7 @@ $enableEscrowPayment = $config->enableEscrowPayment;
 $enableWithdrawFund = $config->enableWithdrawFund;
 $showUsername = $config->showUsername;
 
-$nameOrUsername = ($showUsername) ? 'username' : 'name';
+$nameOrUsername = ($showUsername) ? 'name' : 'username';
 
 $action = JRoute::_('index.php?option=com_jblance&view=membership&layout=managepay');
 ?>

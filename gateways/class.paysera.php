@@ -41,7 +41,7 @@ class paysera_class {
 
         $link_cancel = JRoute::_(JURI::base() . 'index.php?option=com_jblance&view=membership&layout=thankpayment&type=cancel');
 
-        //$this->paysera_url = ($ppTestmode) ? 'https://www.paysera.com/pay/' : 'https://www.paysera.com/pay/';
+        $this->paysera_url = ($ppTestmode) ? 'https://www.paysera.com/pay/' : 'https://www.paysera.com/pay/';
 
         $data['projectid'] = $projectId;
         $data['sign_password'] = $signPassword;
@@ -107,7 +107,7 @@ class paysera_class {
             //print_r($return);exit;
 
             return $return;
-        } catch (Exception $e) {
+        }   catch (Exception $e) {
             echo get_class($e) . ': ' . $e->getMessage();
         }
     }

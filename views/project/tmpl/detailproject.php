@@ -318,10 +318,9 @@ $isExpired = ($row->status == 'COM_JBLANCE_EXPIRED') ? true : false;
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-success">
+ <div class="panel-heading"><?php echo JText::_('COM_JBLANCE_PUBLIC_CLARIFICATION_BOARD'); ?></div>
     <div class="panel-body">
-        <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_PUBLIC_CLARIFICATION_BOARD'); ?>
-        </div>
         <span style="font-style:italic;"><?php echo JText::sprintf('COM_JBLANCE_X_MESSAGES', count($this->forums)); ?></span>
         <div id="comments">
             <ul id="commentList" style="max-height: 400px; overflow: auto;">
@@ -369,8 +368,8 @@ $isExpired = ($row->status == 'COM_JBLANCE_EXPIRED') ? true : false;
 </div>
 
 <div class="panel panel-info">
+        <div class="panel-heading"><?php echo JText::_('COM_JBLANCE_ALL_BIDS'); ?></div>
     <div class="panel-body">
-        <div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_ALL_BIDS'); ?></div>
         <!-- if the project is sealed and the user is not the publisher, then hide the bid details of the project -->
         <?php
         //check if the user has bid
@@ -386,15 +385,15 @@ $isExpired = ($row->status == 'COM_JBLANCE_EXPIRED') ? true : false;
                 for ($i = 0, $n = count($this->bids); $i < $n; $i++) {
                     $bid = $this->bids[$i];
                     ?>
-                    <div class="row-fluid">
-                        <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-1">
                             <?php
                             $attrib = 'width=auto height=auto class="img-thumbnail"';
                             $avatar = JblanceHelper::getLogo($bid->user_id, $attrib);
                             echo!empty($avatar) ? LinkHelper::GetProfileLink($bid->user_id, $avatar) : '&nbsp;';
                             ?>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-4 col-md-7">
                             <h5 class="media-heading">
                                 <?php echo LinkHelper::GetProfileLink(intval($bid->user_id), $this->escape($bid->$nameOrUsername)); ?>
                             </h5>
@@ -403,7 +402,7 @@ $isExpired = ($row->status == 'COM_JBLANCE_EXPIRED') ? true : false;
 
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-sm-4 col-md-4">
                             <div class="text-center">
                                 <span class="font20"><?php echo JblanceHelper::formatCurrency($bid->amount, true, false, 0); ?></span><?php echo ($row->project_type == 'COM_JBLANCE_HOURLY') ? ' / ' . JText::_('COM_JBLANCE_HR') : ''; ?><br>
                                 <span class="font12">

@@ -394,7 +394,7 @@ JblanceHelper::setJoomBriToken();
                             <div class="form-group">
                                 <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PROFESSIONALISM'); ?>: </label>
                                 <div class="input-group">
-                                    <?php JblanceHelper::getRatingHTML($this->frating->professional); ?>
+                                   <?php JblanceHelper::getRatingHTML($this->frating->professional); ?>
                                 </div>
                             </div>
                         </div>
@@ -408,7 +408,7 @@ JblanceHelper::setJoomBriToken();
                         </div>
                         <?php
                         else:
-                        echo JText::_('COM_JBLANCE_RATING_NOT_FOUND');
+                            echo JText::_('COM_JBLANCE_RATING_NOT_FOUND');
                         endif;
                     ?>
                 </div>
@@ -510,7 +510,7 @@ JblanceHelper::setJoomBriToken();
                             <div class="form-group">
                                 <label class="control-label nopadding"><?php echo JText::_('COM_JBLANCE_PROFESSIONALISM'); ?>: </label>
                                 <div class="input-group">
-                                    <?php JblanceHelper::getRatingHTML($this->brating->professional); ?>
+                                   <?php JblanceHelper::getRatingHTML($this->brating->professional); ?>
                                 </div>
                             </div>
                         </div>

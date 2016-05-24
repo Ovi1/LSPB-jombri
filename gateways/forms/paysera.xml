@@ -10,6 +10,6 @@
 		</field>
 	</fieldset>
 	<fieldset name="withdraw">
-		<field type="text" name="payseraEmail" id="payseraEmail" label="Paysera Email" description="Withdraw funds to your PayPal account.	" size="60" default="" maxLength="255" class="form-control required validate-email" labelclass="control-label" />
+		<field type="text" name="payseraEmail" id="payseraEmail" label="Paysera Email" description="Withdraw funds to your Paysera account." size="60" default="" maxLength="255" class="form-control required validate-email" labelclass="control-label" />
 	</fieldset>
 </form>

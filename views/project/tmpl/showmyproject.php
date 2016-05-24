@@ -158,7 +158,7 @@ $link_edit_project = JRoute::_('index.php?option=com_jblance&view=project&layout
                                         <?php
                                     } elseif ($bidInfo->status == '') {
                                         ?>
-                                        <div class="alert">
+                                        <div class="alert alert-warning">
                                             <strong><?php echo JText::_('COM_JBLANCE_STATUS_WAITING'); ?></strong><br>
                                             <a href="<?php echo $link_reopen_proj; ?>" class="btn btn-warning btn-sm"><?php echo JText::_('COM_JBLANCE_REOPEN'); ?></a>
                                         </div>

@@ -90,7 +90,7 @@ function checkBalance(){
 			</h5>
 			<p class="font14"><?php echo ($row->details) ? $row->details : JText::_('COM_JBLANCE_DETAILS_NOT_PROVIDED'); ?></p>
 			<p>
-				<span title="<?php echo JText::_('COM_JBLANCE_BID_DATE'); ?>"><i class="icon-calendar"></i> <?php echo JHtml::_('date', $row->bid_date, $dformat); ?></span>
+				<span title="<?php echo JText::_('COM_JBLANCE_BID_DATE'); ?>"><i class="material-icons">event</i> <?php echo JHtml::_('date', $row->bid_date, $dformat); ?></span>
 				<!-- Show attachment if found -->
 				<?php
 				if(!empty($row->attachment)) : ?>

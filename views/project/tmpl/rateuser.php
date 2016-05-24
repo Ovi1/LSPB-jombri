@@ -72,17 +72,17 @@ jQuery(document).ready(function($){
 });
 //-->
 </script>
+<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormProject" id="userFormProject" class="form-validate" onsubmit="return validateForm(this);">
 <div class="panel panel-default">
+    <div class="panel-heading"><h3><?php echo JText::_('COM_JBLANCE_RATE_USER'); ?></h3></div>
 <div class="panel-body">
-<form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="userFormProject" id="userFormProject" class="form-validate form-horizontal" onsubmit="return validateForm(this);">
-	<div class="jbl_h3title"><?php echo JText::_('COM_JBLANCE_RATE_USER'); ?></div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_PROJECT_NAME'); ?>: </label>
 		<div class="controls font16">
 			<?php echo $project->project_title; ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label"><?php echo JText::_('COM_JBLANCE_NAME'); ?>: </label>
 		<div class="controls">
 			<?php
@@ -90,50 +90,52 @@ jQuery(document).ready(function($){
 			echo $target_user->$nameOrUsername.' ('.JText::_($target_rate_type).')'; ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="quality_clarity"><?php echo ($target_rate_type == 'COM_JBLANCE_BUYER') ? JText::_('COM_JBLANCE_CLARITY_SPECIFICATION') : JText::_('COM_JBLANCE_QUALITY_OF_WORK'); ?>: </label>
 		<div class="controls brating">
 			<?php $rating = $select->getSelectRating('quality_clarity', 5);
 			echo $rating; ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="communicate"><?php echo JText::_('COM_JBLANCE_COMMUNICATION'); ?>: </label>
 		<div class="controls brating">
 			<?php $rating = $select->getSelectRating('communicate', 5);
 			echo $rating; ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="expertise_payment"><?php echo ($target_rate_type == 'COM_JBLANCE_BUYER') ? JText::_('COM_JBLANCE_PAYMENT_PROMPTNESS') : JText::_('COM_JBLANCE_EXPERTISE'); ?>: </label>
 		<div class="controls brating">
 			<?php $rating = $select->getSelectRating('expertise_payment', 5);
 			echo $rating; ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="professional"><?php echo JText::_('COM_JBLANCE_PROFESSIONALISM'); ?>: </label>
 		<div class="controls brating">
 			<?php $rating = $select->getSelectRating('professional', 5);
 			echo $rating; ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="hire_work_again"><?php echo ($target_rate_type == 'COM_JBLANCE_BUYER') ? JText::_('COM_JBLANCE_WORK_AGAIN') : JText::_('COM_JBLANCE_HIRE_AGAIN'); ?>: </label>
 		<div class="controls brating">
 			<?php $rating = $select->getSelectRating('hire_work_again', 5);
 			echo $rating; ?>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="form-group">
 		<label class="control-label" for="comments"><?php echo JText::_('COM_JBLANCE_COMMENTS'); ?>: </label>
 		<div class="controls">
 			<textarea name="comments" rows="5" class="form-control required"></textarea>
 		</div>
 	</div>
 	<div class="form-actions">
-		<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SUBMIT'); ?>" class="btn btn-primary" />
+		<input type="submit" value="<?php echo JText::_('COM_JBLANCE_SUBMIT'); ?>" class="btn btn-primary btn-block" />
 	</div>
+</div>
+</div>
 	
 	<input type="hidden" name="option" value="com_jblance" />			
 	<input type="hidden" name="task" value="project.saverateuser" />
@@ -145,5 +147,3 @@ jQuery(document).ready(function($){
 	<input type="hidden" name="type" value="COM_JBLANCE_PROJECT" />
 	<?php echo JHtml::_('form.token'); ?>
 	</form>
-</div>
-</div>

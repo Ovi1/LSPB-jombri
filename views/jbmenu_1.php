@@ -173,7 +173,7 @@ $link_logout = JRoute::_('index.php?option=com_users&task=user.logout&' . JSessi
                         <div class="media-body">
                           <?php echo $notify->title; ?>
                           <div>
-                            <i class="icon-calendar"></i> <?php echo $notify->daysago; ?>
+                            <i class="material-icons">event</i><?php echo $notify->daysago; ?>
                           </div>
                         </div>
                       </div>
